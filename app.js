@@ -21,3 +21,21 @@ checkoutButtons.forEach((element) => {
         console.log(`Successfully updated layout! Items in cart: ${cartCount}`);
     });
 });
+// Select hamburger button and navigation menu
+const menuBtn = document.getElementById("menu");
+const navList = document.getElementById("list");
+
+if (menuBtn && navList) {
+    // Toggle menu visibility and icon state on click
+    menuBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        // Show/Hide navigation menu
+        navList.classList.toggle("navList-active");
+
+        // Switch between hamburger and close icon
+        const icon = menuBtn.querySelector("i");
+        icon.classList.toggle("fa-bars");
+        icon.classList.toggle("fa-xmark");
+    });
+}

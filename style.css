@@ -23,6 +23,7 @@ html{
 }
 
 /* BASIC STYLING */
+
 .wrapper {
     max-width: 1450px;
     margin: auto;
@@ -134,7 +135,7 @@ img {
     flex-direction: column;
     gap: 1.2rem;
     opacity: 0;
-    visibility: hidden;
+   /* visibility: hidden;*/
     transition: 0.3s ease-in-out;
 }
 
