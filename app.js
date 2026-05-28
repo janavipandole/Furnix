@@ -385,7 +385,72 @@ document.addEventListener('DOMContentLoaded', () => {
     setupProductCards();
     renderCartPage();
     renderWishlistPage();
+    handleCategoryFilter();
+    renderSharedFooter();
+    setupNewsletterSubscription();
 });
+
+function handleCategoryFilter() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+    if (!category) return;
+
+    const products = document.querySelectorAll('.products-grid .product-card');
+    if (products.length === 0) return;
+
+    const filterTerm = category.toLowerCase();
+    
+    // Update the heading to reflect the active category
+    const heading = document.querySelector('.p-block h2.h2-heading');
+    if (heading) {
+        let displayCategory = category.charAt(0).toUpperCase() + category.slice(1);
+        if (filterTerm === 'sofas') displayCategory = 'Sofas';
+        heading.innerHTML = `Our <span>${displayCategory}</span>`;
+    }
+
+    products.forEach(card => {
+        const catEl = card.querySelector('small');
+        const titleEl = card.querySelector('h6');
+        if (!catEl) return;
+
+        const cardCategory = catEl.innerText.toLowerCase();
+        const cardTitle = titleEl ? titleEl.innerText.toLowerCase() : '';
+
+        let isMatch = false;
+        if (filterTerm === 'seating') {
+            isMatch = (cardCategory === 'seating');
+        } else if (filterTerm === 'sofas') {
+            isMatch = (cardCategory === 'seating' && cardTitle.includes('sofa'));
+        } else if (filterTerm === 'tables') {
+            isMatch = (cardCategory === 'tables');
+        } else if (filterTerm === 'lighting') {
+            isMatch = (cardCategory === 'lighting');
+        } else if (filterTerm === 'accessories') {
+            isMatch = (cardCategory === 'accessories');
+        } else {
+            isMatch = (cardCategory.includes(filterTerm));
+        }
+
+        if (isMatch) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Add a Clear Filter button if a category filter is active
+    const container = document.querySelector('.p-block div[style*="text-align: center"]');
+    if (container && !document.getElementById('clear-filter-btn')) {
+        const clearBtn = document.createElement('a');
+        clearBtn.id = 'clear-filter-btn';
+        clearBtn.href = 'furniture.html';
+        clearBtn.innerText = 'Clear Filter';
+        clearBtn.className = 'btn brown-bg mt-1 btn-inline';
+        clearBtn.style.display = 'inline-block';
+        clearBtn.style.margin = '1rem auto 0 auto';
+        container.appendChild(clearBtn);
+    }
+}
 
 function setupProductCards() {
     const productCards = document.querySelectorAll('.product-card');
@@ -446,6 +511,90 @@ function setupProductCards() {
             }
         }
     });
+}
+
+function setupNewsletterSubscription() {
+    const newsletterArrow = document.querySelector('.input-container a.simple-icon');
+    const newsletterInput = document.querySelector('.input-container input[type="email"]');
+    if (newsletterArrow && newsletterInput) {
+        newsletterArrow.addEventListener('click', (e) => {
+            e.preventDefault();
+            const emailVal = newsletterInput.value.trim();
+            if (!emailVal) {
+                alert('Please enter your email address.');
+                return;
+            }
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailVal)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            alert(`Thank you for subscribing! Your 10% discount code has been sent to ${emailVal}`);
+            newsletterInput.value = '';
+        });
+    }
+}
+
+function renderSharedFooter() {
+    const footer = document.getElementById('contact');
+    if (!footer) return;
+    footer.innerHTML = `
+        <div class="wrapper p-block flex g-one-half">
+            <div class="footer-wrapper">
+                <a href="index.html" class="logo">Furnix.</a>
+                <h3>sign up to receive 10% off <br> on your first order</h3>
+                <div class="input-container">
+                    <input type="email" name="email" id="email" placeholder="Enter your email.." autocomplete="off">
+                    <a href="#" class="simple-icon"><i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <ul class="footer-social-icon flex">
+                    <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="https://x.com" target="_blank" rel="noopener noreferrer" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-wrapper">
+                <h5>collections</h5>
+                <ul>
+                    <li><a href="furniture.html?category=seating" class="footer-link">Seating</a></li>
+                    <li><a href="furniture.html?category=sofas" class="footer-link">sofas</a></li>
+                    <li><a href="furniture.html?category=lighting" class="footer-link">Lighting</a></li>
+                    <li><a href="furniture.html?category=accessories" class="footer-link">Accessories</a></li>
+                </ul>
+                <ul class="footer-contact-details">
+                    <li class="contact">
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="tel:+91123456789" class="footer-link">+91 123 456 789</a>
+                    </li>
+                    <li class="contact">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:Furnixhome@info.com" class="footer-link">Furnixhome@info.com</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-wrapper">
+                <h5>designers</h5>
+                <ul>
+                    <li><a href="designers.html#john-oliver" class="footer-link">John Oliver</a></li>
+                    <li><a href="designers.html#annie-lilt" class="footer-link">Annie Lilt</a></li>
+                    <li><a href="designers.html#frank-daniel" class="footer-link">Frank Daniel</a></li>
+                </ul>
+            </div>
+            <div class="footer-wrapper">
+                <h5>information</h5>
+                <ul>
+                    <li><a href="story.html" class="footer-link">our story</a></li>
+                    <li><a href="journal.html" class="footer-link">our journal</a></li>
+                    <li><a href="faq.html" class="footer-link">FAQ's</a></li>
+                    <li><a href="contact.html" class="footer-link">contact us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy-right mt-3">
+            <p>&copy; 2025 copyright furnix homes. powered by <span><i>janavi pandole</i></span></p>
+        </div>
+    `;
 }
 
 
