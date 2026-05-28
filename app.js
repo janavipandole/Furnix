@@ -1,19 +1,4 @@
-const menuBtn = document.getElementById('menu');
-const navList = document.getElementById('list');
-const navClose = document.getElementById('navClose');
 
-if (menuBtn && navList) {
-    menuBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        navList.classList.add('navList-active');
-    });
-}
-
-if (navClose && navList) {
-    navClose.addEventListener('click', () => {
-        navList.classList.remove('navList-active');
-    });
-}
 
 const CART_KEY = 'furnix_shopping_cart';
 const WISHLIST_KEY = 'furnix_wishlist';
@@ -380,6 +365,8 @@ function renderWishlistPage() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    renderSharedSidebar();
+    setupNavigationToggle();
     updateCartBadge();
     updateWishlistBadge();
     setupProductCards();
@@ -596,5 +583,63 @@ function renderSharedFooter() {
         </div>
     `;
 }
+
+function renderSharedSidebar() {
+    const listEl = document.getElementById('list');
+    if (!listEl) return;
+    listEl.innerHTML = `
+        <button class="nav-close-btn" id="navClose">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <li><a href="collections.html" class="link">collections</a></li>
+        <li><a href="furniture.html" class="link">furniture</a></li>
+        <li><a href="designers.html" class="link">designers</a></li>
+        <li><a href="trends.html" class="link">trends</a></li>
+        <li><a href="about.html" class="link">about us</a></li>
+        <li><a href="contact.html" class="link">contact us</a></li>
+        <ul class="footer-social-icon flex">
+            <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+            <li><a href="https://x.com" target="_blank" rel="noopener noreferrer" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
+            <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
+        </ul>
+    `;
+
+    // Highlight the active page link
+    const path = window.location.pathname;
+    let page = path.substring(path.lastIndexOf('/') + 1);
+    if (!page || page === '/') {
+        page = 'index.html';
+    }
+    const links = listEl.querySelectorAll('.link');
+    links.forEach(link => {
+        const href = link.getAttribute('href');
+        const cleanHref = href ? href.split('?')[0].split('#')[0] : '';
+        const cleanPage = page ? page.split('?')[0].split('#')[0] : '';
+        if (cleanHref === cleanPage) {
+            link.classList.add('active');
+        }
+    });
+}
+
+function setupNavigationToggle() {
+    const menuBtn = document.getElementById('menu');
+    const navList = document.getElementById('list');
+    const navClose = document.getElementById('navClose');
+
+    if (menuBtn && navList) {
+        menuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            navList.classList.add('navList-active');
+        });
+    }
+
+    if (navClose && navList) {
+        navClose.addEventListener('click', () => {
+            navList.classList.remove('navList-active');
+        });
+    }
+}
+
 
 
