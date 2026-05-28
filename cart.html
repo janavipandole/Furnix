@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix - Cart & Checkout</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-box">
+            <div class="success-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>Order Placed Successfully!</h3>
+            <p class="detail-info-platform">Thank you for shopping with Furnix. We will send you a confirmation and delivery update shortly.</p>
+            <a href="index.html" class="btn btn-inline">Back to Home</a>
+        </div>
+    </div>
+
+            <header>
+        <nav class="navbar flex between wrapper">
+            <a href="index.html" class="logo">Furnix.</a>
+            <ul class="navList" id="list">
+                <button class="nav-close-btn" id="navClose">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <li><a href="collections.html" class="link">collections</a></li>
+                <li><a href="furniture.html" class="link">furniture</a></li>
+                <li><a href="designers.html" class="link">designers</a></li>
+                <li><a href="trends.html" class="link">trends</a></li>
+                <li><a href="about.html" class="link">about us</a></li>
+                <li><a href="contact.html" class="link">contact us</a></li>
+                <ul class="footer-social-icon flex">
+                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                </ul>
+            </ul>
+            <ul class="nav-icons flex g-one-half">
+                <li><a href="#" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                <li><a href="#" class="icon"><i class="fa-solid fa-user"></i></a></li>
+                <li>
+                    <a href="wishlist.html" class="icon nav-icon-wrapper">
+                        <i class="fa-solid fa-heart"></i>
+                        <span id="wishlist-badge" class="nav-badge">0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html" class="icon cart-nav-icon nav-icon-wrapper">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span id="cart-badge" class="nav-badge">0</span>
+                    </a>
+                </li>
+                <li><a href="#" class="icon" id="menu"><i class="fa-solid fa-bars"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="wrapper page-section">
+
+            <div class="step-indicator">
+                <div class="step active" id="step1Indicator">
+                    <div class="step-circle">1</div>
+                    <span class="step-label">Your Cart</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" id="step2Indicator">
+                    <div class="step-circle">2</div>
+                    <span class="step-label">Checkout</span>
+                </div>
+            </div>
+
+            <!-- STEP 1: CART -->
+            <div id="cartStep">
+                <div class="page-header-container">
+                    <h2 class="h2-heading gradient-txt mt-3">Your <span>Cart</span></h2>
+                    <p class="detail-info-platform page-header-desc">Review your selected pieces before checkout.</p>
+                </div>
+
+                <div class="cart-empty-state" id="cartEmptyState">
+                    <i class="fa-solid fa-shopping-bag"></i>
+                    <h3>Your cart is empty</h3>
+                </div>
+
+                <div class="cart-layout" id="cartLayout">
+                    <div class="cart-items-list" id="cartItemsList"></div>
+                    <div class="cart-summary-box">
+                        <h4 class="summary-title">Order Summary</h4>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="summarySubtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span id="summaryShipping">Free</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax (10%)</span>
+                            <span id="summaryTax">$0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="summaryTotal">$0.00</span>
+                        </div>
+                        <button class="btn summary-checkout-btn" id="proceedToCheckoutBtn">Proceed to Checkout</button>
+                        <a href="furniture.html" class="footer-link continue-shopping-link">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 2: CHECKOUT -->
+            <div id="checkoutStep" class="step-hidden">
+                <div class="page-header-container">
+                    <h2 class="h2-heading gradient-txt mt-3">Secure <span>Checkout</span></h2>
+                    <p class="detail-info-platform page-header-desc">Complete your order below. Your data is always protected.</p>
+                </div>
+
+                <div class="checkout-layout">
+                    <div class="checkout-form-section">
+
+                        <div class="checkout-block">
+                            <h4 class="checkout-form-title">
+                                <i class="fa-solid fa-location-dot"></i> Shipping Details
+                            </h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" id="firstName" class="form-input" placeholder="John" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" id="lastName" class="form-input" placeholder="Doe" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkoutEmail" class="form-label">Email Address</label>
+                                <input type="email" id="checkoutEmail" class="form-input" placeholder="johndoe@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" class="form-input" placeholder="+91 98765 43210" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="form-label">Street Address</label>
+                                <input type="text" id="address" class="form-input" placeholder="123 Main Street, Apt 4B" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" id="city" class="form-input" placeholder="New Delhi" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pincode" class="form-label">Pincode</label>
+                                    <input type="text" id="pincode" class="form-input" placeholder="110001" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="checkout-block">
+                            <h4 class="checkout-form-title">
+                                <i class="fa-solid fa-credit-card"></i> Payment Method
+                            </h4>
+                            <div class="payment-method-options">
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="card" id="payCard" checked>
+                                    <i class="fa-solid fa-credit-card"></i>
+                                    <span class="payment-option-label">Credit / Debit Card</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="upi" id="payUpi">
+                                    <i class="fa-solid fa-mobile-screen"></i>
+                                    <span class="payment-option-label">UPI Payment</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="cod" id="payCod">
+                                    <i class="fa-solid fa-money-bill-wave"></i>
+                                    <span class="payment-option-label">Cash on Delivery</span>
+                                </label>
+                            </div>
+
+                            <div class="card-fields visible" id="cardFields">
+                                <div class="form-group">
+                                    <label for="cardNumber" class="form-label">Card Number</label>
+                                    <input type="text" id="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="cardExpiry" class="form-label">Expiry Date</label>
+                                        <input type="text" id="cardExpiry" class="form-input" placeholder="MM / YY" maxlength="7">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardCvv" class="form-label">CVV</label>
+                                        <input type="password" id="cardCvv" class="form-input" placeholder="***" maxlength="3">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-fields" id="upiFields">
+                                <div class="form-group">
+                                    <label for="upiId" class="form-label">UPI ID</label>
+                                    <input type="text" id="upiId" class="form-input" placeholder="yourname@upi">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn back-to-cart-btn" id="backToCartBtn">
+                            <i class="fa-solid fa-arrow-left"></i> Back to Cart
+                        </button>
+
+                    </div>
+
+                    <div class="checkout-order-box">
+                        <h4 class="summary-title">Your Order</h4>
+                        <div id="checkoutItemsList"></div>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="coSubtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span id="coShipping">Free</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax (10%)</span>
+                            <span id="coTax">$0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="coTotal">$0.00</span>
+                        </div>
+                        <button class="btn place-order-btn" id="placeOrderBtn">Place Order</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+            <footer id="contact" class="footer-image">
+        <div class="wrapper p-block flex g-one-half">
+            <div class="footer-wrapper">
+                <a href="index.html" class="logo">Furnix.</a>
+                <h3>sign up to receive 10% off <br> on your first order</h3>
+                <div class="input-container">
+                    <input type="email" name="email" id="email" placeholder="Enter your email.." autocomplete="off">
+                    <a href="#" class="simple-icon"><i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <ul class="footer-social-icon flex">
+                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-wrapper">
+                <h5>collections</h5>
+                <ul>
+                    <li><a href="collections.html" class="footer-link">Seating</a></li>
+                    <li><a href="furniture.html" class="footer-link">sofas</a></li>
+                    <li><a href="furniture.html" class="footer-link">Lighting</a></li>
+                    <li><a href="furniture.html" class="footer-link">Accessories</a></li>
+                </ul>
+                <ul class="footer-contact-details">
+                    <li class="contact"><a href="tel:+91123456789" class="footer-link">+91 123 456 789</a></li>
+                    <li class="contact"><a href="mailto:Furnixhome@info.com" class="footer-link">Furnixhome@info.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-wrapper">
+                <h5>designers</h5>
+                <ul>
+                    <li><a href="designers.html" class="footer-link">John Oliver</a></li>
+                    <li><a href="designers.html" class="footer-link">Annie Lilt</a></li>
+                    <li><a href="designers.html" class="footer-link">Frank Daniel</a></li>
+                </ul>
+            </div>
+            <div class="footer-wrapper">
+                <h5>information</h5>
+                <ul>
+                    <li><a href="story.html" class="footer-link">our story</a></li>
+                    <li><a href="journal.html" class="footer-link">our journal</a></li>
+                    <li><a href="faq.html" class="footer-link">FAQ's</a></li>
+                    <li><a href="contact.html" class="footer-link">contact us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy-right mt-3">
+            <p>&copy; 2025 copyright furnix homes. powered by <span><i>janavi pandole</i></span></p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

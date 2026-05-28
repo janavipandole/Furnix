@@ -16,76 +16,42 @@
 
 <body>
     <!-- HEADER PART -->
-    <header>
+            <header>
         <nav class="navbar flex between wrapper">
-            <a href="#" class="logo">Furnix.</a>
-
+            <a href="index.html" class="logo">Furnix.</a>
             <ul class="navList" id="list">
-                <li><a href="#" class="link">collections</a></li>
-
-                <li><a href="#" class="link">furniture</a></li>
-
-                <li><a href="#" class="link">designers</a></li>
-
-                <li><a href="#" class="link">trends</a></li>
-
-                <li><a href="#about" class="link">about us</a></li>
-
-                <li><a href="#contact" class="link">contact us</a></li>
-
+                <button class="nav-close-btn" id="navClose">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <li><a href="collections.html" class="link">collections</a></li>
+                <li><a href="furniture.html" class="link">furniture</a></li>
+                <li><a href="designers.html" class="link">designers</a></li>
+                <li><a href="trends.html" class="link">trends</a></li>
+                <li><a href="about.html" class="link">about us</a></li>
+                <li><a href="contact.html" class="link">contact us</a></li>
                 <ul class="footer-social-icon flex">
-                    <li>
-                        <a href="#" class="icon">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                    </li>
-
-                    <li><a href="#" class="icon">
-                            <i class="fa-brands fa-x-twitter"></i>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="icon">
-                            <i class="fa-brands fa-instagram"></i> </a>
-                    </li>
-
-                    <li><a href="#" class="icon">
-                            <i class="fa-brands fa-pinterest-p"></i> </a>
-                    </li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
                 </ul>
-
             </ul>
-
             <ul class="nav-icons flex g-one-half">
+                <li><a href="#" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                <li><a href="#" class="icon"><i class="fa-solid fa-user"></i></a></li>
                 <li>
-                    <a href="#" class="icon">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="icon">
-                        <i class="fa-solid fa-user"></i>
-                    </a>
-                </li>
-                <!-- adding fav-icon in nav bar -->
-                <li>
-                    <a href="#" class="icon">
+                    <a href="wishlist.html" class="icon nav-icon-wrapper">
                         <i class="fa-solid fa-heart"></i>
+                        <span id="wishlist-badge" class="nav-badge">0</span>
                     </a>
                 </li>
-                <!--  -->
                 <li>
-                    <a href="#" class="icon" style="position: relative;">
+                    <a href="cart.html" class="icon cart-nav-icon nav-icon-wrapper">
                         <i class="fa-solid fa-shopping-bag"></i>
-                        <span id="cart-badge" style="background: #ff0055; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; position: absolute; top: -5px; right: -10px;">0</span>
+                        <span id="cart-badge" class="nav-badge">0</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="icon" id="menu">
-                        <i class="fa-solid fa-bars"></i>
-                    </a>
-                </li>
+                <li><a href="#" class="icon" id="menu"><i class="fa-solid fa-bars"></i></a></li>
             </ul>
         </nav>
     </header>
@@ -104,7 +70,7 @@
                     Design Your Space
                 </p>
 
-                <a href="#" class="btn ">Buy Now</a>
+                <a href="collections.html" class="btn ">Buy Now</a>
 
                 <div class="hero-image mt-3">
                     <img src="images/sofa.png">
@@ -118,7 +84,7 @@
             <div class="wrapper p-block">
                 <div class="flex between ">
                     <h3>Love where you live</h3>
-                    <a href="#" class="btn mt-1">View all collection</a>
+                    <a href="collections.html" class="btn mt-1">View all collection</a>
                 </div>
 
                 <div class="flex g-one-half mt-3">
@@ -218,7 +184,7 @@
                         </div>
                         <div>
                             <small>Lighting</small>
-                            <h6>Aura Pendent Lamp</h6>
+                            <h6>Aura Pendant Lamp</h6>
                             <p class="price">$30.00</p>
                         </div>
                     </div>
@@ -235,7 +201,7 @@
                         </div>
                         <div>
                             <small>Accessories</small>
-                            <h6>flower vase decorp</h6>
+                            <h6>flower vase decor</h6>
                             <p class="price">$20.00</p>
                         </div>
                     </div>
@@ -291,7 +257,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="btn center mt-3">view all</a>
+                <a href="furniture.html" class="btn center mt-3">view all</a>
             </div>
 
         </section>
@@ -306,7 +272,7 @@
                     <p>About us</p>
                     <h2 class="h2-heading"><span>Furnix home</span> leads in <span>modern design,</span>
                         blending timeless aesthetics, functionality and <span>meticulous</span> craftsmanship</h2>
-                    <a href="#" class="btn">know more about us</a>
+                    <a href="about.html" class="btn">know more about us</a>
                 </div>
             </div>
         </section>
@@ -322,7 +288,7 @@
                     culpa ex, sed excepturi tempore sunt necessitatibus saepe, ab possimus expedita vero blanditiis
                     libero.
                 </p>
-                <a href="#" class="btn mt-3">Read our story</a>
+                <a href="story.html" class="btn mt-3">Read our story</a>
             </div>
         </section>
 
@@ -420,107 +386,55 @@
     </main>
 
     <!-- FOOTER PART -->
-    <footer id="contact" class="footer-image"></footer>
+            <footer id="contact" class="footer-image">
         <div class="wrapper p-block flex g-one-half">
             <div class="footer-wrapper">
-                <a href="#" class="logo">Furnix.</a>
+                <a href="index.html" class="logo">Furnix.</a>
                 <h3>sign up to receive 10% off <br> on your first order</h3>
-
                 <div class="input-container">
-                    <input type="email" name="email" id="email" placeholder="Enter you email.." autocomplete="off">
-                    <a href="#" class="simple-icon">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
+                    <input type="email" name="email" id="email" placeholder="Enter your email.." autocomplete="off">
+                    <a href="#" class="simple-icon"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
-
                 <ul class="footer-social-icon flex">
-                    <li>
-                        <a href="#" class="icon">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                    </li>
-
-                    <li><a href="#" class="icon">
-                            <i class="fa-brands fa-x-twitter"></i>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="icon">
-                            <i class="fa-brands fa-instagram"></i> </a>
-                    </li>
-
-                    <li><a href="#" class="icon">
-                            <i class="fa-brands fa-pinterest-p"></i> </a>
-                    </li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
                 </ul>
             </div>
-
             <div class="footer-wrapper">
                 <h5>collections</h5>
                 <ul>
-                    <li>
-                        <a href="#" class="footer-link">Seating</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">sofas</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Lighting</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Accessories</a>
-                    </li>
+                    <li><a href="collections.html" class="footer-link">Seating</a></li>
+                    <li><a href="furniture.html" class="footer-link">sofas</a></li>
+                    <li><a href="furniture.html" class="footer-link">Lighting</a></li>
+                    <li><a href="furniture.html" class="footer-link">Accessories</a></li>
                 </ul>
-
                 <ul class="footer-contact-details">
-                    <li class="contact">
-                        <a href="#" class="footer-link ">+91 123 456 789</a>
-                    </li>
-                    <li class="contact">
-                        <a href="#" class="footer-link ">Furnixhome@info.com</a>
-                    </li>
+                    <li class="contact"><a href="tel:+91123456789" class="footer-link">+91 123 456 789</a></li>
+                    <li class="contact"><a href="mailto:Furnixhome@info.com" class="footer-link">Furnixhome@info.com</a></li>
                 </ul>
             </div>
-
             <div class="footer-wrapper">
                 <h5>designers</h5>
                 <ul>
-                    <li>
-                        <a href="#" class="footer-link">name 1</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">name 2</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">name 3</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">name 4</a>
-                    </li>
+                    <li><a href="designers.html" class="footer-link">John Oliver</a></li>
+                    <li><a href="designers.html" class="footer-link">Annie Lilt</a></li>
+                    <li><a href="designers.html" class="footer-link">Frank Daniel</a></li>
                 </ul>
             </div>
-
-            <div id="about" class="footer-wrapper">
+            <div class="footer-wrapper">
                 <h5>information</h5>
                 <ul>
-                    <li>
-                        <a href="#" class="footer-link">our story</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">our journak</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">FAQ's</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">contact us</a>
-                    </li>
+                    <li><a href="story.html" class="footer-link">our story</a></li>
+                    <li><a href="journal.html" class="footer-link">our journal</a></li>
+                    <li><a href="faq.html" class="footer-link">FAQ's</a></li>
+                    <li><a href="contact.html" class="footer-link">contact us</a></li>
                 </ul>
             </div>
         </div>
         <div class="copy-right mt-3">
-            <p>&copy; 2025 copyright furnix homes. powerd by <span><i>janavi pandole</i></span></p>
+            <p>&copy; 2025 copyright furnix homes. powered by <span><i>janavi pandole</i></span></p>
         </div>
     </footer>
 

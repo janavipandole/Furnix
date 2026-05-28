@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix - Our Designers</title>
+
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    
+    <style>
+        /* Small inline style to make the designer grid wrap beautifully */
+        .designers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        /* Overriding the review card background slightly for a cleaner look */
+        .designer-card {
+            background: #fafafa;
+            border: 1px solid #eee;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PART -->
+            <header>
+        <nav class="navbar flex between wrapper">
+            <a href="index.html" class="logo">Furnix.</a>
+            <ul class="navList" id="list">
+                <button class="nav-close-btn" id="navClose">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <li><a href="collections.html" class="link">collections</a></li>
+                <li><a href="furniture.html" class="link">furniture</a></li>
+                <li><a href="designers.html" class="link">designers</a></li>
+                <li><a href="trends.html" class="link">trends</a></li>
+                <li><a href="about.html" class="link">about us</a></li>
+                <li><a href="contact.html" class="link">contact us</a></li>
+                <ul class="footer-social-icon flex">
+                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                </ul>
+            </ul>
+            <ul class="nav-icons flex g-one-half">
+                <li><a href="#" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                <li><a href="#" class="icon"><i class="fa-solid fa-user"></i></a></li>
+                <li>
+                    <a href="wishlist.html" class="icon nav-icon-wrapper">
+                        <i class="fa-solid fa-heart"></i>
+                        <span id="wishlist-badge" class="nav-badge">0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html" class="icon cart-nav-icon nav-icon-wrapper">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span id="cart-badge" class="nav-badge">0</span>
+                    </a>
+                </li>
+                <li><a href="#" class="icon" id="menu"><i class="fa-solid fa-bars"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT PART -->
+    <main>
+        <section class="wrapper p-block">
+            <div class="page-header-container">
+                <h2 class="h2-heading gradient-txt mt-3">Meet Our <span>Designers</span></h2>
+                <p class="detail-info-platform page-header-desc">
+                    Our award-winning pieces are born from the minds of visionary creatives. Discover the passionate individuals who blend art with everyday functionality.
+                </p>
+            </div>
+
+            <!-- Designers Grid -->
+            <div class="designers-grid">
+                
+                <div class="review-card designer-card">
+                    <div class="profile-image designer-profile-image">
+                        <img src="images/profile1.jpg" alt="John Oliver">
+                    </div>
+                    <h5>John Oliver</h5>
+                    <small class="designer-role">HEAD OF SEATING</small>
+                    <p class="detail-info-platform designer-desc">
+                        With over a decade of experience in ergonomic design, John focuses on creating chairs and sofas that look as incredible as they feel. His philosophy is that comfort should never compromise style.
+                    </p>
+                </div>
+
+                <div class="review-card designer-card">
+                    <div class="profile-image designer-profile-image">
+                        <img src="images/profile2.jpg" alt="Annie Lilt">
+                    </div>
+                    <h5>Annie Lilt</h5>
+                    <small class="designer-role">LIGHTING SPECIALIST</small>
+                    <p class="detail-info-platform designer-desc">
+                        Annie brings spaces to life through illumination. Inspired by Scandinavian minimalism, her lighting fixtures are designed to cast warm, inviting ambiances in modern homes.
+                    </p>
+                </div>
+
+                <div class="review-card designer-card">
+                    <div class="profile-image designer-profile-image">
+                        <img src="images/profile3.jpg" alt="Frank Daniel">
+                    </div>
+                    <h5>Frank Daniel</h5>
+                    <small class="designer-role">WOODCRAFT MASTER</small>
+                    <p class="detail-info-platform designer-desc">
+                        Frank's expertise lies in sustainably sourced timber. He designs our tables and bedroom sets with a deep respect for the natural grain, ensuring every piece is entirely unique.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER PART -->
+            <footer id="contact" class="footer-image">
+        <div class="wrapper p-block flex g-one-half">
+            <div class="footer-wrapper">
+                <a href="index.html" class="logo">Furnix.</a>
+                <h3>sign up to receive 10% off <br> on your first order</h3>
+                <div class="input-container">
+                    <input type="email" name="email" id="email" placeholder="Enter your email.." autocomplete="off">
+                    <a href="#" class="simple-icon"><i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <ul class="footer-social-icon flex">
+                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-wrapper">
+                <h5>collections</h5>
+                <ul>
+                    <li><a href="collections.html" class="footer-link">Seating</a></li>
+                    <li><a href="furniture.html" class="footer-link">sofas</a></li>
+                    <li><a href="furniture.html" class="footer-link">Lighting</a></li>
+                    <li><a href="furniture.html" class="footer-link">Accessories</a></li>
+                </ul>
+                <ul class="footer-contact-details">
+                    <li class="contact"><a href="tel:+91123456789" class="footer-link">+91 123 456 789</a></li>
+                    <li class="contact"><a href="mailto:Furnixhome@info.com" class="footer-link">Furnixhome@info.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-wrapper">
+                <h5>designers</h5>
+                <ul>
+                    <li><a href="designers.html" class="footer-link">John Oliver</a></li>
+                    <li><a href="designers.html" class="footer-link">Annie Lilt</a></li>
+                    <li><a href="designers.html" class="footer-link">Frank Daniel</a></li>
+                </ul>
+            </div>
+            <div class="footer-wrapper">
+                <h5>information</h5>
+                <ul>
+                    <li><a href="story.html" class="footer-link">our story</a></li>
+                    <li><a href="journal.html" class="footer-link">our journal</a></li>
+                    <li><a href="faq.html" class="footer-link">FAQ's</a></li>
+                    <li><a href="contact.html" class="footer-link">contact us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy-right mt-3">
+            <p>&copy; 2025 copyright furnix homes. powered by <span><i>janavi pandole</i></span></p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
