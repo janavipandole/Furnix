@@ -1,13 +1,9 @@
-/* Font family */
-
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
-
 html{
     scroll-behavior: smooth;
 }
 /* ROOT STYLING */
 * {
-    font-family: Jost;
+    font-family: Jost, Arial, Helvetica, sans-serif;
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
@@ -32,6 +28,14 @@ html{
 a {
     text-decoration: none;
     color: var(--back);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--golden-hour);
+    outline-offset: 4px;
 }
 
 li {
@@ -77,7 +81,7 @@ li {
 .btn {
     padding: 0.8rem 2rem;
     background-color: var(--golden-hour);
-    color: var(--white);
+    color: var(--back);
     border-radius: 5rem;
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -93,6 +97,7 @@ li {
 
 .brown-bg {
     background-color: var(--antique-brown);
+    color: var(--white);
 
 }
 
@@ -103,6 +108,7 @@ li {
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
 .mt-1 {
@@ -165,8 +171,13 @@ img {
     transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
+.navList[aria-hidden="true"] {
+    visibility: hidden;
+}
+
 .navList-active {
     right: 0;
+    visibility: visible;
 }
 
 .navList .link {
@@ -285,6 +296,13 @@ span {
 
 .hero-image {
     width: 50vw;
+    aspect-ratio: 900 / 394;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* SECTION 01 */
@@ -441,7 +459,7 @@ del {
 .detail-info-platform {
     text-transform: capitalize;
     max-width: 600px;
-    color: #00000070;
+    color: #595959;
     font-size: 1.1rem;
     padding-block: 1rem;
 }
@@ -470,7 +488,7 @@ del {
 
 small {
     font-size: 0.7rem;
-    color: #00000070;
+    color: #595959;
     letter-spacing: 0.2rem;
     text-transform: uppercase;
     margin-top: 1rem;
@@ -570,7 +588,7 @@ small {
     background-repeat: no-repeat;
     position: relative;
     backdrop-filter: blur(2.6rem);
-    background-attachment: fixed;
+    background-attachment: scroll;
     isolation: isolate;
 }
 
@@ -626,6 +644,12 @@ small {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.review-card .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* SECTION 07 */
@@ -1373,7 +1397,7 @@ small {
     background-repeat: no-repeat;
     position: relative;
     backdrop-filter: blur(2.6rem);
-    background-attachment: fixed;
+    background-attachment: scroll;
     isolation: isolate;
 }
 
