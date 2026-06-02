@@ -448,4 +448,176 @@ function setupProductCards() {
     });
 }
 
-
+const PROFILE_KEY = 'furnix_user_profile';
+
+function getUserProfile() {
+    const data = localStorage.getItem(PROFILE_KEY);
+    return data ? JSON.parse(data) : {
+        firstName: 'user',
+        lastName: 'name',
+        email: 'user@example.com',
+        phone: '+91 98765XXXXX',
+        address: '123 Main delhi',
+        city: 'New Delhi',
+        pincode: '10001'
+    };
+}
+
+function saveUserProfile(profile) {
+    localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+}
+
+function renderProfilePage() {
+    const viewName = document.getElementById('viewName');
+    if (!viewName) return; 
+
+    const profile = getUserProfile();
+
+    document.getElementById('viewName').innerText = profile.firstName + ' ' + profile.lastName;
+    document.getElementById('viewEmail').innerText = profile.email;
+    document.getElementById('viewPhone').innerText = profile.phone;
+    document.getElementById('viewAddress').innerText = profile.address;
+    document.getElementById('viewCity').innerText = profile.city;
+    document.getElementById('viewPincode').innerText = profile.pincode;
+
+    document.getElementById('editFirstName').value = profile.firstName;
+    document.getElementById('editLastName').value = profile.lastName;
+    document.getElementById('editEmail').value = profile.email;
+    document.getElementById('editPhone').value = profile.phone;
+    document.getElementById('editAddress').value = profile.address;
+    document.getElementById('editCity').value = profile.city;
+    document.getElementById('editPincode').value = profile.pincode;
+}
+
+function autoFillCheckout() {
+    const checkoutFirstName = document.getElementById('firstName');
+    if (!checkoutFirstName) return;
+
+    const profile = getUserProfile();
+    if(profile) {
+        if(document.getElementById('firstName')) document.getElementById('firstName').value = profile.firstName || '';
+        if(document.getElementById('lastName')) document.getElementById('lastName').value = profile.lastName || '';
+        if(document.getElementById('checkoutEmail')) document.getElementById('checkoutEmail').value = profile.email || '';
+        if(document.getElementById('phone')) document.getElementById('phone').value = profile.phone || '';
+        if(document.getElementById('address')) document.getElementById('address').value = profile.address || '';
+        if(document.getElementById('city')) document.getElementById('city').value = profile.city || '';
+        if(document.getElementById('pincode')) document.getElementById('pincode').value = profile.pincode || '';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderProfilePage();
+    autoFillCheckout();
+
+    const editBtn = document.getElementById('editProfileBtn');
+    const cancelBtn = document.getElementById('cancelEditBtn');
+    const editForm = document.getElementById('profileEditMode');
+    const viewMode = document.getElementById('profileViewMode');
+
+    if (editBtn) {
+        editBtn.addEventListener('click', () => {
+            viewMode.style.display = 'none';
+            editForm.style.display = 'block';
+            editBtn.style.display = 'none';
+        });
+    }
+
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+            viewMode.style.display = 'block';
+            editForm.style.display = 'none';
+            editBtn.style.display = 'inline-block';
+        });
+    }
+
+    if (editForm) {
+        editForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const updatedProfile = {
+                firstName: document.getElementById('editFirstName').value,
+                lastName: document.getElementById('editLastName').value,
+                email: document.getElementById('editEmail').value,
+                phone: document.getElementById('editPhone').value,
+                address: document.getElementById('editAddress').value,
+                city: document.getElementById('editCity').value,
+                pincode: document.getElementById('editPincode').value,
+            };
+            
+            saveUserProfile(updatedProfile); 
+            renderProfilePage();
+
+            viewMode.style.display = 'block';
+            editForm.style.display = 'none';
+            editBtn.style.display = 'inline-block';
+            
+            alert('Profile details updated successfully!');
+        });
+    }
+});
+
+const searchIconLinks = document.querySelectorAll('a i.fa-magnifying-glass');
+const searchOverlay = document.getElementById('searchOverlay');
+const closeSearch = document.getElementById('closeSearch');
+const searchInput = document.getElementById('searchInput');
+const executeSearch = document.getElementById('executeSearch');
+
+searchIconLinks.forEach(icon => {
+    icon.parentElement.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (searchOverlay) {
+            searchOverlay.classList.add('active');
+            searchInput.focus();
+        }
+    });
+});
+
+if (closeSearch && searchOverlay) {
+    closeSearch.addEventListener('click', () => {
+        searchOverlay.classList.remove('active');
+    });
+}
+
+if (executeSearch && searchInput) {
+    executeSearch.addEventListener('click', () => {
+        const query = searchInput.value.toLowerCase().trim();
+        if (query) {
+            window.location.href = `furniture.html?search=${encodeURIComponent(query)}`;
+        }
+    });
+
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            executeSearch.click();
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('search');
+    
+    if (searchQuery) {
+        const products = document.querySelectorAll('.product-card');
+        let found = false;
+        
+        products.forEach(product => {
+            const productText = product.innerText.toLowerCase();
+            
+            if (productText.includes(searchQuery.toLowerCase())) {
+                product.style.display = 'block';
+                found = true;
+            } else {
+                product.style.display = 'none';
+            }
+        });
+
+        const heading = document.querySelector('main .h2-heading, main .page-header-container h2');
+        if (heading) {
+            heading.innerHTML = `Search Results for: <span>"${searchQuery}"</span>`;
+        }
+        
+        if (!found && heading) {
+            heading.insertAdjacentHTML('afterend', '<p class="detail-info-platform center mt-3" style="font-size:1.2rem;">Oops! No products found matching that search.</p>');
+        }
+    }
+});

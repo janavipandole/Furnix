@@ -30,7 +30,7 @@
             </ul>
             <ul class="nav-icons flex g-one-half">
                 <li><a href="#" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                <li><a href="#" class="icon"><i class="fa-solid fa-user"></i></a></li>
+                <li><a href="profile.html" class="icon"><i class="fa-solid fa-user"></i></a></li>
                 <li>
                     <a href="wishlist.html" class="icon nav-icon-wrapper">
                         <i class="fa-solid fa-heart"></i>
@@ -47,6 +47,16 @@
             </ul>
         </nav>
     </header>
+    <div id="searchOverlay" class="search-overlay">
+        <div class="search-container wrapper">
+            <button id="closeSearch" class="nav-close-btn" style="position: absolute; top: -50px; right: 20px; font-size: 2rem;"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="h2-heading gradient-txt center">Search <span>Furnix</span></h2>
+            <div class="flex mt-3" style="justify-content: center; max-width: 600px; margin: 2rem auto;">
+                <input type="text" id="searchInput" placeholder="Search for sofas, chairs, tables..." class="form-input" style="padding: 1rem; font-size: 1.2rem; flex: 1;">
+                <button id="executeSearch" class="btn brown-bg" style="margin-left: 1rem; padding: 1rem 2rem;"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+    </div>
 
     <main>
         <section class="wrapper page-section">

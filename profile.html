@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furnix - Our Journal</title>
+    <title>Furnix - My Profile</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
 </head>
 <body>
-        <header>
+    <header>
         <nav class="navbar flex between wrapper">
             <a href="index.html" class="logo">Furnix.</a>
             <ul class="navList" id="list">
@@ -59,46 +59,95 @@
     </div>
 
     <main>
-      <section class="wrapper p-block">
-          <div class="faq-container">
-              <div class="page-header-container">
-                  <h2 class="h2-heading gradient-txt">Frequently Asked <span>Questions</span></h2>
-                  <p class="detail-info-platform page-header-desc">
-                      Find quick answers regarding our products, shipping logistics, and return policies.
-                  </p>
-              </div>
-  
-              <div class="faq-list mt-3">
-                  <div class="faq-card">
-                      <h5>What is your return policy?</h5>
-                      <p class="detail-info-platform">We offer a 30-day return window for all our standard furniture pieces. If you are not completely satisfied, you can return the item in its original packaging for a full refund, minus standard return shipping costs.</p>
-                  </div>
-  
-                  <div class="faq-card">
-                      <h5>Do you offer international shipping?</h5>
-                      <p class="detail-info-platform">Currently, we provide fast and free shipping within the continental United States and Canada on orders over $150. We are actively expanding our logistics network to support global orders in the near future.</p>
-                  </div>
-  
-                  <div class="faq-card">
-                      <h5>How do I maintain my wooden furniture?</h5>
-                      <p class="detail-info-platform">To maintain the premium finish, simply wipe the surface with a soft, slightly damp cloth. Avoid harsh chemical cleaners and always place coasters under hot or wet items to prevent water rings and heat damage over time.</p>
-                  </div>
-  
-                  <div class="faq-card">
-                      <h5>Are your materials sustainably sourced?</h5>
-                      <p class="detail-info-platform">Absolutely. We are deeply committed to environmental responsibility. All our wood is FSC-certified, and our upholstery fabrics are woven from organic or recycled fibers wherever possible.</p>
-                  </div>
-              </div>
-              
-              <div class="faq-support">
-                  <p>Still need assistance?</p>
-                  <a href="contact.html" class="btn btn-inline">Contact Customer Support</a>
-              </div>
-          </div>
-      </section>
-  </main>
+        <section class="wrapper page-section">
+            <div class="page-header-container">
+                <h2 class="h2-heading gradient-txt mt-3">My <span>Profile</span></h2>
+                <p class="detail-info-platform page-header-desc">
+                    Manage your account details and shipping addresses.
+                </p>
+            </div>
+        </section>
 
-        <footer id="contact" class="footer-image">
+        <section class="wrapper p-block">
+            
+            <h4 class="h2-heading center">Account Details</h4>
+            <div id="profileViewMode" class="mt-3">
+                <div class="checkout-layout">
+                    
+                    <div class="checkout-form-section">
+                        <h4 class="checkout-form-title"><i class="fa-solid fa-user"></i> Personal Info</h4>
+                        <p class="detail-info-platform mt-3"><strong>Name:</strong> <span id="viewName"></span></p>
+                        <p class="detail-info-platform mt-1"><strong>Email:</strong> <span id="viewEmail"></span></p>
+                        <p class="detail-info-platform mt-1"><strong>Phone:</strong> <span id="viewPhone"></span></p>
+                    </div>
+                    
+                    <div class="checkout-form-section">
+                        <h4 class="checkout-form-title"><i class="fa-solid fa-location-dot"></i> Shipping Address</h4>
+                        <p class="detail-info-platform mt-3">
+                            <span id="viewAddress"></span><br>
+                            <span id="viewCity"></span>, <span id="viewPincode"></span>
+                        </p>
+                    </div>
+
+                </div>
+                
+                <div class="center mt-3">
+                    <br>
+                    <button id="editProfileBtn" class="btn">Edit Details</button>
+                </div>
+            </div>
+
+            <form id="profileEditMode" class="mt-3 step-hidden">
+                <div class="checkout-layout">
+                    
+                    <div class="checkout-form-section">
+                        <h4 class="checkout-form-title"><i class="fa-solid fa-user"></i> Personal Info</h4>
+                        <div class="form-group mt-3">
+                            <label class="form-label">First Name</label>
+                            <input type="text" id="editFirstName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" id="editLastName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" id="editEmail" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" id="editPhone" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="checkout-form-section">
+                        <h4 class="checkout-form-title"><i class="fa-solid fa-location-dot"></i> Shipping Address</h4>
+                        <div class="form-group mt-3">
+                            <label class="form-label">Street Address</label>
+                            <input type="text" id="editAddress" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <input type="text" id="editCity" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Pincode</label>
+                            <input type="text" id="editPincode" class="form-input" required>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="flex g-one-half mt-3">
+                    <button type="submit" class="btn brown-bg">Save Changes</button>
+                    <button type="button" id="cancelEditBtn" class="btn btn-inline">Cancel</button>
+                </div>
+            </form>
+            
+        </section>
+    </main>
+
+    <footer id="contact" class="footer-image">
         <div class="wrapper p-block flex g-one-half">
             <div class="footer-wrapper">
                 <a href="index.html" class="logo">Furnix.</a>

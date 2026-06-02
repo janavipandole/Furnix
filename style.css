@@ -1495,6 +1495,37 @@ small {
     font-weight: 300;
 }
 
+/* PROFILE PAGE  */
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+/* SEARCH  */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.97);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.search-overlay.active {
+    display: flex;
+}
+.search-container {
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
 /* MEDIA QUARI SECTION */
 
 @media screen and (max-width:700px) {
