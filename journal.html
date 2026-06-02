@@ -6,6 +6,12 @@
     <title>Furnix - Our Journal</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('furnix_theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 <body>
         <header>
@@ -29,6 +35,11 @@
                 </ul>
             </ul>
             <ul class="nav-icons flex g-one-half">
+                <li>
+                    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
                 <li><a href="#" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                 <li><a href="profile.html" class="icon"><i class="fa-solid fa-user"></i></a></li>
                 <li>

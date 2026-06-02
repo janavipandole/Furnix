@@ -11,22 +11,12 @@
 
     <!-- icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-    
-    <style>
-        /* Small inline style to make the designer grid wrap beautifully */
-        .designers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
-        }
-        /* Overriding the review card background slightly for a cleaner look */
-        .designer-card {
-            background: #fafafa;
-            border: 1px solid #eee;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        }
-    </style>
+    <script>
+        (function() {
+            const theme = localStorage.getItem('furnix_theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 
 <body>
@@ -52,6 +42,11 @@
                 </ul>
             </ul>
             <ul class="nav-icons flex g-one-half">
+                <li>
+                    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
                 <li><a href="#" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                 <li><a href="profile.html" class="icon"><i class="fa-solid fa-user"></i></a></li>
                 <li>

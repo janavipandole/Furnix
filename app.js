@@ -621,3 +621,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+const THEME_KEY = 'furnix_theme';
+
+function getTheme() {
+    return localStorage.getItem(THEME_KEY) || 'light';
+}
+
+function setTheme(theme) {
+    localStorage.setItem(THEME_KEY, theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    updateToggleIcon(theme);
+}
+
+function updateToggleIcon(theme) {
+    const toggleBtns = document.querySelectorAll('.theme-toggle-btn');
+    toggleBtns.forEach(btn => {
+        const icon = btn.querySelector('i');
+        if (icon) {
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    });
+}
+
+function initTheme() {
+    const theme = getTheme();
+    document.body.classList.add('no-transition');
+    document.documentElement.setAttribute('data-theme', theme);
+    updateToggleIcon(theme);
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            document.body.classList.remove('no-transition');
+        });
+    });
+    const toggleBtns = document.querySelectorAll('.theme-toggle-btn');
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const current = getTheme();
+            const next = current === 'dark' ? 'light' : 'dark';
+            setTheme(next);
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initTheme);
