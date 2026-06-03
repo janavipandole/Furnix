@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix - Search Products</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- HEADER PART -->
+            <header>
+        <nav class="navbar flex between wrapper">
+            <a href="index.html" class="logo">Furnix.</a>
+            <ul class="navList" id="list" aria-hidden="true">
+                <li class="nav-close-item"><button class="nav-close-btn" id="navClose" aria-label="Close menu">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button></li>
+                <li><a href="collections.html" class="link">collections</a></li>
+                <li><a href="furniture.html" class="link">furniture</a></li>
+                <li><a href="designers.html" class="link">designers</a></li>
+                <li><a href="trends.html" class="link">trends</a></li>
+                <li><a href="about.html" class="link">about us</a></li>
+                <li><a href="contact.html" class="link">contact us</a></li>
+                <li class="nav-social-item"><ul class="footer-social-icon flex">
+                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
+                </ul></li>
+            </ul>
+            <ul class="nav-icons flex g-one-half">
+                <li><a href="#" class="icon" aria-label="Search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="icon" aria-label="Account"><i class="fa-solid fa-user" aria-hidden="true"></i></a></li>
+                <li>
+                    <a href="wishlist.html" class="icon nav-icon-wrapper" aria-label="Wishlist">
+                        <i class="fa-solid fa-heart" aria-hidden="true"></i>
+                        <span id="wishlist-badge" class="nav-badge">0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html" class="icon cart-nav-icon nav-icon-wrapper" aria-label="Cart">
+                        <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
+                        <span id="cart-badge" class="nav-badge">0</span>
+                    </a>
+                </li>
+                <li><a href="#" class="icon" id="menu" aria-label="Open menu" aria-controls="list" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="wrapper p-block">
+            <div class="page-header-container">
+                <h2 class="h2-heading gradient-txt mt-3">Search <span>Furniture</span></h2>
+                <p class="detail-info-platform page-header-desc">Find the perfect piece for your home.</p>
+            </div>
+
+            <!-- Search bar -->
+            <div style="max-width: 600px; margin: 2rem auto;">
+                <div class="input-container" style="background: #f4f4f4; max-width: 100%;">
+                    <input type="text" id="searchInput" placeholder="e.g., sofa, lamp, chair..." style="flex:1; background:transparent; border:none; padding: 1rem;">
+                    <button id="searchButton" class="simple-icon" style="border:none; cursor:pointer;"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+
+            <!-- Results grid -->
+            <div id="searchResults" class="products-grid" style="margin-top: 2rem;">
+                <p class="detail-info-platform" style="text-align:center;">🔍 Type a keyword and press search.</p>
+            </div>
+        </section>
+    </main>
+
+<!-- FOOTER PART -->
+            <footer id="contact" class="footer-image">
+        <div class="wrapper p-block flex g-one-half">
+            <div class="footer-wrapper">
+                <a href="index.html" class="logo">Furnix.</a>
+                <h3>sign up to receive 10% off <br> on your first order</h3>
+                <div class="input-container">
+                    <input type="email" name="email" id="email" placeholder="Enter your email.." autocomplete="off">
+                    <a href="#" class="simple-icon" aria-label="Open details"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <ul class="footer-social-icon flex">
+                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-wrapper">
+                <h5>collections</h5>
+                <ul>
+                    <li><a href="collections.html" class="footer-link">Seating</a></li>
+                    <li><a href="furniture.html" class="footer-link">sofas</a></li>
+                    <li><a href="furniture.html" class="footer-link">Lighting</a></li>
+                    <li><a href="furniture.html" class="footer-link">Accessories</a></li>
+                </ul>
+                <ul class="footer-contact-details">
+                    <li class="contact"><a href="tel:+91123456789" class="footer-link">+91 123 456 789</a></li>
+                    <li class="contact"><a href="mailto:Furnixhome@info.com" class="footer-link">Furnixhome@info.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-wrapper">
+                <h5>designers</h5>
+                <ul>
+                    <li><a href="designers.html" class="footer-link">John Oliver</a></li>
+                    <li><a href="designers.html" class="footer-link">Annie Lilt</a></li>
+                    <li><a href="designers.html" class="footer-link">Frank Daniel</a></li>
+                </ul>
+            </div>
+            <div class="footer-wrapper">
+                <h5>information</h5>
+                <ul>
+                    <li><a href="story.html" class="footer-link">our story</a></li>
+                    <li><a href="journal.html" class="footer-link">our journal</a></li>
+                    <li><a href="faq.html" class="footer-link">FAQ's</a></li>
+                    <li><a href="contact.html" class="footer-link">contact us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy-right mt-3">
+            <p>&copy; 2025 copyright furnix homes. powered by <span><i>janavi pandole</i></span></p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // ---------- PRODUCT DATABASE (matches furniture.html) ----------
+        const products = [
+            { id: "modern-chair", name: "Modern Chair", category: "Seating", price: 100, image: "images/modern chair.png" },
+            { id: "embrace-lounge-chair", name: "Embrace Lounge Chair", category: "Seating", price: 200, image: "images/lounge chair.png" },
+            { id: "side-table", name: "Side Table", category: "Tables", price: 150, image: "images/side table.png" },
+            { id: "aura-pendant-lamp", name: "Aura Pendant Lamp", category: "Lighting", price: 30, image: "images/hanging lamp.png" },
+            { id: "flower-vase", name: "Flower Vase Decor", category: "Accessories", price: 20, image: "images/flower-vase.png" },
+            { id: "modern-bed", name: "Modern Scandinavian Bed", category: "Bedroom", price: 1500, image: "images/bed.png" },
+            { id: "luxury-sofa", name: "Luxury Sectional Sofa", category: "Seating", price: 1200, image: "images/sofa.png" }
+        ];
+
+        // Helper: get wishlist from localStorage (using existing function from app.js)
+        function getWishlist() {
+            const data = localStorage.getItem('furnix_wishlist');
+            return data ? JSON.parse(data) : [];
+        }
+
+        // Helper: check if product is in wishlist
+        function isInWishlist(productId) {
+            const wishlist = getWishlist();
+            return wishlist.some(item => item.id === productId);
+        }
+
+        // Attach event listeners to a product card (cart & wishlist)
+        function attachProductEvents(card, product) {
+            const cartBtn = card.querySelector('.btn.brown-bg');
+            const favBtn = card.querySelector('.favorite-icon');
+
+            if (cartBtn) {
+                cartBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Use global addToCart function from app.js
+                    if (typeof addToCart === 'function') {
+                        addToCart({ ...product });
+                    } else {
+                        console.error('addToCart not defined');
+                    }
+                });
+            }
+
+            if (favBtn) {
+                favBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Use global toggleWishlist function from app.js
+                    if (typeof toggleWishlist === 'function') {
+                        toggleWishlist({ ...product });
+                        // Update heart icon style
+                        const icon = favBtn.querySelector('i');
+                        if (isInWishlist(product.id)) {
+                            icon.classList.remove('fa-regular');
+                            icon.classList.add('fa-solid');
+                            icon.style.color = '#ff0055';
+                        } else {
+                            icon.classList.remove('fa-solid');
+                            icon.classList.add('fa-regular');
+                            icon.style.color = '';
+                        }
+                        // Update wishlist badge (global function exists)
+                        if (typeof updateWishlistBadge === 'function') updateWishlistBadge();
+                    } else {
+                        console.error('toggleWishlist not defined');
+                    }
+                });
+            }
+        }
+
+        // Render search results
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            const resultsDiv = document.getElementById('searchResults');
+
+            if (!query) {
+                resultsDiv.innerHTML = '<p class="detail-info-platform" style="text-align:center;">📝 Please enter a search term.</p>';
+                return;
+            }
+
+            const matched = products.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.category.toLowerCase().includes(query)
+            );
+
+            if (matched.length === 0) {
+                resultsDiv.innerHTML = '<p class="detail-info-platform" style="text-align:center;">😞 No products found. Try "sofa", "lamp", or "table".</p>';
+                return;
+            }
+
+            // Generate HTML for each product
+            resultsDiv.innerHTML = matched.map(p => {
+                const inWish = isInWishlist(p.id);
+                const heartClass = inWish ? 'fa-solid' : 'fa-regular';
+                const heartColor = inWish ? 'style="color:#ff0055;"' : '';
+                return `
+                    <div class="product-card" data-product-id="${p.id}">
+                        <div class="product-image">
+                            <img src="${p.image}" alt="${p.name}" loading="lazy">
+                            <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                                <i class="${heartClass} fa-heart" ${heartColor}></i>
+                            </a>
+                            <a href="#" class="btn brown-bg">Add to cart</a>
+                        </div>
+                        <div>
+                            <small>${p.category}</small>
+                            <h6>${p.name}</h6>
+                            <p class="price">$${p.price}.00</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Attach event listeners to each new product card
+            matched.forEach(p => {
+                const card = resultsDiv.querySelector(`.product-card[data-product-id="${p.id}"]`);
+                if (card) attachProductEvents(card, p);
+            });
+        }
+
+        // Set up search input listeners
+        document.getElementById('searchButton').addEventListener('click', searchProducts);
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') searchProducts();
+        });
+    </script>
+</body>
+</html>
