@@ -58,14 +58,23 @@ function saveWishlist(wishlist) {
 }
 
 function addToCart(product) {
+
+    if (localStorage.getItem("loggedIn") !== "true") {
+        window.location.href = "login.html";
+        return;
+    }
+
     let cart = getCart();
+
     const index = cart.findIndex(item => item.id === product.id);
+
     if (index !== -1) {
         cart[index].quantity = (cart[index].quantity || 1) + 1;
     } else {
         product.quantity = 1;
         cart.push(product);
     }
+
     saveCart(cart);
     updateCartBadge();
 }
@@ -376,9 +385,17 @@ function renderWishlistPage() {
 
     grid.querySelectorAll('.wishlist-add-cart-btn').forEach(btn => {
         btn.addEventListener('click', () => {
+
+            if (localStorage.getItem("loggedIn") !== "true") {
+                alert("Please login first");
+                window.location.href = "login.html";
+                return;
+            }
+
             const item = getWishlist().find(i => i.id === btn.dataset.id);
             if (!item) return;
-            addToCart({...item});
+
+            addToCart({ ...item });
             alert(`${item.name} moved to cart!`);
             updateCartBadge();
         });
@@ -424,6 +441,13 @@ function setupProductCards() {
         if (cartBtn) {
             cartBtn.addEventListener('click', (e) => {
                 e.preventDefault();
+
+                if (localStorage.getItem("loggedIn") !== "true") {
+                    alert("Please login first");
+                    window.location.href = "login.html";
+                    return;
+                }
+
                 addToCart(product);
                 alert(`${product.name} added to cart!`);
             });
@@ -462,4 +486,71 @@ function setupProductCards() {
     });
 }
 
+/* ---- LOGIN PAGE ---- */
 
+if (
+    window.location.pathname.includes("login.html") &&
+    localStorage.getItem("loggedIn") === "true"
+) {
+    window.location.href = "account.html";
+}
+
+function validateLogin() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const error = document.getElementById("emailError");
+
+    if (!email.match(/^[^\s@]+@gmail\.com$/)) {
+        error.textContent = "Enter valid email";
+        return;
+    }
+
+    error.textContent = "";
+
+    const name = email.split("@")[0];
+
+    localStorage.setItem("userName", name);
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPassword", password);
+    localStorage.setItem("loggedIn", "true");
+
+    window.location.href = "account.html";
+}
+
+
+/* ---- ACCOUNT PAGE ---- */
+
+function logout() {
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("userPassword");
+    window.location.href = "login.html";
+}
+
+let passwordVisible = false;
+
+function togglePassword() {
+    const passwordField = document.getElementById("userPassword");
+    const password = localStorage.getItem("userPassword") || "";
+
+    if (passwordVisible) {
+        passwordField.textContent = "••••••••";
+        passwordVisible = false;
+    } else {
+        passwordField.textContent = password;
+        passwordVisible = true;
+    }
+}
+
+const userEmail = document.getElementById("userEmail");
+if (userEmail) {
+    userEmail.textContent =
+        localStorage.getItem("userEmail") || "Guest User";
+}
+
+const userName = document.getElementById("userName");
+if (userName) {
+    userName.textContent =
+        localStorage.getItem("userName") || "Guest User";
+}

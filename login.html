@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Shop Furnix modern furniture, lighting, decor, and handcrafted pieces designed for comfortable contemporary homes.">
-    <title>Furnix - Interior Trends</title>
+    <title>Furnix - Account</title>
+
+    <!-- CSS LINK -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+
+    <!-- icons -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+
 </head>
+
 <body>
-            <header>
+        <!-- HEADER PART -->
+    <header>
         <nav class="navbar flex between wrapper">
-            <a href="index.html" class="logo">Furnix.</a>
+            <!-- <a href="index.html" class="logo">Furnix.</a> -->
+            <a href="index.html" class="login-page-logo">FURNIX.</a>
             <ul class="navList" id="list" aria-hidden="true">
                 <li class="nav-close-item"><button class="nav-close-btn" id="navClose" aria-label="Close menu">
                     <i class="fa-solid fa-xmark" aria-hidden="true"></i>
@@ -33,7 +47,8 @@
                 <li><a href="#" class="icon" aria-label="Search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></a></li>
                 <li>
                     <a href="login.html" class="icon" aria-label="Account">
-                        <i class="fa-solid fa-user" aria-hidden="true">  
+                        <i class="fa-solid fa-user" aria-hidden="true">
+                            
                         </i>
                     </a>
                 </li>
@@ -54,61 +69,23 @@
         </nav>
     </header>
 
-    <main>
-        <section class="wrapper p-block">
-            <div class="page-header-container">
-                <h2 class="h2-heading gradient-txt mt-3">Interior <span>Trends</span></h2>
-                <p class="detail-info-platform page-header-desc">
-                    Discover what's defining modern spaces this year. From earthy textures to bold architectural shapes, find inspiration for your next room refresh.
-                </p>
-            </div>
+    <!-- <a href="index.html" class="logo">FURNIX.</a> -->
 
-            <!-- Trend 1 -->
-            <div class="flex g-one-half trend-section">
-                <div class="trend-image-container">
-                    <!-- Reusing existing image as placeholder -->
-                    <img src="images/sofa.png" alt="Earthy Tones" width="900" height="394" decoding="async" loading="lazy">
-                </div>
-                <div class="trend-text">
-                    <h3 class="trend-title">Earthy & Organic Tones</h3>
-                    <p class="detail-info-platform">
-                        Say goodbye to stark whites and cold grays. This year is all about bringing the outdoors inside with warm terracotta, deep olive greens, and natural sand hues. These colors create a calming sanctuary that promotes relaxation and wellness.
-                    </p>
-                    <a href="collections.html" class="btn mt-3 btn-inline">Shop The Look</a>
-                </div>
-            </div>
+    <div class="bg">
+        <h1 class="login_card gradient-txt">LOGIN PAGE</h1>
+        <p class="login-subtitle">
+            Sign In To Access Your Account And Continue Shopping.
+        </p>
+        <div class="login_card">
+            
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <p id="emailError"></p>
+            <input type="password" id="password" placeholder="Create New Password"><br>
+            <button type="button" class="login-btn" onclick="validateLogin()">Login</button>
+        </div>
+    </div>
 
-            <!-- Trend 2 (Reversed layout) -->
-            <div class="flex g-one-half trend-section trend-reverse">
-                <div class="trend-image-container">
-                    <img src="images/bed.png" alt="Curved Furniture" width="1000" height="418" decoding="async" loading="lazy">
-                </div>
-                <div class="trend-text">
-                    <h3 class="trend-title">Curved & Sculptural Forms</h3>
-                    <p class="detail-info-platform">
-                        Rigid lines are making way for soft, sweeping curves. From rounded sofas to oval dining tables, furniture is becoming more sculptural. This trend softens the overall look of a room and creates a more inviting, conversational flow.
-                    </p>
-                    <a href="collections.html" class="btn mt-3 btn-inline">Shop The Look</a>
-                </div>
-            </div>
-
-            <!-- Trend 3 -->
-            <div class="flex g-one-half trend-section">
-                <div class="trend-image-container">
-                    <img src="images/modern chair.png" alt="Sustainable Materials" width="700" height="846" decoding="async" loading="lazy">
-                </div>
-                <div class="trend-text">
-                    <h3 class="trend-title">Sustainable Craftsmanship</h3>
-                    <p class="detail-info-platform">
-                        Conscious consumerism is no longer just a trend, it's a standard. We are seeing a massive shift towards recycled fabrics, reclaimed woods, and hyper-durable materials designed to last generations rather than just seasons.
-                    </p>
-                    <a href="collections.html" class="btn mt-3 btn-inline">Shop The Look</a>
-                </div>
-            </div>
-
-        </section>
-    </main>
-
+    <!-- FOOTER PART -->
             <footer id="contact" class="footer-image">
         <div class="wrapper p-block flex g-one-half">
             <div class="footer-wrapper">
@@ -160,6 +137,8 @@
             <p>&copy; 2025 copyright furnix homes. powered by <span><i>janavi pandole</i></span></p>
         </div>
     </footer>
+
     <script src="app.js"></script>
 </body>
+
 </html>
