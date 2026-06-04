@@ -103,6 +103,9 @@ li {
 
 .btn:hover {
     background-color: var(--back);
+    color: white;
+        transform:scale(1.1);
+
 }
 
 img {
@@ -110,7 +113,10 @@ img {
     height: auto;
     display: block;
 }
-
+.big-img:hover{
+    transition: transform 0.3s ease-in;
+    transform: scale(1.1);
+}
 .mt-1 {
     margin-top: 1rem;
 }
@@ -335,8 +341,22 @@ h3 {
 .category-card:nth-child(1) {
     background-image: url(images/category1.jpg);
 }
-
-
+.category-card:nth-child(1):hover{
+    transition: transform 0.3s ease-in;
+    transform: scale(1.05);    
+}
+.category-card:nth-child(2):hover{
+    transition: transform 0.3s ease-in;
+    transform: scale(1.05);    
+}
+.category-card:nth-child(3):hover{
+    transition: transform 0.3s ease-in;
+    transform: scale(1.05);    
+}
+.category-card:nth-child(4):hover{
+    transition: transform 0.3s ease-in;
+    transform: scale(1.05);    
+}
 .category-card:nth-child(2) {
     background-image: url(images/category2.jpg);
 }
@@ -651,7 +671,6 @@ small {
     height: 100%;
     object-fit: cover;
 }
-
 /* SECTION 07 */
 
 .service-card {
