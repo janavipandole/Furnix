@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix - My Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar flex between wrapper">
+            <a href="index.html" class="logo">Furnix.</a>
+            <ul class="navList" id="list" aria-hidden="true">
+                <li class="nav-close-item"><button class="nav-close-btn" id="navClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button></li>
+                <li><a href="collections.html" class="link">collections</a></li>
+                <li><a href="furniture.html" class="link">furniture</a></li>
+                <li><a href="designers.html" class="link">designers</a></li>
+                <li><a href="trends.html" class="link">trends</a></li>
+                <li><a href="about.html" class="link">about us</a></li>
+                <li><a href="contact.html" class="link">contact us</a></li>
+                <li class="nav-social-item"><ul class="footer-social-icon flex">
+                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                </ul></li>
+            </ul>
+            <ul class="nav-icons flex g-one-half">
+                <li><a href="search.html" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                <li><a href="profile.html" class="icon"><i class="fa-solid fa-user"></i></a></li>
+                <li><a href="wishlist.html" class="icon nav-icon-wrapper"><i class="fa-solid fa-heart"></i><span id="wishlist-badge" class="nav-badge">0</span></a></li>
+                <li><a href="cart.html" class="icon cart-nav-icon nav-icon-wrapper"><i class="fa-solid fa-shopping-bag"></i><span id="cart-badge" class="nav-badge">0</span></a></li>
+                <li><a href="#" class="icon" id="menu"><i class="fa-solid fa-bars"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="wrapper page-section">
+            <div class="page-header-container">
+                <h2 class="h2-heading gradient-txt mt-3">My <span>Profile</span></h2>
+            </div>
+
+            <!-- Logged Out View (Login & Signup) -->
+            <div id="loggedOutView" class="profile-auth-container" style="display: none;">
+                <div class="flex g-one-half" style="align-items: stretch;">
+                    <!-- Login Form -->
+                    <div class="checkout-block" style="flex:1;">
+                        <h4 class="checkout-form-title"><i class="fa-solid fa-key"></i> Login</h4>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="loginEmail" class="form-input" placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="loginPassword" class="form-input" placeholder="••••••">
+                        </div>
+                        <button id="loginBtn" class="btn brown-bg" style="width:100%">Login</button>
+                    </div>
+                    <!-- Signup Form -->
+                    <div class="checkout-block" style="flex:1;">
+                        <h4 class="checkout-form-title"><i class="fa-solid fa-user-plus"></i> Sign Up</h4>
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" id="signupName" class="form-input" placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="signupEmail" class="form-input" placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="signupPassword" class="form-input" placeholder="••••••">
+                        </div>
+                        <button id="signupBtn" class="btn" style="width:100%">Create Account</button>
+                    </div>
+                </div>
+                <p id="authMessage" class="detail-info-platform mt-3" style="text-align:center; color:#9b281a;"></p>
+            </div>
+
+            <!-- Logged In View -->
+            <div id="loggedInView" style="display: none;">
+                <div class="checkout-block">
+                    <div class="flex between">
+                        <h4 class="checkout-form-title">Welcome, <span id="userNameDisplay"></span>!</h4>
+                        <button id="logoutBtn" class="btn" style="background:#ccc; color:#000;">Logout</button>
+                    </div>
+                    <div class="summary-row"><span>Email:</span> <span id="userEmailDisplay"></span></div>
+                    <div class="summary-row"><span>Member since:</span> <span id="userSinceDisplay"></span></div>
+                </div>
+                <div class="checkout-block">
+                    <h4 class="checkout-form-title"><i class="fa-solid fa-clock-rotate-left"></i> Recent Orders</h4>
+                    <div id="orderHistoryList">No orders yet. Start shopping!</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="footer-image">
+        <div class="wrapper p-block flex g-one-half">
+            <div class="footer-wrapper"><a href="index.html" class="logo">Furnix.</a><h3>sign up to receive 10% off <br> on your first order</h3><div class="input-container"><input type="email" placeholder="Enter your email.."><a href="#" class="simple-icon"><i class="fa-solid fa-arrow-right"></i></a></div><ul class="footer-social-icon flex"><li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li><li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li><li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li><li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li></ul></div>
+            <div class="footer-wrapper"><h5>collections</h5><ul><li><a href="collections.html" class="footer-link">Seating</a></li><li><a href="furniture.html" class="footer-link">sofas</a></li><li><a href="furniture.html" class="footer-link">Lighting</a></li><li><a href="furniture.html" class="footer-link">Accessories</a></li></ul><ul class="footer-contact-details"><li class="contact"><a href="tel:+91123456789" class="footer-link">+91 123 456 789</a></li><li class="contact"><a href="mailto:Furnixhome@info.com" class="footer-link">Furnixhome@info.com</a></li></ul></div>
+            <div class="footer-wrapper"><h5>designers</h5><ul><li><a href="designers.html" class="footer-link">John Oliver</a></li><li><a href="designers.html" class="footer-link">Annie Lilt</a></li><li><a href="designers.html" class="footer-link">Frank Daniel</a></li></ul></div>
+            <div class="footer-wrapper"><h5>information</h5><ul><li><a href="story.html" class="footer-link">our story</a></li><li><a href="journal.html" class="footer-link">our journal</a></li><li><a href="faq.html" class="footer-link">FAQ's</a></li><li><a href="contact.html" class="footer-link">contact us</a></li></ul></div>
+        </div>
+        <div class="copy-right mt-3"><p>&copy; 2025 copyright furnix homes. powered by <span><i>janavi pandole</i></span></p></div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Helper to get full user object from users array (contains createdAt)
+        function getFullUser(userId) {
+            const users = JSON.parse(localStorage.getItem('furnix_users') || '[]');
+            return users.find(u => u.id === userId);
+        }
+
+        (function() {
+            const currentUser = getCurrentUser(); // from app.js
+            const loggedOutView = document.getElementById('loggedOutView');
+            const loggedInView = document.getElementById('loggedInView');
+
+            if (currentUser) {
+                loggedOutView.style.display = 'none';
+                loggedInView.style.display = 'block';
+                document.getElementById('userNameDisplay').innerText = currentUser.name;
+                document.getElementById('userEmailDisplay').innerText = currentUser.email;
+
+                // Fix: get full user record to access createdAt
+                const fullUser = getFullUser(currentUser.id);
+                let memberSince = 'Unknown';
+                if (fullUser && fullUser.createdAt) {
+                    memberSince = new Date(fullUser.createdAt).toDateString();
+                } else {
+                    // Fallback: if no createdAt, show a default or current date
+                    memberSince = 'New Member';
+                }
+                document.getElementById('userSinceDisplay').innerText = memberSince;
+
+                // Show order history
+                const orders = JSON.parse(localStorage.getItem(`orders_${currentUser.id}`) || '[]');
+                const orderDiv = document.getElementById('orderHistoryList');
+                if (orders.length === 0) orderDiv.innerHTML = 'No orders yet. Start shopping!';
+                else orderDiv.innerHTML = orders.map(order => `<div class="summary-row">Order #${order.id} – $${order.total} – ${new Date(order.date).toLocaleDateString()}</div>`).join('');
+            } else {
+                loggedOutView.style.display = 'block';
+                loggedInView.style.display = 'none';
+            }
+
+            // Login
+            document.getElementById('loginBtn').addEventListener('click', () => {
+                const email = document.getElementById('loginEmail').value.trim();
+                const pwd = document.getElementById('loginPassword').value.trim();
+                const msg = document.getElementById('authMessage');
+                if (!email || !pwd) { msg.innerText = 'Please fill all fields'; return; }
+                const success = loginUser(email, pwd);
+                if (success) location.reload();
+                else msg.innerText = 'Invalid email or password';
+            });
+
+            // Signup
+            document.getElementById('signupBtn').addEventListener('click', () => {
+                const name = document.getElementById('signupName').value.trim();
+                const email = document.getElementById('signupEmail').value.trim();
+                const pwd = document.getElementById('signupPassword').value.trim();
+                const msg = document.getElementById('authMessage');
+                if (!name || !email || !pwd) { msg.innerText = 'All fields required'; return; }
+                const success = registerUser(name, email, pwd);
+                if (success) location.reload();
+                else msg.innerText = 'Email already exists';
+            });
+
+            // Logout
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                logoutUser();
+                location.reload();
+            });
+        })();
+    </script>
+</body>
+</html>

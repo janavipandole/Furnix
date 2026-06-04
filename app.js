@@ -302,38 +302,53 @@ if (cardExpiryInput) {
 const placeOrderBtn = document.getElementById('placeOrderBtn');
 if (placeOrderBtn) {
     placeOrderBtn.addEventListener('click', () => {
-        const firstName = document.getElementById('firstName').value.trim();
-        const email = document.getElementById('checkoutEmail').value.trim();
-        const address = document.getElementById('address').value.trim();
-        const payment = document.querySelector('input[name="payment"]:checked').value;
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName')?.value.trim() || '';
+    const email = document.getElementById('checkoutEmail').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const payment = document.querySelector('input[name="payment"]:checked').value;
 
-        if (!firstName || !email || !address) {
-            alert('Please fill in all required shipping details.');
+    if (!firstName || !email || !address) {
+        alert('Please fill in all required shipping details.');
+        return;
+    }
+    if (payment === 'card') {
+        const cardNumber = document.getElementById('cardNumber').value.trim();
+        const expiry = document.getElementById('cardExpiry').value.trim();
+        const cvv = document.getElementById('cardCvv').value.trim();
+        if (!cardNumber || !expiry || !cvv) {
+            alert('Please fill in your card details.');
             return;
         }
-        if (payment === 'card') {
-            const cardNumber = document.getElementById('cardNumber').value.trim();
-            const expiry = document.getElementById('cardExpiry').value.trim();
-            const cvv = document.getElementById('cardCvv').value.trim();
-            if (!cardNumber || !expiry || !cvv) {
-                alert('Please fill in your card details.');
-                return;
-            }
+    }
+    if (payment === 'upi') {
+        const upiId = document.getElementById('upiId').value.trim();
+        if (!upiId || !upiId.includes('@')) {
+            alert('Please enter a valid UPI ID.');
+            return;
         }
-        if (payment === 'upi') {
-            const upiId = document.getElementById('upiId').value.trim();
-            if (!upiId || !upiId.includes('@')) {
-                alert('Please enter a valid UPI ID.');
-                return;
-            }
-        }
+    }
 
-        localStorage.removeItem(CART_KEY);
-        updateCartBadge();
+    // --- Save order for logged in user ---
+    const cart = getCart();
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+    const shipping = subtotal >= 150 ? 0 : 15;
+    const tax = subtotal * 0.1;
+    const total = subtotal + shipping + tax;
+    const orderData = {
+        total: total,
+        items: cart.map(item => ({ name: item.name, quantity: item.quantity, price: item.price })),
+        shippingAddress: { firstName, lastName, email, address }
+    };
+    saveOrderForUser(orderData);
+    // --- End save order ---
 
-        const overlay = document.getElementById('successOverlay');
-        if (overlay) overlay.classList.add('visible');
-    });
+    localStorage.removeItem(CART_KEY);
+    updateCartBadge();
+
+    const overlay = document.getElementById('successOverlay');
+    if (overlay) overlay.classList.add('visible');
+});
 }
 
 /* ---- WISHLIST PAGE ---- */
@@ -391,6 +406,72 @@ function renderWishlistPage() {
             renderWishlistPage();
         });
     });
+}
+
+// ========== USER AUTHENTICATION (localStorage) ==========
+const USERS_KEY = 'furnix_users';
+const CURRENT_USER_KEY = 'furnix_current_user';
+
+function getUsers() {
+    const data = localStorage.getItem(USERS_KEY);
+    return data ? JSON.parse(data) : [];
+}
+
+function saveUsers(users) {
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+
+function registerUser(name, email, password) {
+    const users = getUsers();
+    if (users.find(u => u.email === email)) return false;
+    const newUser = {
+        id: Date.now().toString(),
+        name: name,
+        email: email,
+        password: password, // In real app, hash this, but for demo it's fine
+        createdAt: new Date().toISOString()
+    };
+    users.push(newUser);
+    saveUsers(users);
+    // Auto login after register
+    localStorage.setItem(CURRENT_USER_KEY, JSON.stringify({ id: newUser.id, name: newUser.name, email: newUser.email }));
+    return true;
+}
+
+function loginUser(email, password) {
+    const users = getUsers();
+    const user = users.find(u => u.email === email && u.password === password);
+    if (!user) return false;
+    localStorage.setItem(CURRENT_USER_KEY, JSON.stringify({ id: user.id, name: user.name, email: user.email }));
+    return true;
+}
+
+function logoutUser() {
+    localStorage.removeItem(CURRENT_USER_KEY);
+}
+
+function getCurrentUser() {
+    const data = localStorage.getItem(CURRENT_USER_KEY);
+    return data ? JSON.parse(data) : null;
+}
+
+// ========== SAVE ORDER FOR LOGGED IN USER ==========
+// Call this after successful checkout (replace existing order placement logic)
+function saveOrderForUser(orderData) {
+    const user = getCurrentUser();
+    if (!user) return false;
+    const ordersKey = `orders_${user.id}`;
+    const existingOrders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+    const newOrder = {
+        id: Date.now(),
+        date: new Date().toISOString(),
+        total: orderData.total,
+        items: orderData.items,
+        shippingAddress: orderData.shippingAddress
+    };
+    existingOrders.push(newOrder);
+    localStorage.setItem(ordersKey, JSON.stringify(existingOrders));
+    return true;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -462,8 +543,6 @@ function setupProductCards() {
     });
 }
 
-// ========== Search and Profile functionality ==========
-
 // ========== Search functionality ==========
 const searchIcon = document.querySelector('.nav-icons a[aria-label="Search"]');
 if (searchIcon) {
@@ -472,3 +551,4 @@ if (searchIcon) {
         window.location.href = 'search.html';
     });
 }
+
