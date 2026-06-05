@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop Furnix modern furniture, lighting, decor, and handcrafted pieces designed for comfortable contemporary homes.">
     <title>Furnix - Cart & Checkout</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
@@ -12,7 +13,7 @@
     <div class="success-overlay" id="successOverlay">
         <div class="success-box">
             <div class="success-icon">
-                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
             </div>
             <h3>Order Placed Successfully!</h3>
             <p class="detail-info-platform">Thank you for shopping with Furnix. We will send you a confirmation and delivery update shortly.</p>
@@ -23,39 +24,39 @@
             <header>
         <nav class="navbar flex between wrapper">
             <a href="index.html" class="logo">Furnix.</a>
-            <ul class="navList" id="list">
-                <button class="nav-close-btn" id="navClose">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+            <ul class="navList" id="list" aria-hidden="true">
+                <li class="nav-close-item"><button class="nav-close-btn" id="navClose" aria-label="Close menu">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button></li>
                 <li><a href="collections.html" class="link">collections</a></li>
                 <li><a href="furniture.html" class="link">furniture</a></li>
                 <li><a href="designers.html" class="link">designers</a></li>
                 <li><a href="trends.html" class="link">trends</a></li>
                 <li><a href="about.html" class="link">about us</a></li>
                 <li><a href="contact.html" class="link">contact us</a></li>
-                <ul class="footer-social-icon flex">
-                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
-                </ul>
+                <li class="nav-social-item"><ul class="footer-social-icon flex">
+                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
+                </ul></li>
             </ul>
             <ul class="nav-icons flex g-one-half">
-                <li><a href="#" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                <li><a href="#" class="icon"><i class="fa-solid fa-user"></i></a></li>
+                <li><a href="#" class="icon" aria-label="Search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="icon" aria-label="Account"><i class="fa-solid fa-user" aria-hidden="true"></i></a></li>
                 <li>
-                    <a href="wishlist.html" class="icon nav-icon-wrapper">
-                        <i class="fa-solid fa-heart"></i>
+                    <a href="wishlist.html" class="icon nav-icon-wrapper" aria-label="Wishlist">
+                        <i class="fa-solid fa-heart" aria-hidden="true"></i>
                         <span id="wishlist-badge" class="nav-badge">0</span>
                     </a>
                 </li>
                 <li>
-                    <a href="cart.html" class="icon cart-nav-icon nav-icon-wrapper">
-                        <i class="fa-solid fa-shopping-bag"></i>
+                    <a href="cart.html" class="icon cart-nav-icon nav-icon-wrapper" aria-label="Cart">
+                        <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
                         <span id="cart-badge" class="nav-badge">0</span>
                     </a>
                 </li>
-                <li><a href="#" class="icon" id="menu"><i class="fa-solid fa-bars"></i></a></li>
+                <li><a href="#" class="icon" id="menu" aria-label="Open menu" aria-controls="list" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></a></li>
             </ul>
         </nav>
     </header>
@@ -83,7 +84,7 @@
                 </div>
 
                 <div class="cart-empty-state" id="cartEmptyState">
-                    <i class="fa-solid fa-shopping-bag"></i>
+                    <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
                     <h3>Your cart is empty</h3>
                 </div>
 
@@ -125,7 +126,7 @@
 
                         <div class="checkout-block">
                             <h4 class="checkout-form-title">
-                                <i class="fa-solid fa-location-dot"></i> Shipping Details
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Shipping Details
                             </h4>
                             <div class="form-row">
                                 <div class="form-group">
@@ -163,22 +164,22 @@
 
                         <div class="checkout-block">
                             <h4 class="checkout-form-title">
-                                <i class="fa-solid fa-credit-card"></i> Payment Method
+                                <i class="fa-solid fa-credit-card" aria-hidden="true"></i> Payment Method
                             </h4>
                             <div class="payment-method-options">
                                 <label class="payment-option">
                                     <input type="radio" name="payment" value="card" id="payCard" checked>
-                                    <i class="fa-solid fa-credit-card"></i>
+                                    <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
                                     <span class="payment-option-label">Credit / Debit Card</span>
                                 </label>
                                 <label class="payment-option">
                                     <input type="radio" name="payment" value="upi" id="payUpi">
-                                    <i class="fa-solid fa-mobile-screen"></i>
+                                    <i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>
                                     <span class="payment-option-label">UPI Payment</span>
                                 </label>
                                 <label class="payment-option">
                                     <input type="radio" name="payment" value="cod" id="payCod">
-                                    <i class="fa-solid fa-money-bill-wave"></i>
+                                    <i class="fa-solid fa-money-bill-wave" aria-hidden="true"></i>
                                     <span class="payment-option-label">Cash on Delivery</span>
                                 </label>
                             </div>
@@ -209,7 +210,7 @@
                         </div>
 
                         <button class="btn back-to-cart-btn" id="backToCartBtn">
-                            <i class="fa-solid fa-arrow-left"></i> Back to Cart
+                            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Cart
                         </button>
 
                     </div>
@@ -248,13 +249,13 @@
                 <h3>sign up to receive 10% off <br> on your first order</h3>
                 <div class="input-container">
                     <input type="email" name="email" id="email" placeholder="Enter your email.." autocomplete="off">
-                    <a href="#" class="simple-icon"><i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#" class="simple-icon" aria-label="Open details"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
                 <ul class="footer-social-icon flex">
-                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
             <div class="footer-wrapper">

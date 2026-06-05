@@ -6,14 +6,28 @@ if (menuBtn && navList) {
     menuBtn.addEventListener('click', (e) => {
         e.preventDefault();
         navList.classList.add('navList-active');
+        navList.setAttribute('aria-hidden', 'false');
+        menuBtn.setAttribute('aria-expanded', 'true');
     });
 }
 
 if (navClose && navList) {
     navClose.addEventListener('click', () => {
         navList.classList.remove('navList-active');
+        navList.setAttribute('aria-hidden', 'true');
+        if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+        if (menuBtn) menuBtn.focus();
     });
 }
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navList && navList.classList.contains('navList-active')) {
+        navList.classList.remove('navList-active');
+        navList.setAttribute('aria-hidden', 'true');
+        if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+        if (menuBtn) menuBtn.focus();
+    }
+});
 
 const CART_KEY = 'furnix_shopping_cart';
 const WISHLIST_KEY = 'furnix_wishlist';
@@ -146,13 +160,13 @@ function renderCartPage() {
                 <h4 class="cart-item-name">${item.name}</h4>
                 <p class="cart-item-price">$${(item.price * (item.quantity || 1)).toFixed(2)}</p>
                 <div class="cart-quantity-controls">
-                    <button class="qty-btn" data-id="${item.id}" data-action="decrease">-</button>
+                    <button class="qty-btn" data-id="${item.id}" data-action="decrease" aria-label="Decrease ${item.name} quantity">-</button>
                     <span class="qty-value">${item.quantity || 1}</span>
-                    <button class="qty-btn" data-id="${item.id}" data-action="increase">+</button>
+                    <button class="qty-btn" data-id="${item.id}" data-action="increase" aria-label="Increase ${item.name} quantity">+</button>
                 </div>
             </div>
-            <button class="cart-remove-btn" data-id="${item.id}">
-                <i class="fa-solid fa-trash"></i>
+            <button class="cart-remove-btn" data-id="${item.id}" aria-label="Remove ${item.name} from cart">
+                <i class="fa-solid fa-trash" aria-hidden="true"></i>
             </button>
         `;
         listEl.appendChild(card);
@@ -448,4 +462,11 @@ function setupProductCards() {
     });
 }
 
-
+// ========== Search functionality ==========
+const searchIcon = document.querySelector('.nav-icons a[aria-label="Search"]');
+if (searchIcon) {
+    searchIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = 'search.html';
+    });
+}

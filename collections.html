@@ -4,12 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop Furnix modern furniture, lighting, decor, and handcrafted pieces designed for comfortable contemporary homes.">
     <title>Furnix Collections</title>
 
     <!-- CSS LINK -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
     <!-- icons -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
 </head>
 
@@ -18,39 +23,39 @@
             <header>
         <nav class="navbar flex between wrapper">
             <a href="index.html" class="logo">Furnix.</a>
-            <ul class="navList" id="list">
-                <button class="nav-close-btn" id="navClose">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+            <ul class="navList" id="list" aria-hidden="true">
+                <li class="nav-close-item"><button class="nav-close-btn" id="navClose" aria-label="Close menu">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button></li>
                 <li><a href="collections.html" class="link">collections</a></li>
                 <li><a href="furniture.html" class="link">furniture</a></li>
                 <li><a href="designers.html" class="link">designers</a></li>
                 <li><a href="trends.html" class="link">trends</a></li>
                 <li><a href="about.html" class="link">about us</a></li>
                 <li><a href="contact.html" class="link">contact us</a></li>
-                <ul class="footer-social-icon flex">
-                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
-                </ul>
+                <li class="nav-social-item"><ul class="footer-social-icon flex">
+                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
+                </ul></li>
             </ul>
             <ul class="nav-icons flex g-one-half">
-                <li><a href="#" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                <li><a href="#" class="icon"><i class="fa-solid fa-user"></i></a></li>
+                <li><a href="#" class="icon" aria-label="Search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="icon" aria-label="Account"><i class="fa-solid fa-user" aria-hidden="true"></i></a></li>
                 <li>
-                    <a href="wishlist.html" class="icon nav-icon-wrapper">
-                        <i class="fa-solid fa-heart"></i>
+                    <a href="wishlist.html" class="icon nav-icon-wrapper" aria-label="Wishlist">
+                        <i class="fa-solid fa-heart" aria-hidden="true"></i>
                         <span id="wishlist-badge" class="nav-badge">0</span>
                     </a>
                 </li>
                 <li>
-                    <a href="cart.html" class="icon cart-nav-icon nav-icon-wrapper">
-                        <i class="fa-solid fa-shopping-bag"></i>
+                    <a href="cart.html" class="icon cart-nav-icon nav-icon-wrapper" aria-label="Cart">
+                        <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
                         <span id="cart-badge" class="nav-badge">0</span>
                     </a>
                 </li>
-                <li><a href="#" class="icon" id="menu"><i class="fa-solid fa-bars"></i></a></li>
+                <li><a href="#" class="icon" id="menu" aria-label="Open menu" aria-controls="list" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></a></li>
             </ul>
         </nav>
     </header>
@@ -72,8 +77,8 @@
                     <div class="category-card-content">
                         <div class="flex between category-card-header">
                             <h5>Premium Seating</h5>
-                            <a href="#" class="simple-icon">
-                                <i class="fa-solid fa-arrow-right"></i>
+                            <a href="#" class="simple-icon" aria-label="Open details">
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
                         <p class="category-card-desc">Sofas, armchairs, and lounges that invite you to relax.</p>
@@ -85,8 +90,8 @@
                     <div class="category-card-content">
                         <div class="flex between category-card-header">
                             <h5>Modern Lighting</h5>
-                            <a href="#" class="simple-icon">
-                                <i class="fa-solid fa-arrow-right"></i>
+                            <a href="#" class="simple-icon" aria-label="Open details">
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
                         <p class="category-card-desc">Illuminate your home with elegant pendants and smart lamps.</p>
@@ -98,8 +103,8 @@
                     <div class="category-card-content">
                         <div class="flex between category-card-header">
                             <h5>Dining & Tables</h5>
-                            <a href="#" class="simple-icon">
-                                <i class="fa-solid fa-arrow-right"></i>
+                            <a href="#" class="simple-icon" aria-label="Open details">
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
                         <p class="category-card-desc">Stunning solid wood centerpieces for gathering and dining.</p>
@@ -111,8 +116,8 @@
                     <div class="category-card-content">
                         <div class="flex between category-card-header">
                             <h5>Home Accessories</h5>
-                            <a href="#" class="simple-icon">
-                                <i class="fa-solid fa-arrow-right"></i>
+                            <a href="#" class="simple-icon" aria-label="Open details">
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
                         <p class="category-card-desc">The perfect finishing touches and decor for every room.</p>
@@ -131,13 +136,13 @@
                 <h3>sign up to receive 10% off <br> on your first order</h3>
                 <div class="input-container">
                     <input type="email" name="email" id="email" placeholder="Enter your email.." autocomplete="off">
-                    <a href="#" class="simple-icon"><i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#" class="simple-icon" aria-label="Open details"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
                 <ul class="footer-social-icon flex">
-                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
             <div class="footer-wrapper">

@@ -4,12 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop Furnix modern furniture, lighting, decor, and handcrafted pieces designed for comfortable contemporary homes.">
     <title>Furniture Website</title>
 
     <!-- CSS LINK -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
     <!-- icons -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
 
 </head>
@@ -19,39 +24,39 @@
             <header>
         <nav class="navbar flex between wrapper">
             <a href="index.html" class="logo">Furnix.</a>
-            <ul class="navList" id="list">
-                <button class="nav-close-btn" id="navClose">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+            <ul class="navList" id="list" aria-hidden="true">
+                <li class="nav-close-item"><button class="nav-close-btn" id="navClose" aria-label="Close menu">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button></li>
                 <li><a href="collections.html" class="link">collections</a></li>
                 <li><a href="furniture.html" class="link">furniture</a></li>
                 <li><a href="designers.html" class="link">designers</a></li>
                 <li><a href="trends.html" class="link">trends</a></li>
                 <li><a href="about.html" class="link">about us</a></li>
                 <li><a href="contact.html" class="link">contact us</a></li>
-                <ul class="footer-social-icon flex">
-                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
-                </ul>
+                <li class="nav-social-item"><ul class="footer-social-icon flex">
+                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
+                </ul></li>
             </ul>
             <ul class="nav-icons flex g-one-half">
-                <li><a href="#" class="icon"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                <li><a href="#" class="icon"><i class="fa-solid fa-user"></i></a></li>
+                <li><a href="#" class="icon" aria-label="Search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="icon" aria-label="Account"><i class="fa-solid fa-user" aria-hidden="true"></i></a></li>
                 <li>
-                    <a href="wishlist.html" class="icon nav-icon-wrapper">
-                        <i class="fa-solid fa-heart"></i>
+                    <a href="wishlist.html" class="icon nav-icon-wrapper" aria-label="Wishlist">
+                        <i class="fa-solid fa-heart" aria-hidden="true"></i>
                         <span id="wishlist-badge" class="nav-badge">0</span>
                     </a>
                 </li>
                 <li>
-                    <a href="cart.html" class="icon cart-nav-icon nav-icon-wrapper">
-                        <i class="fa-solid fa-shopping-bag"></i>
+                    <a href="cart.html" class="icon cart-nav-icon nav-icon-wrapper" aria-label="Cart">
+                        <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
                         <span id="cart-badge" class="nav-badge">0</span>
                     </a>
                 </li>
-                <li><a href="#" class="icon" id="menu"><i class="fa-solid fa-bars"></i></a></li>
+                <li><a href="#" class="icon" id="menu" aria-label="Open menu" aria-controls="list" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></a></li>
             </ul>
         </nav>
     </header>
@@ -72,8 +77,8 @@
 
                 <a href="collections.html" class="btn ">Buy Now</a>
 
-                <div class="hero-image mt-3">
-                    <img src="images/sofa.png">
+                <div class="hero-image mt-3 big-img">
+                    <img src="images/sofa.png" width="900" height="394" alt="Furnix sectional sofa" decoding="async" fetchpriority="high">
                 </div>
             </div>
 
@@ -91,8 +96,8 @@
                     <div class="category-card">
                         <div class="flex between">
                             <h5>Seating</h5>
-                            <a href="#" class="simple-icon ">
-                                <i class="fa-solid fa-arrow-right"></i>
+                            <a href="#" class="simple-icon " aria-label="Open details">
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -100,8 +105,8 @@
                     <div class="category-card">
                         <div class="flex between">
                             <h5>Lighting</h5>
-                            <a href="#" class="simple-icon ">
-                                <i class="fa-solid fa-arrow-right"></i>
+                            <a href="#" class="simple-icon " aria-label="Open details">
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -109,8 +114,8 @@
                     <div class="category-card">
                         <div class="flex between">
                             <h5>Tables</h5>
-                            <a href="#" class="simple-icon ">
-                                <i class="fa-solid fa-arrow-right"></i>
+                            <a href="#" class="simple-icon " aria-label="Open details">
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -118,8 +123,8 @@
                     <div class="category-card">
                         <div class="flex between">
                             <h5>accessories</h5>
-                            <a href="#" class="simple-icon ">
-                                <i class="fa-solid fa-arrow-right"></i>
+                            <a href="#" class="simple-icon " aria-label="Open details">
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -135,8 +140,8 @@
                     with sculptural
                     forms, enhancing any space with <span>Comfort</span> and <span>style</span>.
                 </h2>
-                <div class="bed-image mt-3">
-                    <img src="images/bed.png">
+                <div class="bed-image mt-3 big-img">
+                    <img src="images/bed.png" width="1000" height="418" alt="Modern Scandinavian bed" decoding="async" loading="lazy">
 
                     <div class="bed-details">
                         <h6>BED MATERIAL</h6>
@@ -151,8 +156,8 @@
                                 <del>$2000</del>&nbsp;&nbsp;
                                 $1500
                             </p>
-                            <a href="#" class="simple-icon brown-bg">
-                                <i class="fa-solid fa-shopping-bag"></i>
+                            <a href="#" class="simple-icon brown-bg" aria-label="Open details">
+                                <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -173,11 +178,11 @@
 
                 <div class="flex g-one-half mt-3">
                     <div class="product-card">
-                        <div class="product-image">
-                            <img src="images/hanging lamp.png">
+                        <div class="product-image big-img">
+                            <img src="images/hanging lamp.png" width="700" height="700" alt="Aura pendant lamp" decoding="async" loading="lazy">
                             <!-- adding favorite icon -->
-                            <a href="#" class="favorite-icon">
-                                <i class="fa-regular fa-heart"></i>
+                            <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                                <i class="fa-regular fa-heart" aria-hidden="true"></i>
                             </a>   
                             <!--  -->
                             <a href="#" class="btn brown-bg">Add to cart</a>
@@ -189,12 +194,12 @@
                         </div>
                     </div>
 
-                    <div class="product-card">
+                    <div class="product-card big-img">
                         <div class="product-image">
-                            <img src="images/flower-vase.png">
+                            <img src="images/flower-vase.png" width="700" height="846" alt="Decorative flower vase" decoding="async" loading="lazy">
                             <!-- adding favorite icon -->
-                            <a href="#" class="favorite-icon">
-                                <i class="fa-regular fa-heart"></i>
+                            <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                                <i class="fa-regular fa-heart" aria-hidden="true"></i>
                             </a>
                             <!--  -->
                             <a href="#" class="btn brown-bg">Add to cart</a>
@@ -206,12 +211,12 @@
                         </div>
                     </div>
 
-                    <div class="product-card">
+                    <div class="product-card big-img">
                         <div class="product-image">
-                            <img src="images/modern chair.png">
+                            <img src="images/modern chair.png" width="700" height="846" alt="Modern accent chair" decoding="async" loading="lazy">
                             <!-- adding favorite icon -->
-                            <a href="#" class="favorite-icon">
-                                <i class="fa-regular fa-heart"></i>
+                            <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                                <i class="fa-regular fa-heart" aria-hidden="true"></i>
                             </a>
                             <!--  -->
                             <a href="#" class="btn brown-bg">Add to cart</a>
@@ -223,12 +228,12 @@
                         </div>
                     </div>
 
-                    <div class="product-card">
+                    <div class="product-card big-img">
                         <div class="product-image">
-                            <img src="images/lounge chair.png">
+                            <img src="images/lounge chair.png" width="700" height="871" alt="Embrace lounge chair" decoding="async" loading="lazy">
                             <!-- adding favorite icon -->
-                            <a href="#" class="favorite-icon">
-                                <i class="fa-regular fa-heart"></i>
+                            <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                                <i class="fa-regular fa-heart" aria-hidden="true"></i>
                             </a>
                             <!--  -->
                             <a href="#" class="btn brown-bg">Add to cart</a>
@@ -240,12 +245,12 @@
                         </div>
                     </div>
 
-                    <div class="product-card">
+                    <div class="product-card big-img">
                         <div class="product-image">
-                            <img src="images/side table.png">
+                            <img src="images/side table.png" width="700" height="808" alt="Round side table" decoding="async" loading="lazy">
                             <!-- adding favorite icon -->
-                            <a href="#" class="favorite-icon">
-                                <i class="fa-regular fa-heart"></i>
+                            <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                                <i class="fa-regular fa-heart" aria-hidden="true"></i>
                             </a>
                             <!--  -->
                             <a href="#" class="btn brown-bg">Add to cart</a>
@@ -265,7 +270,7 @@
         <!-- SECTION 04 -->
         <section>
             <div class="flex wrapper g-one-half p-block">
-                <div class="about-image">
+                <div class="about-image big-img">
 
                 </div>
                 <div class="about">
@@ -283,10 +288,9 @@
                 <h2 class="h2-heading">
                     Innovative vision in modern design
                 </h2>
-                <p class="detail-info-platform">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos qui
-                    tenetur at error autem hic vitae
-                    culpa ex, sed excepturi tempore sunt necessitatibus saepe, ab possimus expedita vero blanditiis
-                    libero.
+                <p class="detail-info-platform">From timeless wooden pieces to contemporary statement furniture —
+                    we design and source collections that bring warmth, character, and comfort to every room. Built to last.
+                    Made to love.
                 </p>
                 <a href="story.html" class="btn mt-3">Read our story</a>
             </div>
@@ -303,9 +307,9 @@
                 </p>
             </div>
             <div class="flex g-one-half mt-3">
-                <div class="review-card">
+                <div class="review-card big-img">
                     <div class="profile-image">
-                        <img src="images/profile1.jpg">
+                        <img src="images/profile1.jpg" width="320" height="479" alt="John Oliver customer portrait" decoding="async" loading="lazy">
                     </div>
                     <h5>John Oliver</h5>
                     <p class="detail-info-platform">
@@ -316,9 +320,9 @@
 
                 </div>
 
-                <div class="review-card">
+                <div class="review-card big-img">
                     <div class="profile-image">
-                        <img src="images/profile2.jpg">
+                        <img src="images/profile2.jpg" width="320" height="480" alt="Annie Lilt customer portrait" decoding="async" loading="lazy">
                     </div>
                     <h5>Annie Lilt</h5>
                     <p class="detail-info-platform">
@@ -328,9 +332,9 @@
 
                 </div>
 
-                <div class="review-card">
+                <div class="review-card big-img">
                     <div class="profile-image">
-                        <img src="images/profile3.jpg">
+                        <img src="images/profile3.jpg" width="320" height="480" alt="Frank Daniel customer portrait" decoding="async" loading="lazy">
                     </div>
                     <h5>frank daniel</h5>
                     <p class="detail-info-platform">
@@ -345,9 +349,9 @@
         <!-- SECTION 07 -->
         <section class="gradient-bg p-block mt-3">
             <div class="wrapper flex g-one-half">
-                <a href="#" class="service-card">
+                <a href="#" class="service-card big-img" aria-label="Customer service details">
                     <div class="service-icon">
-                        <i class="fa-solid fa-headset"></i>
+                        <i class="fa-solid fa-headset" aria-hidden="true"></i>
                     </div>
                     <div>
                         <h5 class="">customer service</h5>
@@ -357,9 +361,9 @@
                     </div>
                 </a>
 
-                <a href="#" class="service-card">
+                <a href="#" class="service-card big-img" aria-label="Shipping details">
                     <div class="service-icon">
-                        <i class="fa-solid fa-truck-fast"></i>
+                        <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
                     </div>
                     <div>
                         <h5 class="">fast free shipping</h5>
@@ -369,9 +373,9 @@
                     </div>
                 </a>
 
-                <a href="#" class="service-card">
+                <a href="#" class="service-card big-img" aria-label="Secure payment details">
                     <div class="service-icon">
-                        <i class="fa-solid fa-credit-card"></i>
+                        <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
                     </div>
                     <div>
                         <h5 class="">secure payment</h5>
@@ -393,13 +397,13 @@
                 <h3>sign up to receive 10% off <br> on your first order</h3>
                 <div class="input-container">
                     <input type="email" name="email" id="email" placeholder="Enter your email.." autocomplete="off">
-                    <a href="#" class="simple-icon"><i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#" class="simple-icon" aria-label="Open details"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
                 <ul class="footer-social-icon flex">
-                    <li><a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
             <div class="footer-wrapper">
