@@ -69,6 +69,65 @@ function addToCart(product) {
     saveCart(cart);
     updateCartBadge();
 }
+function parseJwt(token) {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+        atob(base64)
+        .split("")
+        .map(c => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+        .join("")
+    );
+    return JSON.parse(jsonPayload);
+    }
+
+function parseJwt(token) {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+        atob(base64)
+        .split("")
+        .map(c => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+        .join("")
+    );
+    return JSON.parse(jsonPayload);
+    }
+
+function renderUser(user) {
+    document.getElementById("user").innerHTML = `
+
+
+        <button class= "logout-btn" onclick="logout()">Logout</button>
+
+    `;
+    }
+
+function handleCredentialResponse(response) {
+    const user = parseJwt(response.credential);
+    // Save user
+    localStorage.setItem("googleUser", JSON.stringify(user));
+    // Hide Google Sign-In button
+    document.querySelector(".g_id_signin").style.display = "none";
+
+    renderUser(user);
+}
+
+function logout() {
+  // Clear local storage
+    localStorage.removeItem("googleUser");
+    document.getElementById("user").innerHTML = "";
+    document.querySelector(".g_id_signin").style.display = "block";
+    google.accounts.id.disableAutoSelect();
+}
+
+window.onload = function () {
+    const user = JSON.parse(localStorage.getItem("googleUser"));
+
+    if (user) {
+    document.querySelector(".g_id_signin").style.display = "none";
+    renderUser(user);
+    }
+};
 
 function removeFromCart(productId) {
     let cart = getCart().filter(item => item.id !== productId);

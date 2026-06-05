@@ -16,6 +16,7 @@
     <!-- icons -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async></script>
 
 </head>
 
@@ -56,6 +57,24 @@
                         <span id="cart-badge" class="nav-badge">0</span>
                     </a>
                 </li>
+
+            <div
+                id="g_id_onload"
+                data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                data-callback="handleCredentialResponse"
+                data-auto_prompt="false">
+            </div>
+
+            <div
+                class="g_id_signin"
+                data-theme="outline"
+                data-size="large"
+            
+                data-shape="circle"
+                data-logo_alignment="center">
+            </div>
+            <div id="user" style="margin-top:20px;"></div>
+            
                 <li><a href="#" class="icon" id="menu" aria-label="Open menu" aria-controls="list" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></a></li>
             </ul>
         </nav>
