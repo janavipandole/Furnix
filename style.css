@@ -72,6 +72,7 @@ li {
     top: -8px;
     right: -8px;
     font-weight: 700;
+    display: none;
 }
 
 .g-one-half {
@@ -420,6 +421,7 @@ h5 {
     background: linear-gradient(90deg, var(--golden-hour), var(--antique-brown));
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
+    background-clip: text;
     margin: auto;
     text-align: center;
 }

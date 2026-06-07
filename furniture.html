@@ -16,6 +16,10 @@
     <!-- icons -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
     
 </head>
 
@@ -72,16 +76,60 @@
             </div>
 
             <!-- Products Grid -->
-            <div class="products-grid">
-                
+            <div class="products-grid" id="furniture-grid">
+
+                <!-- SKELETON CARDS (hidden after page load) -->
+                <div class="skeleton-card" aria-hidden="true">
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton skeleton-text-sm"></div>
+                    <div class="skeleton skeleton-text-md"></div>
+                    <div class="skeleton skeleton-text-price"></div>
+                </div>
+                <div class="skeleton-card" aria-hidden="true">
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton skeleton-text-sm"></div>
+                    <div class="skeleton skeleton-text-md"></div>
+                    <div class="skeleton skeleton-text-price"></div>
+                </div>
+                <div class="skeleton-card" aria-hidden="true">
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton skeleton-text-sm"></div>
+                    <div class="skeleton skeleton-text-md"></div>
+                    <div class="skeleton skeleton-text-price"></div>
+                </div>
+                <div class="skeleton-card" aria-hidden="true">
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton skeleton-text-sm"></div>
+                    <div class="skeleton skeleton-text-md"></div>
+                    <div class="skeleton skeleton-text-price"></div>
+                </div>
+                <div class="skeleton-card" aria-hidden="true">
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton skeleton-text-sm"></div>
+                    <div class="skeleton skeleton-text-md"></div>
+                    <div class="skeleton skeleton-text-price"></div>
+                </div>
+                <div class="skeleton-card" aria-hidden="true">
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton skeleton-text-sm"></div>
+                    <div class="skeleton skeleton-text-md"></div>
+                    <div class="skeleton skeleton-text-price"></div>
+                </div>
+                <div class="skeleton-card" aria-hidden="true">
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton skeleton-text-sm"></div>
+                    <div class="skeleton skeleton-text-md"></div>
+                    <div class="skeleton skeleton-text-price"></div>
+                </div>
+
                 <!-- Product 1 -->
-                <div class="product-card">
+                <div class="product-card product-card--hidden">
                     <div class="product-image">
                         <img src="images/modern chair.png" alt="Modern Chair" width="700" height="846" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
                             <i class="fa-regular fa-heart" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="btn brown-bg">Add to cart</a>
+                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
                     </div>
                     <div>
                         <small>Seating</small>
@@ -91,13 +139,13 @@
                 </div>
 
                 <!-- Product 2 -->
-                <div class="product-card">
+                <div class="product-card product-card--hidden">
                     <div class="product-image">
                         <img src="images/lounge chair.png" alt="Lounge Chair" width="700" height="871" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
                             <i class="fa-regular fa-heart" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="btn brown-bg">Add to cart</a>
+                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
                     </div>
                     <div>
                         <small>Seating</small>
@@ -107,13 +155,13 @@
                 </div>
 
                 <!-- Product 3 -->
-                <div class="product-card">
+                <div class="product-card product-card--hidden">
                     <div class="product-image">
                         <img src="images/side table.png" alt="Side Table" width="700" height="808" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
                             <i class="fa-regular fa-heart" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="btn brown-bg">Add to cart</a>
+                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
                     </div>
                     <div>
                         <small>Tables</small>
@@ -123,13 +171,13 @@
                 </div>
 
                 <!-- Product 4 -->
-                <div class="product-card">
+                <div class="product-card product-card--hidden">
                     <div class="product-image">
                         <img src="images/hanging lamp.png" alt="Aura Pendent Lamp" width="700" height="700" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
                             <i class="fa-regular fa-heart" aria-hidden="true"></i>
-                        </a>   
-                        <a href="#" class="btn brown-bg">Add to cart</a>
+                        </a>
+                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
                     </div>
                     <div>
                         <small>Lighting</small>
@@ -139,13 +187,13 @@
                 </div>
 
                 <!-- Product 5 -->
-                <div class="product-card">
+                <div class="product-card product-card--hidden">
                     <div class="product-image">
                         <img src="images/flower-vase.png" alt="Flower Vase" width="700" height="846" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
                             <i class="fa-regular fa-heart" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="btn brown-bg">Add to cart</a>
+                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
                     </div>
                     <div>
                         <small>Accessories</small>
@@ -153,15 +201,15 @@
                         <p class="price">$20.00</p>
                     </div>
                 </div>
-                
+
                 <!-- Product 6 -->
-                <div class="product-card">
+                <div class="product-card product-card--hidden">
                     <div class="product-image">
                         <img src="images/bed.png" alt="Modern Bed" width="1000" height="418" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
                             <i class="fa-regular fa-heart" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="btn brown-bg">Add to cart</a>
+                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
                     </div>
                     <div>
                         <small>Bedroom</small>
@@ -171,13 +219,13 @@
                 </div>
 
                 <!-- Product 7 -->
-                <div class="product-card">
+                <div class="product-card product-card--hidden">
                     <div class="product-image">
                         <img src="images/sofa.png" alt="Luxury Sofa" width="900" height="394" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
                             <i class="fa-regular fa-heart" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="btn brown-bg">Add to cart</a>
+                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
                     </div>
                     <div>
                         <small>Seating</small>
@@ -186,7 +234,7 @@
                     </div>
                 </div>
 
-            </div>        
+            </div>
         </section>
     </main>
 
