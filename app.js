@@ -421,13 +421,16 @@ function dismissSkeletons() {
         el.classList.remove('product-card--hidden');
     });
     setupProductCards();
+    initScrollReveal();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     updateCartBadge();
     updateWishlistBadge();
+    initHeroAnimations();
     if (!document.querySelector('.skeleton-card')) {
         setupProductCards();
+        initScrollReveal();
     }
     renderCartPage();
     renderWishlistPage();
@@ -515,6 +518,56 @@ function setupProductCards() {
             }
         }
     });
+}
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function initHeroAnimations() {
+    const heroSection = document.querySelector('.hero-section');
+    if (!heroSection) return;
+
+    const heroItems = Array.from(heroSection.querySelectorAll('.heading, .big-para, .hero-content .btn, .hero-image'));
+    heroItems.forEach((item, index) => {
+        item.classList.add('hero-reveal');
+        item.style.setProperty('--hero-delay', `${0.12 + index * 0.18}s`);
+    });
+
+    if (prefersReducedMotion) {
+        heroItems.forEach(item => item.classList.add('reveal-visible'));
+        return;
+    }
+
+    requestAnimationFrame(() => {
+        heroSection.classList.add('hero-revealed');
+    });
+}
+
+function initScrollReveal() {
+    const revealTargets = document.querySelectorAll('section:not(.hero-section), .category-card, .product-card:not(.product-card--hidden), .review-card, .service-card, .about, .bed-image, .footer-wrapper');
+    if (!revealTargets.length) return;
+
+    revealTargets.forEach((el, index) => {
+        el.classList.add('reveal');
+        el.style.setProperty('--reveal-delay', `${Math.min(0.32, index * 0.05)}s`);
+    });
+
+    if (prefersReducedMotion) {
+        revealTargets.forEach(el => el.classList.add('reveal-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('reveal-visible');
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.18,
+        rootMargin: '0px 0px -12% 0px'
+    });
+
+    revealTargets.forEach(el => observer.observe(el));
 }
 
 // ========== Search functionality ==========
