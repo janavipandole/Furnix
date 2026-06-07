@@ -558,49 +558,8 @@ small {
 .center {
     justify-self: center;
 }
-/*  */
+
 /* SECTION 04 */
-/* 
-.about-image {
-    width: 32rem;
-    height: 37rem;
-    border-radius: 1.5rem;
-    background-image: url(images/living-room.jpg);
-    background-position: center;
-    background-size: cover;
-    transform: rotateZ(5deg);
-    position: relative;
-    margin-left: 10rem;
-}
-
-.about-image::before {
-    content: '';
-    background: #9b281a;
-    position: absolute;
-    height: 22rem;
-    width: 17rem;
-    border-radius: inherit;
-    top: 50%;
-    transform: translateY(-50%)rotateZ(-10deg);
-    right: 400px;
-    background-image: url(images/bedroom.jpg);
-    background-position: inherit;
-    background-size: inherit;
-}
-
-.about p {
-    color: var(--antique-brown);
-    letter-spacing: 0.3rem;
-    text-transform: uppercase;
-    font-weight: 500;
-}
-
-.about .h2-heading {
-    max-width: 580px;
-    margin-top: 0.8rem;
-    margin-bottom: 2rem;
-    font-weight: 400;
-} */
 
 .about-section-premium {
     background: #faf9f7;
