@@ -88,7 +88,12 @@ li {
     text-transform: uppercase;
     display: block;
     justify-self: flex-start;
-    transition: 0.3s ease-in-out;
+
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        transform 0.25s ease,
+        box-shadow 0.35s ease;
 }
 
 .btn-inline {
@@ -99,14 +104,40 @@ li {
 .brown-bg {
     background-color: var(--antique-brown);
     color: var(--white);
-
 }
 
 .btn:hover {
-    background-color: var(--back);
-    color: white;
-        transform:scale(1.1);
+    background-color: #5A2D0C;
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(111, 78, 55, 0.25);
+}
 
+.btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--golden-hour);
+    outline-offset: 3px;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn {
+        transition: none;
+    }
+}
+
+.btn {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
 
 img {
