@@ -42,6 +42,13 @@ It focuses on:
 - **Vercel** → Deployment  
 
 ---
+## 🛠️ Installation
+
+```bash
+git clone https://github.com/your-username/Furnix-Neon.git
+cd Furnix-Neon
+open index.html
+```
 
 ## 📁 Project Structure
 
@@ -49,10 +56,19 @@ It focuses on:
 Furnix-Neon/
 ├── index.html
 ├── css/
-│   ├── style.css
+│   └── style.css
 ├── js/
-│   ├── app.js
+│   └── app.js
 ├── images/
-│   ├── images/
 │   └── icons/
-└── README.md.
+└── README.md
+
+## 🤝 Contributing
+
+Contributions are welcome! This project is open source under **SSoC 2026**.
+
+1. Fork the repository
+2. Create your branch (`git checkout -b feat/your-feature`)
+3. Commit your changes (`git commit -m 'feat: add your feature'`)
+4. Push to the branch (`git push origin feat/your-feature`)
+5. Open a Pull Request

@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
     <script src="https://accounts.google.com/gsi/client" async></script>
 
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
@@ -115,7 +119,7 @@
                     <div class="category-card">
                         <div class="flex between">
                             <h5>Seating</h5>
-                            <a href="#" class="simple-icon " aria-label="Open details">
+                            <a href="seating.html" class="simple-icon " aria-label="Open details">
                                 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -124,7 +128,7 @@
                     <div class="category-card">
                         <div class="flex between">
                             <h5>Lighting</h5>
-                            <a href="#" class="simple-icon " aria-label="Open details">
+                            <a href="Lighting.html" class="simple-icon " aria-label="Open details">
                                 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -133,7 +137,7 @@
                     <div class="category-card">
                         <div class="flex between">
                             <h5>Tables</h5>
-                            <a href="#" class="simple-icon " aria-label="Open details">
+                            <a href="tabels.html" class="simple-icon " aria-label="Open details">
                                 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -142,7 +146,7 @@
                     <div class="category-card">
                         <div class="flex between">
                             <h5>accessories</h5>
-                            <a href="#" class="simple-icon " aria-label="Open details">
+                            <a href="accessories .html" class="simple-icon " aria-label="Open details">
                                 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -195,16 +199,48 @@
                     for your home.
                 </p>
 
-                <div class="flex g-one-half mt-3">
-                    <div class="product-card">
+                <div class="flex g-one-half mt-3" id="new-arrival-grid">
+
+                    <!-- SKELETON CARDS (hidden after page load) -->
+                    <div class="skeleton-card" aria-hidden="true">
+                        <div class="skeleton skeleton-image"></div>
+                        <div class="skeleton skeleton-text-sm"></div>
+                        <div class="skeleton skeleton-text-md"></div>
+                        <div class="skeleton skeleton-text-price"></div>
+                    </div>
+                    <div class="skeleton-card" aria-hidden="true">
+                        <div class="skeleton skeleton-image"></div>
+                        <div class="skeleton skeleton-text-sm"></div>
+                        <div class="skeleton skeleton-text-md"></div>
+                        <div class="skeleton skeleton-text-price"></div>
+                    </div>
+                    <div class="skeleton-card" aria-hidden="true">
+                        <div class="skeleton skeleton-image"></div>
+                        <div class="skeleton skeleton-text-sm"></div>
+                        <div class="skeleton skeleton-text-md"></div>
+                        <div class="skeleton skeleton-text-price"></div>
+                    </div>
+                    <div class="skeleton-card" aria-hidden="true">
+                        <div class="skeleton skeleton-image"></div>
+                        <div class="skeleton skeleton-text-sm"></div>
+                        <div class="skeleton skeleton-text-md"></div>
+                        <div class="skeleton skeleton-text-price"></div>
+                    </div>
+                    <div class="skeleton-card" aria-hidden="true">
+                        <div class="skeleton skeleton-image"></div>
+                        <div class="skeleton skeleton-text-sm"></div>
+                        <div class="skeleton skeleton-text-md"></div>
+                        <div class="skeleton skeleton-text-price"></div>
+                    </div>
+
+                    <!-- REAL PRODUCT CARDS (initially hidden, shown once ready) -->
+                    <div class="product-card product-card--hidden">
                         <div class="product-image big-img">
                             <img src="images/hanging lamp.png" width="700" height="700" alt="Aura pendant lamp" decoding="async" loading="lazy">
-                            <!-- adding favorite icon -->
-                            <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                            <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
                                 <i class="fa-regular fa-heart" aria-hidden="true"></i>
-                            </a>   
-                            <!--  -->
-                            <a href="#" class="btn brown-bg">Add to cart</a>
+                            </a>
+                            <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
                         </div>
                         <div>
                             <small>Lighting</small>
@@ -213,15 +249,13 @@
                         </div>
                     </div>
 
-                    <div class="product-card big-img">
+                    <div class="product-card product-card--hidden big-img">
                         <div class="product-image">
                             <img src="images/flower-vase.png" width="700" height="846" alt="Decorative flower vase" decoding="async" loading="lazy">
-                            <!-- adding favorite icon -->
-                            <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                            <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
                                 <i class="fa-regular fa-heart" aria-hidden="true"></i>
                             </a>
-                            <!--  -->
-                            <a href="#" class="btn brown-bg">Add to cart</a>
+                            <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
                         </div>
                         <div>
                             <small>Accessories</small>
@@ -230,15 +264,13 @@
                         </div>
                     </div>
 
-                    <div class="product-card big-img">
+                    <div class="product-card product-card--hidden big-img">
                         <div class="product-image">
                             <img src="images/modern chair.png" width="700" height="846" alt="Modern accent chair" decoding="async" loading="lazy">
-                            <!-- adding favorite icon -->
-                            <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                            <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
                                 <i class="fa-regular fa-heart" aria-hidden="true"></i>
                             </a>
-                            <!--  -->
-                            <a href="#" class="btn brown-bg">Add to cart</a>
+                            <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
                         </div>
                         <div>
                             <small>seating</small>
@@ -247,15 +279,13 @@
                         </div>
                     </div>
 
-                    <div class="product-card big-img">
+                    <div class="product-card product-card--hidden big-img">
                         <div class="product-image">
                             <img src="images/lounge chair.png" width="700" height="871" alt="Embrace lounge chair" decoding="async" loading="lazy">
-                            <!-- adding favorite icon -->
-                            <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                            <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
                                 <i class="fa-regular fa-heart" aria-hidden="true"></i>
                             </a>
-                            <!--  -->
-                            <a href="#" class="btn brown-bg">Add to cart</a>
+                            <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
                         </div>
                         <div>
                             <small>Lighting</small>
@@ -264,15 +294,13 @@
                         </div>
                     </div>
 
-                    <div class="product-card big-img">
+                    <div class="product-card product-card--hidden big-img">
                         <div class="product-image">
                             <img src="images/side table.png" width="700" height="808" alt="Round side table" decoding="async" loading="lazy">
-                            <!-- adding favorite icon -->
-                            <a href="#" class="favorite-icon" aria-label="Add to wishlist">
+                            <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
                                 <i class="fa-regular fa-heart" aria-hidden="true"></i>
                             </a>
-                            <!--  -->
-                            <a href="#" class="btn brown-bg">Add to cart</a>
+                            <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
                         </div>
                         <div>
                             <small>tables</small>

@@ -72,6 +72,7 @@ li {
     top: -8px;
     right: -8px;
     font-weight: 700;
+    display: none;
 }
 
 .g-one-half {
@@ -420,6 +421,7 @@ h5 {
     background: linear-gradient(90deg, var(--golden-hour), var(--antique-brown));
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
+    background-clip: text;
     margin: auto;
     text-align: center;
 }
@@ -1647,4 +1649,142 @@ small {
 .logout-btn:hover {
     background-color: #c82333;
     transform: translateY(-2px);
+
+/* ============================================
+   SKELETON LOADING SCREENS
+   ============================================ */
+
+/* Real cards hidden initially while skeletons show */
+.product-card--hidden {
+    display: none !important;
+}
+
+/* Fade-in animation when cards are revealed */
+@keyframes card-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Applied when JS removes the --hidden class */
+.product-card:not(.product-card--hidden) {
+    animation: card-reveal 0.4s ease both;
+}
+
+
+
+/* Shimmer animation */
+@keyframes shimmer {
+    0% {
+        background-position: -600px 0;
+    }
+    100% {
+        background-position: 600px 0;
+    }
+}
+
+/* Base skeleton element */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #e8e8e8 25%,
+        #f5f5f5 50%,
+        #e8e8e8 75%
+    );
+    background-size: 600px 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 0.5rem;
+}
+
+/* Skeleton card wrapper  */
+.skeleton-card {
+    flex: 1;
+    flex-basis: 250px;
+}
+
+/* Gridded skeleton cards (furniture.html) */
+.products-grid .skeleton-card {
+    flex: unset;
+}
+
+/* Skeleton image block */
+.skeleton-image {
+    height: 22rem;
+    border-radius: 1.5rem;
+}
+
+/* Skeleton text lines */
+.skeleton-text-sm {
+    height: 0.65rem;
+    width: 50%;
+    margin-top: 1rem;
+}
+
+.skeleton-text-md {
+    height: 0.9rem;
+    width: 75%;
+    margin-top: 0.6rem;
+}
+
+.skeleton-text-price {
+    height: 0.85rem;
+    width: 35%;
+    margin-top: 0.5rem;
+}
+
+/* Hide skeleton once page is loaded */
+.skeleton-card.skeleton-hidden {
+    display: none !important;
+}
+
+/* ============================================
+   BUTTON SPINNER
+   ============================================ */
+
+@keyframes btn-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Spinner pseudo-element injected via JS class */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
+    padding-left: 3rem;
+}
+
+.btn-loading::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: btn-spin 0.6s linear infinite;
+}
+
+/* For brown-bg buttons the spinner border matches */
+.btn.brown-bg.btn-loading::before {
+    border-color: rgba(255, 255, 255, 0.35);
+    border-top-color: #fff;
+}
+
+/* Wishlist favorite-icon spinner */
+.favorite-icon.fav-loading {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.favorite-icon.fav-loading i {
+    display: inline-block;
+    animation: btn-spin 0.6s linear infinite;
 }
