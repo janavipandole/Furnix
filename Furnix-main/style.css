@@ -549,6 +549,7 @@ del {
     object-position: center;
     padding: 1.5rem;
 }
+
 /* Product image hover effect — zoom + dark overlay */
 .product-image img {
     transition: transform 0.4s ease;
@@ -943,7 +944,9 @@ small {
 }
 
 .form-label {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 0.5rem;
     font-weight: 500;
     color: var(--back);
@@ -1800,30 +1803,32 @@ small {
         overflow: visible;
         display: flex !important;
     }
-         .navList[aria-hidden="true"] {
-             visibility: visible;
-         }
-    
-         .navList .link {
-             font-size: 0.95rem;
-             color: var(--back);
-             font-weight: 500;
-             text-transform: capitalize;
-         }
-    
-         .navList .link:hover {
-             color: var(--antique-brown);
-             transform: none;
-         }
-    
 
-         .nav-close-item,
-         .nav-social-item {
-             display: none !important;
-         }
-        #menu {
-            display: none !important;
-        }
+    .navList[aria-hidden="true"] {
+        visibility: visible;
+    }
+
+    .navList .link {
+        font-size: 0.95rem;
+        color: var(--back);
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+    .navList .link:hover {
+        color: var(--antique-brown);
+        transform: none;
+    }
+
+
+    .nav-close-item,
+    .nav-social-item {
+        display: none !important;
+    }
+
+    #menu {
+        display: none !important;
+    }
 }
 
 @media screen and (max-width: 899px) {
@@ -1837,11 +1842,13 @@ small {
         visibility: hidden;
         transition: right 0.45s cubic-bezier(0.77, 0, 0.175, 1);
     }
-    #menu{
+
+    #menu {
         display: block !important;
     }
 
 }
+
 /* ============================================
    SKELETON LOADING SCREENS
    ============================================ */
@@ -1857,6 +1864,7 @@ small {
         opacity: 0;
         transform: translateY(12px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1875,6 +1883,7 @@ small {
     0% {
         background-position: -600px 0;
     }
+
     100% {
         background-position: 600px 0;
     }
@@ -1882,12 +1891,10 @@ small {
 
 /* Base skeleton element */
 .skeleton {
-    background: linear-gradient(
-        90deg,
-        #e8e8e8 25%,
-        #f5f5f5 50%,
-        #e8e8e8 75%
-    );
+    background: linear-gradient(90deg,
+            #e8e8e8 25%,
+            #f5f5f5 50%,
+            #e8e8e8 75%);
     background-size: 600px 100%;
     animation: shimmer 1.5s infinite linear;
     border-radius: 0.5rem;
@@ -1939,7 +1946,9 @@ small {
    ============================================ */
 
 @keyframes btn-spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Spinner pseudo-element injected via JS class */
@@ -1980,91 +1989,119 @@ small {
     display: inline-block;
     animation: btn-spin 0.6s linear infinite;
 }
+
 body {
-  font-family: Arial;
+    font-family: Arial;
 }
 
 #topBtn {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 15px;
-  font-size: 18px;
-  background-color: black;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 #topBtn:hover {
-  background-color: gray;
+    background-color: gray;
 }
+
 /* ── Hero Section Animations (Issue #48) ── */
 @keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeSlideLeft {
-  from { opacity: 0; transform: translateX(60px); }
-  to   { opacity: 1; transform: translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes floatImage {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-12px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Hero heading */
 .hero-content h1 {
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease forwards;
-  animation-delay: 0.1s;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease forwards;
+    animation-delay: 0.1s;
 }
 
 /* Hero subtext */
 .hero-content .big-para {
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease forwards;
-  animation-delay: 0.35s;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease forwards;
+    animation-delay: 0.35s;
 }
 
 /* Hero CTA button */
 .hero-content .btn {
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease forwards;
-  animation-delay: 0.55s;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease forwards;
+    animation-delay: 0.55s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hero-content .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Hero image slide in + float */
 .hero-image {
-  opacity: 0;
-  animation: fadeSlideLeft 0.9s ease forwards, floatImage 4s ease-in-out 1s infinite;
-  animation-delay: 0.2s, 1s;
+    opacity: 0;
+    animation: fadeSlideLeft 0.9s ease forwards, floatImage 4s ease-in-out 1s infinite;
+    animation-delay: 0.2s, 1s;
 }
 
 /* ── Hero Animations Fix (Issue #48) ── */
 .heading {
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease forwards;
-  animation-delay: 0.1s;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease forwards;
+    animation-delay: 0.1s;
 }
 
 .big-para {
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease forwards;
-  animation-delay: 0.35s;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease forwards;
+    animation-delay: 0.35s;
 }
