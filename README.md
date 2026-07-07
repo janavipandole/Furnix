@@ -36,6 +36,33 @@ It focuses on:
 
 ---
 
+## 📸 Screenshots
+
+### 🔐 Login Page
+![Login Page](./images/screenshots/login.png)
+
+---
+
+### 🛍️ Collections Page
+![Collections](./images/screenshots/collections.png)
+---
+
+### 🛋️ Modern Furniture Showcase 
+![Search](./images/screenshots/furniture.png)
+---
+
+### 🛒 Shopping Cart
+![Cart](./images/screenshots/cart.png)
+
+---
+
+### ❤️ Wishlist
+
+![Wishlist](./images/screenshots/wishlist.png)
+
+
+---
+
 ## 🧰 Tech Stack
 
 - **HTML5** → Structure  

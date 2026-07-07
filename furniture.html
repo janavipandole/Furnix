@@ -1,315 +1,608 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Shop Furnix modern furniture, lighting, decor, and handcrafted pieces designed for comfortable contemporary homes.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Shop Furnix modern furniture, lighting, decor, and handcrafted pieces designed for comfortable contemporary homes."
+    />
     <title>Furnix - All Furniture</title>
 
     <!-- CSS LINK -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
 
     <!-- icons -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" as="style">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-    
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-<script>
-    (function() {
+    <script>
+      (function () {
         try {
-            var savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || savedTheme === 'light') {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
+          var savedTheme = localStorage.getItem("theme");
+          if (savedTheme === "dark" || savedTheme === "light") {
+            document.documentElement.setAttribute("data-theme", savedTheme);
+          } else if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          ) {
+            document.documentElement.setAttribute("data-theme", "dark");
+          }
         } catch (e) {}
-    })();
-</script>
-</head>
+      })();
+    </script>
+  </head>
 
-<body>
+  <body>
     <!-- HEADER PART -->
-            <header>
-        <nav class="navbar flex between wrapper">
-            <a href="index.html" class="logo">Furnix.</a>
-            <ul class="navList" id="list" aria-hidden="true">
-                <li class="nav-close-item"><button class="nav-close-btn" id="navClose" aria-label="Close menu">
-                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-                </button></li>
-                <li><a href="collections.html" class="link">collections</a></li>
-                <li><a href="furniture.html" class="link">furniture</a></li>
-                <li><a href="designers.html" class="link">designers</a></li>
-                <li><a href="trends.html" class="link">trends</a></li>
-                <li><a href="about.html" class="link">about us</a></li>
-                <li><a href="contact.html" class="link">contact us</a></li>
-                <li class="nav-social-item"><ul class="footer-social-icon flex">
-                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
-                </ul></li>
+    <header>
+      <nav class="navbar flex between wrapper">
+        <a href="index.html" class="logo">Furnix.</a>
+        <ul class="navList" id="list" aria-hidden="true">
+          <li class="nav-close-item">
+            <button class="nav-close-btn" id="navClose" aria-label="Close menu">
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+          </li>
+          <li><a href="collections.html" class="link">collections</a></li>
+          <li><a href="furniture.html" class="link">furniture</a></li>
+          <li><a href="designers.html" class="link">designers</a></li>
+          <li><a href="trends.html" class="link">trends</a></li>
+          <li><a href="about.html" class="link">about us</a></li>
+          <li><a href="contact.html" class="link">contact us</a></li>
+          <li class="nav-social-item">
+            <ul class="footer-social-icon flex">
+              <li>
+                <a href="#" class="icon" aria-label="Facebook"
+                  ><i class="fa-brands fa-facebook-f" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a href="#" class="icon" aria-label="X"
+                  ><i class="fa-brands fa-x-twitter" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a href="#" class="icon" aria-label="Instagram"
+                  ><i class="fa-brands fa-instagram" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a href="#" class="icon" aria-label="Pinterest"
+                  ><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i
+                ></a>
+              </li>
             </ul>
-            <ul class="nav-icons flex g-one-half">
-                <li>
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
-                        <i class="fa-solid fa-moon" id="themeIcon" aria-hidden="true"></i>
-                    </button>
-                </li>
-                <li><a href="#" class="icon" aria-label="Search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></a></li>
-                <li><a href="login.html" class="icon" aria-label="Account"><i class="fa-solid fa-user" aria-hidden="true"></i></a></li>
-                <li>
-                    <a href="wishlist.html" class="icon nav-icon-wrapper" aria-label="Wishlist">
-                        <i class="fa-solid fa-heart" aria-hidden="true"></i>
-                        <span id="wishlist-badge" class="nav-badge">0</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="cart.html" class="icon cart-nav-icon nav-icon-wrapper" aria-label="Cart">
-                        <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
-                        <span id="cart-badge" class="nav-badge">0</span>
-                    </a>
-                </li>
-                <li><a href="#" class="icon" id="menu" aria-label="Open menu" aria-controls="list" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></a></li>
-            </ul>
-        </nav>
+          </li>
+        </ul>
+        <ul class="nav-icons flex g-one-half">
+          <li>
+            <button
+              class="theme-toggle"
+              id="themeToggle"
+              aria-label="Toggle Dark Mode"
+            >
+              <i class="fa-solid fa-moon" id="themeIcon" aria-hidden="true"></i>
+            </button>
+          </li>
+          <li>
+            <a href="#" class="icon" aria-label="Search"
+              ><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i
+            ></a>
+          </li>
+          <li>
+            <a href="login.html" class="icon" aria-label="Account"
+              ><i class="fa-solid fa-user" aria-hidden="true"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="wishlist.html"
+              class="icon nav-icon-wrapper"
+              aria-label="Wishlist"
+            >
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+              <span id="wishlist-badge" class="nav-badge">0</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="cart.html"
+              class="icon cart-nav-icon nav-icon-wrapper"
+              aria-label="Cart"
+            >
+              <i class="fa-solid fa-shopping-bag" aria-hidden="true"></i>
+              <span id="cart-badge" class="nav-badge">0</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="icon"
+              id="menu"
+              aria-label="Open menu"
+              aria-controls="list"
+              aria-expanded="false"
+              ><i class="fa-solid fa-bars" aria-hidden="true"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <!-- MAIN CONTENT PART -->
     <main>
-        <section class="wrapper p-block">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <h2 class="h2-heading gradient-txt mt-3">All <span>Furniture</span></h2>
-                <p class="detail-info-platform" style="max-width: 600px; margin: 15px auto 0;">
-                    Browse our complete catalog of modern, handcrafted pieces. Everything you need to transform your house into a dream home.
-                </p>
+      <section class="wrapper p-block">
+        <div style="text-align: center; margin-bottom: 20px">
+          <h2 class="h2-heading gradient-txt mt-3">
+            All <span>Furniture</span>
+          </h2>
+          <p
+            class="detail-info-platform"
+            style="max-width: 600px; margin: 15px auto 0"
+          >
+            Browse our complete catalog of modern, handcrafted pieces.
+            Everything you need to transform your house into a dream home.
+          </p>
+        </div>
+
+        <!-- Product Sort & Filter Controls -->
+        <div
+          class="product-controls"
+          aria-label="Product sorting and filtering controls"
+        >
+          <select
+            id="sort-products"
+            class="product-control"
+            aria-label="Sort products"
+          >
+            <option value="">Sort By</option>
+            <option value="price-low-high">Price: Low to High</option>
+            <option value="price-high-low">Price: High to Low</option>
+            <option value="newest">Newest</option>
+            <option value="popular">Most Popular</option>
+          </select>
+
+          <select
+            id="filter-category"
+            class="product-control"
+            aria-label="Filter by category"
+          >
+            <option value="">All Categories</option>
+          </select>
+
+          <select
+            id="filter-price"
+            class="product-control"
+            aria-label="Filter by price range"
+          >
+            <option value="">All Prices</option>
+            <option value="0-100">Under $100</option>
+            <option value="100-500">$100 - $500</option>
+            <option value="500-1000">$500 - $1000</option>
+            <option value="1000-above">Above $1000</option>
+          </select>
+
+          <select
+            id="filter-availability"
+            class="product-control"
+            aria-label="Filter by availability"
+          >
+            <option value="">All Availability</option>
+            <option value="in-stock">In Stock</option>
+            <option value="out-of-stock">Out of Stock</option>
+          </select>
+
+          <button
+            type="button"
+            id="reset-product-filters"
+            class="product-reset-btn"
+          >
+            Reset
+          </button>
+        </div>
+
+        <p
+          id="product-results-count"
+          class="product-results-count"
+          aria-live="polite"
+        ></p>
+        <p id="product-no-results" class="product-no-results" hidden>
+          No products match your filters.
+        </p>
+        <!-- Products Grid -->
+        <div class="products-grid" id="furniture-grid">
+          <!-- SKELETON CARDS (hidden after page load) -->
+          <div class="skeleton-card" aria-hidden="true">
+            <div class="skeleton skeleton-image"></div>
+            <div class="skeleton skeleton-text-sm"></div>
+            <div class="skeleton skeleton-text-md"></div>
+            <div class="skeleton skeleton-text-price"></div>
+          </div>
+          <div class="skeleton-card" aria-hidden="true">
+            <div class="skeleton skeleton-image"></div>
+            <div class="skeleton skeleton-text-sm"></div>
+            <div class="skeleton skeleton-text-md"></div>
+            <div class="skeleton skeleton-text-price"></div>
+          </div>
+          <div class="skeleton-card" aria-hidden="true">
+            <div class="skeleton skeleton-image"></div>
+            <div class="skeleton skeleton-text-sm"></div>
+            <div class="skeleton skeleton-text-md"></div>
+            <div class="skeleton skeleton-text-price"></div>
+          </div>
+          <div class="skeleton-card" aria-hidden="true">
+            <div class="skeleton skeleton-image"></div>
+            <div class="skeleton skeleton-text-sm"></div>
+            <div class="skeleton skeleton-text-md"></div>
+            <div class="skeleton skeleton-text-price"></div>
+          </div>
+          <div class="skeleton-card" aria-hidden="true">
+            <div class="skeleton skeleton-image"></div>
+            <div class="skeleton skeleton-text-sm"></div>
+            <div class="skeleton skeleton-text-md"></div>
+            <div class="skeleton skeleton-text-price"></div>
+          </div>
+          <div class="skeleton-card" aria-hidden="true">
+            <div class="skeleton skeleton-image"></div>
+            <div class="skeleton skeleton-text-sm"></div>
+            <div class="skeleton skeleton-text-md"></div>
+            <div class="skeleton skeleton-text-price"></div>
+          </div>
+          <div class="skeleton-card" aria-hidden="true">
+            <div class="skeleton skeleton-image"></div>
+            <div class="skeleton skeleton-text-sm"></div>
+            <div class="skeleton skeleton-text-md"></div>
+            <div class="skeleton skeleton-text-price"></div>
+          </div>
+
+          <!-- Product 1 -->
+          <div
+            class="product-card product-card--hidden"
+            data-created="2026-07-01"
+            data-popularity="95"
+            data-availability="in-stock"
+          >
+            <div class="product-image">
+              <img
+                src="images/modern chair.png"
+                alt="Modern Chair"
+                width="700"
+                height="846"
+                decoding="async"
+                loading="lazy"
+              />
+              <a
+                href="#"
+                class="favorite-icon"
+                aria-label="Add to wishlist"
+                data-wishlist-btn
+              >
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
             </div>
-
-            <!-- Products Grid -->
-            <div class="products-grid" id="furniture-grid">
-
-                <!-- SKELETON CARDS (hidden after page load) -->
-                <div class="skeleton-card" aria-hidden="true">
-                    <div class="skeleton skeleton-image"></div>
-                    <div class="skeleton skeleton-text-sm"></div>
-                    <div class="skeleton skeleton-text-md"></div>
-                    <div class="skeleton skeleton-text-price"></div>
-                </div>
-                <div class="skeleton-card" aria-hidden="true">
-                    <div class="skeleton skeleton-image"></div>
-                    <div class="skeleton skeleton-text-sm"></div>
-                    <div class="skeleton skeleton-text-md"></div>
-                    <div class="skeleton skeleton-text-price"></div>
-                </div>
-                <div class="skeleton-card" aria-hidden="true">
-                    <div class="skeleton skeleton-image"></div>
-                    <div class="skeleton skeleton-text-sm"></div>
-                    <div class="skeleton skeleton-text-md"></div>
-                    <div class="skeleton skeleton-text-price"></div>
-                </div>
-                <div class="skeleton-card" aria-hidden="true">
-                    <div class="skeleton skeleton-image"></div>
-                    <div class="skeleton skeleton-text-sm"></div>
-                    <div class="skeleton skeleton-text-md"></div>
-                    <div class="skeleton skeleton-text-price"></div>
-                </div>
-                <div class="skeleton-card" aria-hidden="true">
-                    <div class="skeleton skeleton-image"></div>
-                    <div class="skeleton skeleton-text-sm"></div>
-                    <div class="skeleton skeleton-text-md"></div>
-                    <div class="skeleton skeleton-text-price"></div>
-                </div>
-                <div class="skeleton-card" aria-hidden="true">
-                    <div class="skeleton skeleton-image"></div>
-                    <div class="skeleton skeleton-text-sm"></div>
-                    <div class="skeleton skeleton-text-md"></div>
-                    <div class="skeleton skeleton-text-price"></div>
-                </div>
-                <div class="skeleton-card" aria-hidden="true">
-                    <div class="skeleton skeleton-image"></div>
-                    <div class="skeleton skeleton-text-sm"></div>
-                    <div class="skeleton skeleton-text-md"></div>
-                    <div class="skeleton skeleton-text-price"></div>
-                </div>
-
-                <!-- Product 1 -->
-                <div class="product-card product-card--hidden">
-                    <div class="product-image">
-                        <img src="images/modern chair.png" alt="Modern Chair" width="700" height="846" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
-                            <i class="fa-regular fa-heart" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
-                    </div>
-                    <div>
-                        <small>Seating</small>
-                        <h6>Modern Chair</h6>
-                        <p class="price">$100.00</p>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card product-card--hidden">
-                    <div class="product-image">
-                        <img src="images/lounge chair.png" alt="Lounge Chair" width="700" height="871" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
-                            <i class="fa-regular fa-heart" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
-                    </div>
-                    <div>
-                        <small>Seating</small>
-                        <h6>Embrace Lounge Chair</h6>
-                        <p class="price">$200.00</p>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card product-card--hidden">
-                    <div class="product-image">
-                        <img src="images/side table.png" alt="Side Table" width="700" height="808" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
-                            <i class="fa-regular fa-heart" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
-                    </div>
-                    <div>
-                        <small>Tables</small>
-                        <h6>Side Table</h6>
-                        <p class="price">$150.00</p>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card product-card--hidden">
-                    <div class="product-image">
-                        <img src="images/hanging lamp.png" alt="Aura Pendent Lamp" width="700" height="700" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
-                            <i class="fa-regular fa-heart" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
-                    </div>
-                    <div>
-                        <small>Lighting</small>
-                        <h6>Aura Pendant Lamp</h6>
-                        <p class="price">$30.00</p>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card product-card--hidden">
-                    <div class="product-image">
-                        <img src="images/flower-vase.png" alt="Flower Vase" width="700" height="846" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
-                            <i class="fa-regular fa-heart" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
-                    </div>
-                    <div>
-                        <small>Accessories</small>
-                        <h6>Flower Vase Decor</h6>
-                        <p class="price">$20.00</p>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card product-card--hidden">
-                    <div class="product-image">
-                        <img src="images/bed.png" alt="Modern Bed" width="1000" height="418" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
-                            <i class="fa-regular fa-heart" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
-                    </div>
-                    <div>
-                        <small>Bedroom</small>
-                        <h6>Modern Scandinavian Bed</h6>
-                        <p class="price">$1500.00</p>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="product-card product-card--hidden">
-                    <div class="product-image">
-                        <img src="images/sofa.png" alt="Luxury Sofa" width="900" height="394" decoding="async" loading="lazy">
-                        <a href="#" class="favorite-icon" aria-label="Add to wishlist" data-wishlist-btn>
-                            <i class="fa-regular fa-heart" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
-                    </div>
-                    <div>
-                        <small>Seating</small>
-                        <h6>Luxury Sectional Sofa</h6>
-                        <p class="price">$1200.00</p>
-                    </div>
-                </div>
-
+            <div>
+              <small>Seating</small>
+              <h6>Modern Chair</h6>
+              <p class="price">$100.00</p>
             </div>
-        </section>
+          </div>
+
+          <!-- Product 2 -->
+          <div
+            class="product-card product-card--hidden"
+            data-created="2026-06-20"
+            data-popularity="88"
+            data-availability="in-stock"
+          >
+            <div class="product-image">
+              <img
+                src="images/lounge chair.png"
+                alt="Lounge Chair"
+                width="700"
+                height="871"
+                decoding="async"
+                loading="lazy"
+              />
+              <a
+                href="#"
+                class="favorite-icon"
+                aria-label="Add to wishlist"
+                data-wishlist-btn
+              >
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
+            </div>
+            <div>
+              <small>Seating</small>
+              <h6>Embrace Lounge Chair</h6>
+              <p class="price">$200.00</p>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div
+            class="product-card product-card--hidden"
+            data-created="2026-06-12"
+            data-popularity="75"
+            data-availability="in-stock"
+          >
+            <div class="product-image">
+              <img
+                src="images/side table.png"
+                alt="Side Table"
+                width="700"
+                height="808"
+                decoding="async"
+                loading="lazy"
+              />
+              <a
+                href="#"
+                class="favorite-icon"
+                aria-label="Add to wishlist"
+                data-wishlist-btn
+              >
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
+            </div>
+            <div>
+              <small>Tables</small>
+              <h6>Side Table</h6>
+              <p class="price">$150.00</p>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div
+            class="product-card product-card--hidden"
+            data-created="2026-07-04"
+            data-popularity="82"
+            data-availability="out-of-stock"
+          >
+            <div class="product-image">
+              <img
+                src="images/hanging lamp.png"
+                alt="Aura Pendent Lamp"
+                width="700"
+                height="700"
+                decoding="async"
+                loading="lazy"
+              />
+              <a
+                href="#"
+                class="favorite-icon"
+                aria-label="Add to wishlist"
+                data-wishlist-btn
+              >
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
+            </div>
+            <div>
+              <small>Lighting</small>
+              <h6>Aura Pendant Lamp</h6>
+              <p class="price">$30.00</p>
+            </div>
+          </div>
+
+          <!-- Product 5 -->
+          <div
+            class="product-card product-card--hidden"
+            data-created="2026-05-28"
+            data-popularity="68"
+            data-availability="in-stock"
+          >
+            <div class="product-image">
+              <img
+                src="images/flower-vase.png"
+                alt="Flower Vase"
+                width="700"
+                height="846"
+                decoding="async"
+                loading="lazy"
+              />
+              <a
+                href="#"
+                class="favorite-icon"
+                aria-label="Add to wishlist"
+                data-wishlist-btn
+              >
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
+            </div>
+            <div>
+              <small>Accessories</small>
+              <h6>Flower Vase Decor</h6>
+              <p class="price">$20.00</p>
+            </div>
+          </div>
+
+          <!-- Product 6 -->
+          <div
+            class="product-card product-card--hidden"
+            data-created="2026-07-03"
+            data-popularity="91"
+            data-availability="in-stock"
+          >
+            <div class="product-image">
+              <img
+                src="images/bed.png"
+                alt="Modern Bed"
+                width="1000"
+                height="418"
+                decoding="async"
+                loading="lazy"
+              />
+              <a
+                href="#"
+                class="favorite-icon"
+                aria-label="Add to wishlist"
+                data-wishlist-btn
+              >
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
+            </div>
+            <div>
+              <small>Bedroom</small>
+              <h6>Modern Scandinavian Bed</h6>
+              <p class="price">$1500.00</p>
+            </div>
+          </div>
+
+          <!-- Product 7 -->
+          <div
+            class="product-card product-card--hidden"
+            data-created="2026-06-30"
+            data-popularity="97"
+            data-availability="out-of-stock"
+          >
+            <div class="product-image">
+              <img
+                src="images/sofa.png"
+                alt="Luxury Sofa"
+                width="900"
+                height="394"
+                decoding="async"
+                loading="lazy"
+              />
+              <a
+                href="#"
+                class="favorite-icon"
+                aria-label="Add to wishlist"
+                data-wishlist-btn
+              >
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="btn brown-bg" data-cart-btn>Add to cart</a>
+            </div>
+            <div>
+              <small>Seating</small>
+              <h6>Luxury Sectional Sofa</h6>
+              <p class="price">$1200.00</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- FOOTER PART -->
-            <footer id="contact" class="footer-image">
-        <div class="wrapper p-block flex g-one-half">
-            <div class="footer-wrapper">
-                <a href="index.html" class="logo">Furnix.</a>
-                <h3>sign up to receive 10% off <br> on your first order</h3>
-                <div class="input-container">
-                    <input type="email" name="email" id="footerEmail" placeholder="Enter your email.." autocomplete="off">
-                    <a href="#" class="simple-icon" aria-label="Open details"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
-                <ul class="footer-social-icon flex">
-                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-            <div class="footer-wrapper">
-                <h5>collections</h5>
-                <ul>
-                    <li><a href="collections.html" class="footer-link">Seating</a></li>
-                    <li><a href="furniture.html" class="footer-link">sofas</a></li>
-                    <li><a href="furniture.html" class="footer-link">Lighting</a></li>
-                    <li><a href="furniture.html" class="footer-link">Accessories</a></li>
-                </ul>
-                <ul class="footer-contact-details">
-                    <li class="contact"><a href="tel:+91123456789" class="footer-link">+91 123 456 789</a></li>
-                    <li class="contact"><a href="mailto:Furnixhome@info.com" class="footer-link">Furnixhome@info.com</a></li>
-                </ul>
-            </div>
-            <div class="footer-wrapper">
-                <h5>designers</h5>
-                <ul>
-                    <li><a href="designers.html" class="footer-link">John Oliver</a></li>
-                    <li><a href="designers.html" class="footer-link">Annie Lilt</a></li>
-                    <li><a href="designers.html" class="footer-link">Frank Daniel</a></li>
-                </ul>
-            </div>
-            <div class="footer-wrapper">
-                <h5>information</h5>
-                <ul>
-                    <li><a href="story.html" class="footer-link">our story</a></li>
-                    <li><a href="journal.html" class="footer-link">our journal</a></li>
-                    <li><a href="faq.html" class="footer-link">FAQ's</a></li>
-                    <li><a href="contact.html" class="footer-link">contact us</a></li>
-                </ul>
-            </div>
+    <footer id="contact" class="footer-image">
+      <div class="wrapper p-block flex g-one-half">
+        <div class="footer-wrapper">
+          <a href="index.html" class="logo">Furnix.</a>
+          <h3>
+            sign up to receive 10% off <br />
+            on your first order
+          </h3>
+          <div class="input-container">
+            <input
+              type="email"
+              name="email"
+              id="footerEmail"
+              placeholder="Enter your email.."
+              autocomplete="off"
+            />
+            <a href="#" class="simple-icon" aria-label="Open details"
+              ><i class="fa-solid fa-arrow-right" aria-hidden="true"></i
+            ></a>
+          </div>
+          <ul class="footer-social-icon flex">
+            <li>
+              <a href="#" class="icon" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f" aria-hidden="true"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" class="icon" aria-label="X"
+                ><i class="fa-brands fa-x-twitter" aria-hidden="true"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" class="icon" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram" aria-hidden="true"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" class="icon" aria-label="Pinterest"
+                ><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i
+              ></a>
+            </li>
+          </ul>
         </div>
-        <div class="copy-right mt-3">
-            <p>&copy; 2025 copyright furnix homes. powered by <span><i>janavi pandole</i></span></p>
+        <div class="footer-wrapper">
+          <h5>collections</h5>
+          <ul>
+            <li><a href="collections.html" class="footer-link">Seating</a></li>
+            <li><a href="furniture.html" class="footer-link">sofas</a></li>
+            <li><a href="furniture.html" class="footer-link">Lighting</a></li>
+            <li>
+              <a href="furniture.html" class="footer-link">Accessories</a>
+            </li>
+          </ul>
+          <ul class="footer-contact-details">
+            <li class="contact">
+              <a href="tel:+91123456789" class="footer-link">+91 123 456 789</a>
+            </li>
+            <li class="contact">
+              <a href="mailto:Furnixhome@info.com" class="footer-link"
+                >Furnixhome@info.com</a
+              >
+            </li>
+          </ul>
         </div>
+        <div class="footer-wrapper">
+          <h5>designers</h5>
+          <ul>
+            <li>
+              <a href="designers.html" class="footer-link">John Oliver</a>
+            </li>
+            <li><a href="designers.html" class="footer-link">Annie Lilt</a></li>
+            <li>
+              <a href="designers.html" class="footer-link">Frank Daniel</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-wrapper">
+          <h5>information</h5>
+          <ul>
+            <li><a href="story.html" class="footer-link">our story</a></li>
+            <li><a href="journal.html" class="footer-link">our journal</a></li>
+            <li><a href="faq.html" class="footer-link">FAQ's</a></li>
+            <li><a href="contact.html" class="footer-link">contact us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copy-right mt-3">
+        <p>
+          &copy; 2025 copyright furnix homes. powered by
+          <span><i>janavi pandole</i></span>
+        </p>
+      </div>
     </footer>
-<button id="topBtn" onclick="scrollToTop()">↑ Top</button>
+    <button id="topBtn" onclick="scrollToTop()">↑ Top</button>
     <script src="app.js"></script>
     <script type="module" src="auth.js"></script>
-</body>
+  </body>
 </html>
