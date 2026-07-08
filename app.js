@@ -993,3 +993,43 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
+// Security: Input Sanitization Pipeline & CSRF (Issue #194)
+(function setupSecurityPipeline() {
+    // CSRF Generator
+    if (!sessionStorage.getItem('csrf_token')) {
+        const token = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2);
+        sessionStorage.setItem('csrf_token', token);
+    }
+
+    // Attach CSRF to forms
+    document.addEventListener('submit', function(e) {
+        if (e.target.tagName === 'FORM') {
+            let csrfInput = e.target.querySelector('input[name="csrf_token"]');
+            if (!csrfInput) {
+                csrfInput = document.createElement('input');
+                csrfInput.type = 'hidden';
+                csrfInput.name = 'csrf_token';
+                csrfInput.value = sessionStorage.getItem('csrf_token');
+                e.target.appendChild(csrfInput);
+            }
+        }
+    });
+
+    // XSS Sanitizer
+    document.addEventListener('input', function(e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+            if (e.target.type !== 'password' && e.target.type !== 'email') {
+                const val = e.target.value;
+                if (val.includes('<') || val.includes('>')) {
+                    const sanitized = val.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    const caretPos = e.target.selectionStart;
+                    e.target.value = sanitized;
+                    // Try to restore cursor position if possible
+                    try { e.target.setSelectionRange(caretPos, caretPos); } catch(err) {}
+                }
+            }
+        }
+    });
+})();
