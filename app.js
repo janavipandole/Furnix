@@ -993,3 +993,37 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
+// Perf: IntersectionObserver Lazy Asset Loader (Issue #190)
+document.addEventListener("DOMContentLoaded", () => {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        if (!img.complete) {
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.6s ease-in-out';
+        }
+    });
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.complete) {
+                    img.style.opacity = '1';
+                } else {
+                    img.addEventListener('load', () => {
+                        img.style.opacity = '1';
+                    });
+                }
+                // Pre-fetching helper logic (if data-src exists)
+                if (img.dataset.src && !img.src) {
+                    img.src = img.dataset.src;
+                }
+                observer.unobserve(img);
+            }
+        });
+    }, { rootMargin: '50px 0px', threshold: 0.01 });
+
+    images.forEach(img => observer.observe(img));
+});
