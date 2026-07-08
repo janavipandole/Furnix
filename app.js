@@ -993,3 +993,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
+// Global Error Boundary (Issue #198)
+window.addEventListener('error', function(event) {
+    if (document.getElementById('global-error-boundary')) return;
+
+    const errorDiv = document.createElement('div');
+    errorDiv.id = 'global-error-boundary';
+    errorDiv.innerHTML = `
+        <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.9); display: flex; justify-content: center; align-items: center; z-index: 999999; backdrop-filter: blur(10px);">
+            <div style="background: #111; border: 2px solid #ff0055; box-shadow: 0 0 20px #ff0055, inset 0 0 20px rgba(255, 0, 85, 0.2); border-radius: 12px; padding: 40px; max-width: 500px; width: 90%; text-align: center; color: #fff; font-family: 'Jost', sans-serif;">
+                <i class="fa-solid fa-triangle-exclamation" style="font-size: 3rem; color: #ff0055; margin-bottom: 20px;"></i>
+                <h2 style="font-size: 1.8rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; color: #ff0055; text-shadow: 0 0 10px #ff0055;">System Failure</h2>
+                <p style="font-size: 1rem; color: #ccc; margin-bottom: 20px; word-wrap: break-word;">${event.message || 'An unexpected script error occurred.'}</p>
+                <button onclick="window.location.reload()" style="background: transparent; border: 1px solid #ff0055; color: #ff0055; padding: 12px 24px; font-size: 1rem; font-family: inherit; border-radius: 6px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 0 10px rgba(255, 0, 85, 0.2);" onmouseover="this.style.background='#ff0055'; this.style.color='#fff'; this.style.boxShadow='0 0 20px #ff0055';" onmouseout="this.style.background='transparent'; this.style.color='#ff0055'; this.style.boxShadow='0 0 10px rgba(255, 0, 85, 0.2)';">Reload Interface</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(errorDiv);
+});
