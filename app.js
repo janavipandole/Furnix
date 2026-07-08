@@ -993,3 +993,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
+// Make entire category cards clickable (Issue #151)
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.category-card').forEach(card => {
+    // Check if it contains a link
+    const link = card.querySelector('a');
+    if (link) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', (e) => {
+        // Prevent double navigation if the user clicked the link directly
+        if (!e.target.closest('a')) {
+          window.location.href = link.href;
+        }
+      });
+    }
+  });
+});
