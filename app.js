@@ -993,3 +993,100 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
+// Newsletter Signup Modal Hub (Issue #196)
+document.addEventListener("DOMContentLoaded", () => {
+    if (sessionStorage.getItem('newsletter_shown')) return;
+
+    setTimeout(() => {
+        const modalOverlay = document.createElement('div');
+        modalOverlay.id = 'newsletter-modal-overlay';
+        modalOverlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 99999; opacity: 0; transition: opacity 0.4s ease; backdrop-filter: blur(5px);';
+
+        const modalBox = document.createElement('div');
+        modalBox.style.cssText = 'background: var(--card, #fff); color: var(--text, #111); padding: 40px; border-radius: 16px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 20px 40px rgba(0,0,0,0.2); position: relative; transform: translateY(20px); transition: transform 0.4s ease; font-family: "Jost", sans-serif;';
+
+        const closeBtn = document.createElement('button');
+        closeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        closeBtn.style.cssText = 'position: absolute; top: 15px; right: 15px; background: transparent; border: none; font-size: 1.5rem; color: var(--text-muted, #888); cursor: pointer; transition: 0.3s;';
+        closeBtn.onmouseover = () => closeBtn.style.color = 'var(--text, #111)';
+        closeBtn.onmouseout = () => closeBtn.style.color = 'var(--text-muted, #888)';
+
+        const heading = document.createElement('h3');
+        heading.innerText = 'Join Our Newsletter';
+        heading.style.cssText = 'font-size: 1.8rem; margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;';
+
+        const para = document.createElement('p');
+        para.innerText = 'Sign up to receive 10% off your first order and exclusive updates.';
+        para.style.cssText = 'font-size: 1rem; color: var(--text-muted, #666); margin-bottom: 25px;';
+
+        const form = document.createElement('form');
+        form.style.cssText = 'display: flex; flex-direction: column; gap: 15px;';
+        
+        const input = document.createElement('input');
+        input.type = 'email';
+        input.placeholder = 'Enter your email address...';
+        input.required = true;
+        input.style.cssText = 'width: 100%; padding: 14px 20px; border-radius: 8px; border: 1px solid var(--border, #ddd); background: var(--bg, #f9f9f9); color: var(--text, #111); font-size: 1rem; outline: none; transition: 0.3s; font-family: inherit; box-sizing: border-box;';
+        input.onfocus = () => input.style.borderColor = 'var(--golden-hour, #c77b30)';
+        input.onblur = () => input.style.borderColor = 'var(--border, #ddd)';
+
+        const submitBtn = document.createElement('button');
+        submitBtn.type = 'submit';
+        submitBtn.innerText = 'SUBSCRIBE NOW';
+        submitBtn.style.cssText = 'width: 100%; padding: 14px 20px; border-radius: 8px; border: none; background: linear-gradient(135deg, #f6c15a, #d98b36); color: #111; font-size: 1rem; font-weight: 600; cursor: pointer; transition: 0.3s; letter-spacing: 1px; font-family: inherit; box-sizing: border-box;';
+        submitBtn.onmouseover = () => submitBtn.style.transform = 'translateY(-2px)';
+        submitBtn.onmouseout = () => submitBtn.style.transform = 'translateY(0)';
+
+        const msg = document.createElement('p');
+        msg.style.cssText = 'margin-top: 15px; font-size: 0.9rem; font-weight: 500; display: none;';
+
+        form.appendChild(input);
+        form.appendChild(submitBtn);
+
+        modalBox.appendChild(closeBtn);
+        modalBox.appendChild(heading);
+        modalBox.appendChild(para);
+        modalBox.appendChild(form);
+        modalBox.appendChild(msg);
+
+        modalOverlay.appendChild(modalBox);
+        document.body.appendChild(modalOverlay);
+
+        // Animation
+        setTimeout(() => {
+            modalOverlay.style.opacity = '1';
+            modalBox.style.transform = 'translateY(0)';
+        }, 50);
+
+        const closeModal = () => {
+            modalOverlay.style.opacity = '0';
+            modalBox.style.transform = 'translateY(-20px)';
+            setTimeout(() => modalOverlay.remove(), 400);
+            sessionStorage.setItem('newsletter_shown', 'true');
+        };
+
+        closeBtn.onclick = closeModal;
+        modalOverlay.onclick = (e) => {
+            if (e.target === modalOverlay) closeModal();
+        };
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailRegex.test(input.value)) {
+                msg.style.display = 'block';
+                msg.style.color = '#256029';
+                msg.innerText = 'Thanks for subscribing!';
+                input.value = '';
+                setTimeout(closeModal, 2000);
+            } else {
+                msg.style.display = 'block';
+                msg.style.color = '#9b281a';
+                msg.innerText = 'Please enter a valid email address.';
+            }
+        };
+
+    }, 3000);
+});
