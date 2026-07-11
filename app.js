@@ -214,7 +214,7 @@ function renderCartPage() {
                 <p class="cart-item-price">$${(item.price * (item.quantity || 1)).toFixed(2)}</p>
                 <div class="cart-quantity-controls">
                     <button class="qty-btn" data-id="${item.id}" data-action="decrease" aria-label="Decrease ${item.name} quantity">-</button>
-                    <span class="qty-value">${item.quantity || 1}</span>
+                    <input type="number" class="qty-input" data-id="${item.id}" value="${item.quantity || 1}" min="1" aria-label="Quantity for ${item.name}" style="width: 3rem; text-align: center; border: 1px solid #ddd; border-radius: 4px; padding: 2px;">
                     <button class="qty-btn" data-id="${item.id}" data-action="increase" aria-label="Increase ${item.name} quantity">+</button>
                 </div>
             </div>
@@ -223,6 +223,22 @@ function renderCartPage() {
             </button>
         `;
     listEl.appendChild(card);
+  });
+
+  listEl.querySelectorAll(".qty-input").forEach((input) => {
+    input.addEventListener("change", (e) => {
+      const id = input.dataset.id;
+      let newQty = parseInt(e.target.value, 10);
+      if (isNaN(newQty) || newQty < 1) newQty = 1;
+      let cart = getCart();
+      const index = cart.findIndex((i) => i.id === id);
+      if (index !== -1) {
+        cart[index].quantity = newQty;
+        saveCart(cart);
+        updateCartBadge();
+        renderCartPage();
+      }
+    });
   });
 
   listEl.querySelectorAll(".qty-btn").forEach((btn) => {
