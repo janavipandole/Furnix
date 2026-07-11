@@ -1,3 +1,22 @@
+
+/* ---- TOAST NOTIFICATIONS ---- */
+function showToast(message, type = "success") {
+    let container = document.getElementById("toast-container");
+    if (!container) {
+        container = document.createElement("div");
+        container.id = "toast-container";
+        container.className = "toast-container";
+        document.body.appendChild(container);
+    }
+    const toast = document.createElement("div");
+    toast.className = `toast toast-${type}`;
+    toast.innerText = message;
+    container.appendChild(toast);
+    setTimeout(() => {
+        toast.classList.add("toast-fade-out");
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
 const menuBtn = document.getElementById("menu");
 const navList = document.getElementById("list");
 const navClose = document.getElementById("navClose");
@@ -320,7 +339,7 @@ const proceedBtn = document.getElementById("proceedToCheckoutBtn");
 if (proceedBtn) {
   proceedBtn.addEventListener("click", () => {
     if (getCart().length === 0) {
-      alert("Your cart is empty!");
+      showToast("Your cart is empty!");
       return;
     }
     goToStep(2);
@@ -401,7 +420,7 @@ if (placeOrderBtn) {
     ).value;
 
     if (!firstName || !email || !address) {
-      alert("Please fill in all required shipping details.");
+      showToast("Please fill in all required shipping details.");
       return;
     }
     if (payment === "card") {
@@ -410,25 +429,25 @@ if (placeOrderBtn) {
       const cvv = document.getElementById("cardCvv").value.trim();
 
       if (!cardNumber || !expiry || !cvv) {
-        alert("Please fill in your card details.");
+        showToast("Please fill in your card details.");
         return;
       }
 
       const digitsOnly = cardNumber.replace(/\s/g, "");
       if (!/^\d{13,19}$/.test(digitsOnly) || !isValidLuhn(digitsOnly)) {
-        alert("Please enter a valid card number.");
+        showToast("Please enter a valid card number.");
         return;
       }
 
       const expiryMatch = expiry.match(/^(\d{2})\s*\/\s*(\d{2})$/);
       if (!expiryMatch) {
-        alert("Please enter a valid expiry date (MM / YY).");
+        showToast("Please enter a valid expiry date (MM / YY).");
         return;
       }
       const expMonth = parseInt(expiryMatch[1], 10);
       const expYear = 2000 + parseInt(expiryMatch[2], 10);
       if (expMonth < 1 || expMonth > 12) {
-        alert("Please enter a valid expiry month (01-12).");
+        showToast("Please enter a valid expiry month (01-12).");
         return;
       }
       const now = new Date();
@@ -440,24 +459,24 @@ if (placeOrderBtn) {
         expYear < currentYear ||
         (expYear === currentYear && expMonth < currentMonth)
       ) {
-        alert("This card has expired. Please use a valid card.");
+        showToast("This card has expired. Please use a valid card.");
         return;
       }
       // Reject unreasonably far-future dates (basic sanity check, e.g. typo like 99)
       if (expYear > currentYear + 20) {
-        alert("Please enter a valid expiry date.");
+        showToast("Please enter a valid expiry date.");
         return;
       }
 
       if (!/^\d{3,4}$/.test(cvv)) {
-        alert("Please enter a valid CVV (3-4 digits).");
+        showToast("Please enter a valid CVV (3-4 digits).");
         return;
       }
     }
     if (payment === "upi") {
       const upiId = document.getElementById("upiId").value.trim();
       if (!upiId || !upiId.includes("@")) {
-        alert("Please enter a valid UPI ID.");
+        showToast("Please enter a valid UPI ID.");
         return;
       }
     }
@@ -537,7 +556,7 @@ function renderWishlistPage() {
       const item = getWishlist().find((i) => i.id === btn.dataset.id);
       if (!item) return;
       addToCart({ ...item });
-      alert(`${item.name} moved to cart!`);
+      showToast(`${item.name} moved to cart!`);
       updateCartBadge(); // ✅ update cart badge
     });
   });
@@ -905,7 +924,7 @@ function shareProduct(title, urlEnding) {
     navigator.clipboard
       .writeText(fullUrl)
       .then(() => {
-        alert(`${title} link copied to clipboard!`);
+        showToast(`${title} link copied to clipboard!`);
       })
       .catch((err) => console.error("Could not copy link:", err));
   }
