@@ -912,17 +912,6 @@ function shareProduct(title, urlEnding) {
 }
 
 
-const themeToggle = document.getElementById("theme-toggle");
-
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-
-    if (document.body.classList.contains("dark-mode")) {
-        localStorage.setItem("theme", "dark");
-    } else {
-        localStorage.setItem("theme", "light");
-    }
-});
 let topBtn = document.getElementById("topBtn");
 
 // show button when scrolling
