@@ -14,6 +14,10 @@ app.use((req, res, next) => {
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+// Serve static frontend files
+app.use(express.static(__dirname));
+
+
 // Gracefully handle malformed JSON bodies
 app.use((err, req, res, next) => {
   if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {

@@ -1,6 +1,38 @@
+// Navbar Scroll Listener & Active Link Handler
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  if (header) {
+    if (window.scrollY > 20) {
+      header.classList.add("navbar-scrolled");
+    } else {
+      header.classList.remove("navbar-scrolled");
+    }
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".navList .link");
+  const currentPath = window.location.pathname.toLowerCase();
+
+  links.forEach((link) => {
+    const href = link.getAttribute("href");
+    if (!href) return;
+    const cleanHref = href.toLowerCase();
+
+    if (
+      (cleanHref !== "#" && currentPath.endsWith(cleanHref)) ||
+      (cleanHref === "index.html" && (currentPath.endsWith("/") || currentPath.endsWith("index.html") || currentPath === ""))
+    ) {
+      link.classList.add("active");
+      link.setAttribute("aria-current", "page");
+    }
+  });
+});
+
 const menuBtn = document.getElementById("menu");
 const navList = document.getElementById("list");
 const navClose = document.getElementById("navClose");
+
 
 if (menuBtn && navList) {
   menuBtn.addEventListener("click", (e) => {
@@ -948,55 +980,74 @@ function shareProduct(title, urlEnding) {
 
 
 
-/* ---- THEME TOGGLE LOGIC ---- */
-document.addEventListener("DOMContentLoaded", () => {
-  const themeToggle = document.getElementById("themeToggle");
-  const themeIcon = document.getElementById("themeIcon");
+/* ---- THEME TOGGLE LOGIC (Sun ↔ Moon animated switch) ---- */
+(function () {
+  // Inline SVG markup for Sun and Moon — matches lucide-react icon paths
+  const SUN_SVG = `<svg class="ts-icon ts-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      aria-hidden="true">
+    <circle cx="12" cy="12" r="4"/>
+    <line x1="12" y1="2"  x2="12" y2="4"/>
+    <line x1="12" y1="20" x2="12" y2="22"/>
+    <line x1="4.22" y1="4.22"  x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="2"  y1="12" x2="4"  y2="12"/>
+    <line x1="20" y1="12" x2="22" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>`;
 
-  function applyTheme(theme) {
-    document.documentElement.setAttribute("data-theme", theme);
-    if (themeIcon) {
-      if (theme === "dark") {
-        themeIcon.classList.remove("fa-moon");
-        themeIcon.classList.add("fa-sun");
-      } else {
-        themeIcon.classList.remove("fa-sun");
-        themeIcon.classList.add("fa-moon");
-      }
-    }
-  }
+  const MOON_SVG = `<svg class="ts-icon ts-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>`;
 
-  const currentTheme =
-    document.documentElement.getAttribute("data-theme") || "light";
-  applyTheme(currentTheme);
-
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-      const current = document.documentElement.getAttribute("data-theme");
-      const next = current === "dark" ? "light" : "dark";
-
-      // Rotating icon animation
-      if (themeIcon) {
-        themeIcon.style.transform = "rotate(180deg) scale(0)";
-        themeIcon.style.transition = "transform 0.15s ease-in-out";
-
-        setTimeout(() => {
-          applyTheme(next);
-          localStorage.setItem("theme", next);
-
-          themeIcon.style.transform = "rotate(360deg) scale(1)";
-          setTimeout(() => {
-            themeIcon.style.transition = "";
-            themeIcon.style.transform = "";
-          }, 150);
-        }, 150);
-      } else {
-        applyTheme(next);
-        localStorage.setItem("theme", next);
-      }
+  function injectIcons() {
+    document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+      // Only inject once
+      if (btn.querySelector('.ts-sun')) return;
+      // Clear any existing children (FontAwesome icon etc.)
+      btn.innerHTML = SUN_SVG + MOON_SVG;
+      btn.setAttribute('aria-label', 'Toggle light / dark mode');
     });
   }
-});
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    // Update aria-pressed on all toggle buttons
+    document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+      btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    });
+  }
+
+  function init() {
+    // Resolve initial theme (init-theme.js may have already set it)
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = saved || (prefersDark ? 'dark' : 'light');
+
+    injectIcons();
+    applyTheme(initial);
+
+    document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', next);
+        applyTheme(next);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
 
 
 
