@@ -79,6 +79,56 @@ cd Furnix-Neon
 open index.html
 ```
 
+---
+
+## 📖 User Guide
+
+This section explains how to navigate and use Furnix Neon.
+
+### 🏠 Home Page
+- Open the website to view featured furniture products.
+- Browse the latest collections from the homepage.
+- Use the navigation bar to move between different pages.
+- Use the search bar to quickly find furniture products.
+
+### 🔍 Search
+1. Use the search bar to enter a product name.
+2. Matching furniture items will be displayed.
+3. Select a product to view its details.
+
+### 🛍️ Collections
+1. Open the **Collections** page.
+2. Browse furniture items.
+3. Click on a product to view its details.
+4. Explore different categories and products.
+
+### 🪑 Product Details
+- View product images.
+- Read product descriptions.
+- Compare furniture before adding it to the cart.
+
+### 🛒 Cart
+1. Click **Add to Cart** on any product.
+2. Open the **Cart** page.
+3. Increase or decrease product quantity if available.
+4. Remove products when they are no longer needed.
+5. Review your selected items before checkout.
+
+### ❤️ Wishlist
+1. Click the **heart** icon on a product.
+2. Saved products appear in the **Wishlist** page.
+3. Remove products from the wishlist whenever needed.
+
+### 🔐 Login
+1. Open the **Login** page.
+2. Enter your credentials.
+3. Click **Sign In** to access your account and personalized features.
+
+### 💡 Tips
+- Browse products before adding them to the cart.
+- Save your favorite furniture items using the Wishlist.
+- Your cart remains available using local storage even after refreshing the page.
+
 ## 📁 Project Structure
 
 ```text
