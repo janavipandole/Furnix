@@ -627,3 +627,54 @@ window.onscroll = function () {
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+
+// ── ThemeManager (dark/light mode) ──
+const THEME_KEY = 'furnix_theme';
+
+const ThemeManager = {
+  apply(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch (e) { /* storage blocked */ }
+    this.updateButton(theme);
+  },
+
+  toggle() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    this.apply(current === 'dark' ? 'light' : 'dark');
+  },
+
+  updateButton(theme) {
+    const btn = document.getElementById('themeToggleBtn');
+    if (!btn) return;
+    const icon = btn.querySelector('i');
+    if (theme === 'dark') {
+      btn.setAttribute('aria-label', 'Switch to light mode');
+      if (icon) { icon.classList.replace('fa-moon', 'fa-sun'); }
+    } else {
+      btn.setAttribute('aria-label', 'Switch to dark mode');
+      if (icon) { icon.classList.replace('fa-sun', 'fa-moon'); }
+    }
+  },
+
+  init() {
+    const theme = document.documentElement.getAttribute('data-theme') || 'light';
+    this.updateButton(theme);
+
+    // Enable transitions after first paint (suppresses FOUC animation)
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.documentElement.classList.add('theme-transitions-enabled');
+      });
+    });
+
+    const btn = document.getElementById('themeToggleBtn');
+    if (btn) {
+      btn.addEventListener('click', () => ThemeManager.toggle());
+    }
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => ThemeManager.init());

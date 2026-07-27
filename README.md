@@ -84,14 +84,20 @@ open index.html
 ```text
 Furnix-Neon/
 ├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   └── app.js
+├── style.css
+├── app.js
+├── ARCHITECTURE.md
+├── docs/
+│   └── DEPLOYMENT.md
+├── scripts/
 ├── images/
-│   └── icons/
 └── README.md
 ```
+
+## 📖 Architecture & Deployment Docs
+- See [ARCHITECTURE.md](ARCHITECTURE.md) for architecture diagram and component overview.
+- See [DEPLOYMENT.md](docs/DEPLOYMENT.md) for Vercel & Docker deployment guides.
+
 ## 🤝 Contributing
 
 Contributions are welcome! This project is open source under **SSoC 2026**, **ECSOC26**, **ELUSOC**.

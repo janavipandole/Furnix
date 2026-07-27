@@ -19,6 +19,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+  (function() {
+    var stored = localStorage.getItem('furnix_theme');
+    if (stored === 'dark' || stored === 'light') {
+      document.documentElement.setAttribute('data-theme', stored);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
     <link rel="stylesheet" href="style.css">
 
     <!-- icons -->
@@ -460,10 +472,10 @@
                     <button type="submit" class="simple-icon" aria-label="Open details" style="background:none; border:none; cursor:pointer;"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
                 </form>
                 <ul class="footer-social-icon flex">
-                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
+                    <li><a href="https://facebook.com" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="https://twitter.com" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="https://instagram.com" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/janavi-pandole-80a7b2290/" class="icon" aria-label="Pinterest"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
             <div class="footer-wrapper">
@@ -510,6 +522,7 @@
             <p>&copy; 2026 copyright furnix homes. All rights reserved.</p>
         </div>
     </footer>
+    <script src="scripts/theme-listener.js"></script>
     <script src="app.js"></script>
     <script src="toast.js"></script>
     <script type="module" src="auth.js"></script>
@@ -517,4 +530,3 @@
 </body>
 
 </html>
-

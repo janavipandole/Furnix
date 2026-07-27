@@ -195,6 +195,12 @@ header {
     transform: scale(1.2);
 }
 
+/* Theme toggle button base styles */
+.theme-toggle-btn {
+    background: none;
+    border: none;
+}
+
 /*  */
 .navList {
     position: fixed;
@@ -2075,4 +2081,283 @@ body {
   opacity: 0;
   animation: fadeSlideUp 0.8s ease forwards;
   animation-delay: 0.35s;
+}
+
+/* ── Dark Theme Variable Overrides ── */
+[data-theme="dark"] {
+  --back: #e8e0d6;
+  --white: #1c1c1c;
+  --gray: #2a2a2a;
+}
+
+/* Body & page background */
+[data-theme="dark"] body {
+  background-color: #121212;
+  color: #e8e0d6;
+}
+
+/* Header */
+[data-theme="dark"] header {
+  background: rgba(18, 18, 18, 0.95);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Nav links on desktop */
+[data-theme="dark"] .navList .link {
+  color: #e8e0d6;
+}
+
+/* Mobile nav drawer */
+[data-theme="dark"] .navList {
+  background: #1e1008;
+}
+
+/* Logo */
+[data-theme="dark"] .logo {
+  color: #e8e0d6;
+}
+
+/* Nav icon buttons */
+[data-theme="dark"] .nav-icons .icon,
+[data-theme="dark"] .icon {
+  color: #e8e0d6;
+}
+
+/* Theme toggle button — no border, clean look */
+[data-theme="dark"] .theme-toggle-btn {
+  background: none;
+  border: none;
+}
+
+/* Hero background circle */
+[data-theme="dark"] .hero-section::before {
+  background: #2a2a2a;
+}
+
+/* Product image backgrounds */
+[data-theme="dark"] .product-image {
+  background: #2a2a2a;
+}
+
+/* Skeleton loading in dark mode */
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
+  background-size: 600px 100%;
+}
+
+/* Headings & text */
+[data-theme="dark"] h3,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] p,
+[data-theme="dark"] a:not(.btn):not(.footer-link) {
+  color: #e8e0d6;
+}
+
+[data-theme="dark"] .detail-info-platform,
+[data-theme="dark"] small {
+  color: #9e9e9e;
+}
+
+[data-theme="dark"] del {
+  color: #888;
+}
+
+/* Bed details card */
+[data-theme="dark"] .bed-details {
+  background-color: rgba(28, 28, 28, 0.92);
+}
+
+/* Review cards */
+[data-theme="dark"] .review-card {
+  background: linear-gradient(to top, #252525 70%, #1c1c1c 20%);
+}
+
+[data-theme="dark"] .review-card h5 {
+  color: #e8e0d6;
+}
+
+/* Service cards */
+[data-theme="dark"] .service-card {
+  background: #242424;
+}
+
+[data-theme="dark"] .service-card h5,
+[data-theme="dark"] .service-card p {
+  color: #e8e0d6;
+}
+
+/* Gradient bg section */
+[data-theme="dark"] .gradient-bg {
+  background: linear-gradient(to top, #1e1e1e 30%, #2a2a2a, #1c1c1c);
+}
+
+/* Designer cards */
+[data-theme="dark"] .designer-card {
+  background: #242424;
+  border-color: #383838;
+}
+
+[data-theme="dark"] .designer-card h5,
+[data-theme="dark"] .designer-card p {
+  color: #e8e0d6;
+}
+
+/* FAQ cards */
+[data-theme="dark"] .faq-card {
+  background: #242424;
+  border-color: #383838;
+}
+
+[data-theme="dark"] .faq-card h5 {
+  color: #e8e0d6;
+}
+
+/* Forms */
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .form-textarea {
+  background: #2a2a2a;
+  color: #e8e0d6;
+  border-color: #444;
+}
+
+[data-theme="dark"] .form-input:focus,
+[data-theme="dark"] .form-textarea:focus {
+  background: #333;
+  border-color: var(--antique-brown);
+}
+
+[data-theme="dark"] .form-label {
+  color: #e8e0d6;
+}
+
+/* Contact sections */
+[data-theme="dark"] .contact-form-section {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+[data-theme="dark"] .contact-info-section {
+  background: #242424;
+}
+
+/* Cart & checkout */
+[data-theme="dark"] .cart-item-card {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+[data-theme="dark"] .cart-item-image {
+  background: #2a2a2a;
+}
+
+[data-theme="dark"] .cart-summary-box {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+[data-theme="dark"] .summary-title {
+  border-bottom-color: #333;
+}
+
+[data-theme="dark"] .summary-row.total {
+  border-top-color: #555;
+}
+
+[data-theme="dark"] .checkout-block {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+[data-theme="dark"] .checkout-order-box {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+[data-theme="dark"] .checkout-form-title {
+  color: #e8e0d6;
+  border-bottom-color: #333;
+}
+
+[data-theme="dark"] .checkout-order-item {
+  border-bottom-color: #333;
+}
+
+[data-theme="dark"] .checkout-order-item-img {
+  background: #2a2a2a;
+}
+
+[data-theme="dark"] .payment-option {
+  border-color: #444;
+}
+
+[data-theme="dark"] .payment-option:hover {
+  border-color: var(--antique-brown);
+}
+
+/* Quantity buttons */
+[data-theme="dark"] .qty-btn {
+  background: #333;
+  border-color: #555;
+  color: #e8e0d6;
+}
+
+/* Success modal */
+[data-theme="dark"] .success-box {
+  background: #1e1e1e;
+}
+
+/* Step indicator */
+[data-theme="dark"] .step-circle {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #888;
+}
+
+[data-theme="dark"] .step-line {
+  background: #444;
+}
+
+/* Page section background */
+[data-theme="dark"] .page-section {
+  background: #121212;
+}
+
+/* Cart empty / wishlist empty state icons */
+[data-theme="dark"] .cart-empty-state i,
+[data-theme="dark"] .wishlist-empty-state i {
+  color: #444;
+}
+
+[data-theme="dark"] .cart-empty-state h3,
+[data-theme="dark"] .wishlist-empty-state h3 {
+  color: #666;
+}
+
+/* Wishlist remove button */
+[data-theme="dark"] .wishlist-remove-btn {
+  border-color: #444;
+  color: #888;
+}
+
+/* Back-to-cart button */
+[data-theme="dark"] .back-to-cart-btn {
+  color: var(--antique-brown);
+  border-color: var(--antique-brown);
+}
+
+/* Scroll-to-top button */
+[data-theme="dark"] #topBtn {
+  background-color: #333;
+  color: #e8e0d6;
+}
+
+/* Transition block — only applied after ThemeManager.init() enables it */
+html.theme-transitions-enabled,
+html.theme-transitions-enabled * {
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    border-color 250ms ease !important;
 }

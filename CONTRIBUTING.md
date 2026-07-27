@@ -24,27 +24,41 @@ Your help makes this project better for everyone.
 
 1. **Fork the repository**
 
-2. **Create a feature branch**
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. **Make your changes**
-   - Follow the project’s coding style.
-   - Write clear, self-explanatory commits.
+2. **Create a branch**
+   Use standard naming conventions to identify your branch:
+   - For bug fixes or specific issues: `issue/issue-id-short-description` (e.g., `issue/256-update-contributing`)
+   - For new features: `feature/feature-name` (e.g., `feature/user-dashboard`)
 
-4. **Add tests (if applicable)**
+   ```bash
+   git checkout -b issue/issue-id-short-description
+   ```
 
-5. **Commit your changes**
+3. **Make your changes using the Isolated Submissions Workflow**
+   To preserve the stability of the main production branch and minimize merge conflicts, **do not edit core/root files directly** (such as `index.html`, `style.css`, etc.) in your initial contribution.
+   
+   Instead, use the following **Submissions Workflow**:
+   - Create isolated demonstration/test files inside the `submissions/` directory (e.g., `submissions/issue-xxx-demo.html`, `submissions/issue-xxx-style.css`).
+   - Duplicate or reference existing page logic/styling inside your isolated files to showcase your fix or feature in a sandbox environment.
+   - Commit and push only these isolated files (or clean updates to existing files in the `submissions/` directory).
+
+4. **Commit your changes**
    ```bash
-   git commit -m "Add feature: description"
+   git commit -m "Add fix/feature: description"
    ```
-6. **Push to your fork**
+5. **Push to your fork**
    ```bash
-   git push origin feature/your-feature-name
+   git push origin issue/issue-id-short-description
    ```
-7. **Open a Pull Request**
+6. **Open a Pull Request**
    - Describe what you changed and why.
    - Reference any related issues.
+   
+### Submissions Workflow Review & Integration
+
+Once a pull request containing your isolated submissions files is opened:
+1. **Maintainer Review**: The project maintainer will review, run, and test your changes within the isolated sandbox files inside the `submissions/` folder.
+2. **Integration**: After approval, the maintainer will merge the PR and integrate/apply the sandbox changes to the core main codebase files (`index.html`, `style.css`, etc.).
+3. **Cleanup**: The temporary submission files will then be removed or kept as test cases as appropriate.
 
 ### Code Style
 

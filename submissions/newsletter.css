@@ -18,3 +18,86 @@
     text-shadow: 0 0 8px rgba(255, 0, 85, 0.4);
     margin-bottom: 20px;
 }
+
+.newsletter-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.newsletter-input:focus {
+    border-color: #ff0055;
+    box-shadow: 0 0 8px rgba(255, 0, 85, 0.3);
+}
+
+.newsletter-input.invalid {
+    border-color: #ff4444;
+    box-shadow: 0 0 8px rgba(255, 68, 68, 0.4);
+}
+
+.newsletter-submit-btn, .newsletter-reset-btn {
+    padding: 12px 20px;
+    background: #ff0055;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.newsletter-submit-btn:hover, .newsletter-reset-btn:hover {
+    background: #e0004c;
+}
+
+.newsletter-error-msg {
+    color: #ff4444;
+    font-size: 13px;
+    text-align: left;
+    min-height: 18px;
+}
+
+.newsletter-success-feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.newsletter-success-feedback .success-icon {
+    font-size: 32px;
+    color: #00ff88;
+}
+
+.sub-count {
+    color: #aaa;
+    font-size: 12px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
