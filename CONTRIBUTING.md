@@ -60,6 +60,16 @@ Once a pull request containing your isolated submissions files is opened:
 2. **Integration**: After approval, the maintainer will merge the PR and integrate/apply the sandbox changes to the core main codebase files (`index.html`, `style.css`, etc.).
 3. **Cleanup**: The temporary submission files will then be removed or kept as test cases as appropriate.
 
+### Local Testing & Diagnostic Tool
+
+Before submitting a Pull Request, verify that all core application files and documentation remain intact by running:
+
+```bash
+node scripts/dev-environment-check.js
+```
+
+Refer to [STOREFRONT_ARCHITECTURE.md](docs/STOREFRONT_ARCHITECTURE.md) and [CLIENT_API_REFERENCE.md](docs/CLIENT_API_REFERENCE.md) for architectural guidelines and JavaScript module APIs.
+
 ### Code Style
 
 - Use clear and consistent naming conventions.
@@ -68,6 +78,7 @@ Once a pull request containing your isolated submissions files is opened:
 
 ### ✅ Pull Request Checklist
 
+- I ran `node scripts/dev-environment-check.js` and passed all checks.
 - I updated relevant documentation (if needed)
 - I linked the PR to any relevant issues
 

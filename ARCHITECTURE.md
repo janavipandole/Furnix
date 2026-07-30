@@ -36,6 +36,14 @@ graph TD
 ### 3. API & Server Subsystem
 - `server.js`: Express server providing JSON body parsing, CORS headers, email format validation, and robust error handling.
 
+### 4. Modular Client Engine Layer
+- `scripts/cart-engine.js`, `scripts/cart-calculator.js`: Managed shopping cart and dynamic promo code calculation.
+- `scripts/product-modal.js`, `scripts/wishlist-sync.js`: Accessible quickview modals and cross-tab wishlist state synchronizer.
+- `scripts/security-sanitizer.js`, `scripts/auth-manager.js`: DOM XSS input sanitization and password strength scoring.
+- `scripts/search-engine.js`, `scripts/filter-controller.js`: Fuzzy product text matching and multi-criteria sorting.
+- For detailed subsystem specifications, see [STOREFRONT_ARCHITECTURE.md](docs/STOREFRONT_ARCHITECTURE.md).
+- For developer API method signatures, see [CLIENT_API_REFERENCE.md](docs/CLIENT_API_REFERENCE.md).
+
 ---
 
 ## Environment & Deployment Guide

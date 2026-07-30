@@ -289,6 +289,10 @@
             <div class="input-group">
                 <label for="signupPassword">Password</label>
                 <input type="password" id="signupPassword" placeholder="Create a password" required autocomplete="new-password" minlength="6" data-validate="required|minLength:6:Password must be at least 6 characters">
+                <div class="password-strength-container" style="margin-top: 0.5rem;">
+                    <div id="passwordStrengthBar" style="height: 4px; width: 0%; background: #e0e0e0; border-radius: 2px; transition: all 0.3s ease;"></div>
+                    <span id="passwordStrengthText" style="font-size: 0.75rem; color: #666; display: block; margin-top: 0.25rem;">Strength: Empty</span>
+                </div>
                 <p class="input-hint">At least 6 characters.</p>
             </div>
 
@@ -317,8 +321,9 @@
     </div>
 </div>
 
+<script src="scripts/security-sanitizer.js"></script>
+<script src="scripts/auth-manager.js"></script>
 <script src="form-validation.js"></script>
-<script type="module" src="signup-auth.js"></script>
 
 </body>
 </html>

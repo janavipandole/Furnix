@@ -31,7 +31,15 @@ docker-compose up -d
 
 ---
 
-## Health Verification
+## Pre-Flight & Health Verification
+
+### 1. File & Component Diagnostic Verification
+Before pushing build artifacts or deploying container images, execute the diagnostic validation script:
+```bash
+node scripts/dev-environment-check.js
+```
+
+### 2. Endpoint Health Verification
 Verify deployment status by running:
 ```bash
 curl -I http://localhost:5000/api/contact

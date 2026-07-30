@@ -99,15 +99,10 @@
                 <p class="detail-info-platform">Loading your account...</p>
             </div>
 
-            <div id="accountDetails" style="display:none; margin-top:2rem; text-align:center;">
-                <p class="detail-info-platform"><strong>Name:</strong> <span id="accName">—</span></p>
-                <p class="detail-info-platform mt-1"><strong>Email:</strong> <span id="accEmail">—</span></p>
-                <button id="logoutBtn" class="btn brown-bg mt-3" style="margin: 2rem auto 0;">Logout</button>
-            </div>
-
-            <div id="accountLoggedOut" style="display:none; margin-top:2rem; text-align:center;">
-                <p class="detail-info-platform">You're not logged in.</p>
-                <a href="login.html" class="btn btn-inline mt-3">Go to Login</a>
+            <div id="accountDetails" style="margin-top:2rem; text-align:center;">
+                <p class="detail-info-platform"><strong>Name:</strong> <span id="accountUserName">Valued Customer</span></p>
+                <p class="detail-info-platform mt-1"><strong>Email:</strong> <span id="accountUserEmail">user@example.com</span></p>
+                <button id="accountLogoutBtn" class="btn brown-bg mt-3" style="margin: 2rem auto 0;">Logout</button>
             </div>
         </section>
     </main>
@@ -164,7 +159,9 @@
         </div>
     </footer>
 
-<script src="app.js"></script>
+    <script src="scripts/security-sanitizer.js"></script>
+    <script src="scripts/auth-manager.js"></script>
+    <script src="app.js"></script>
     <script src="toast.js"></script>
-    <script type="module" src="account-auth.js"></script></body>
+</body>
 </html>
