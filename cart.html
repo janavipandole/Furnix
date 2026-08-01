@@ -135,16 +135,28 @@
                     <div class="cart-items-list" id="cartItemsList"></div>
                     <div class="cart-summary-box">
                         <h4 class="summary-title">Order Summary</h4>
+                        <div class="promo-code-container" style="margin-bottom: 1.25rem;">
+                            <label for="promoCodeInput" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text-color, #333);">Promo Code</label>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <input type="text" id="promoCodeInput" placeholder="Enter FURNIX10 or ECSOC2026" style="flex: 1; padding: 0.5rem 0.75rem; border: 1px solid var(--border-color, #ccc); border-radius: 0.35rem; font-size: 0.85rem; text-transform: uppercase;">
+                                <button type="button" id="applyPromoBtn" class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem; background: var(--antique-brown, #b8860b); color: #fff; border: none; border-radius: 0.35rem; cursor: pointer;">Apply</button>
+                            </div>
+                            <div id="promoFeedback" style="font-size: 0.8rem; margin-top: 0.4rem; display: none;"></div>
+                        </div>
                         <div class="summary-row">
                             <span>Subtotal</span>
                             <span id="summarySubtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row" id="discountRow" style="display: none; color: #2e7d32;">
+                            <span>Discount</span>
+                            <span id="summaryDiscount">-$0.00</span>
                         </div>
                         <div class="summary-row">
                             <span>Shipping</span>
                             <span id="summaryShipping">Free</span>
                         </div>
                         <div class="summary-row">
-                            <span>Tax (10%)</span>
+                            <span>Estimated Tax (8%)</span>
                             <span id="summaryTax">$0.00</span>
                         </div>
                         <div class="summary-row total">
@@ -346,6 +358,8 @@
         </div>
     </footer>
 
+    <script src="scripts/cart-calculator.js"></script>
+    <script src="scripts/cart-engine.js"></script>
     <script src="app.js"></script>
     <script src="toast.js"></script>
     <script type="module" src="auth.js"></script>

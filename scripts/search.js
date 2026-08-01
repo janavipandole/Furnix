@@ -66,22 +66,26 @@ function attachProductEvents(card, product) {
 
 function searchProducts() {
     const query = document.getElementById('searchInput').value.trim().toLowerCase();
-    const category = document.getElementById('categoryFilter').value;
-    const price = document.getElementById('priceFilter').value;
-    const resultsDiv = document.getElementById('searchResults');
+
+    const categoryFilter = document.getElementById('categoryFilter');
+    const priceFilter = document.getElementById('priceFilter');
     const searchStats = document.getElementById('searchStats');
     const searchLoading = document.getElementById('searchLoading');
     const clearBtn = document.getElementById('clearSearchBtn');
+    const resultsDiv = document.getElementById('searchResults');
+
+    const category = categoryFilter ? categoryFilter.value : 'all';
+    const price = priceFilter ? priceFilter.value : 'all';
 
     if (debounceTimer) {
         clearTimeout(debounceTimer);
         debounceTimer = null;
     }
 
-    searchLoading.style.display = 'block';
+    if (searchLoading) searchLoading.style.display = 'block';
     resultsDiv.innerHTML = '';
-    searchStats.textContent = '';
-    clearBtn.style.display = 'none';
+    if (searchStats) searchStats.textContent = '';
+    if (clearBtn) clearBtn.style.display = 'none';
 
     setTimeout(function () {
         let matched = products;
@@ -101,26 +105,26 @@ function searchProducts() {
             matched = matched.filter(p => p.price >= min && p.price <= max);
         }
 
-        searchLoading.style.display = 'none';
+        if (searchLoading) searchLoading.style.display = 'none';
 
         if (!query && category === 'all' && price === 'all') {
             resultsDiv.innerHTML = '<p class="detail-info-platform" style="text-align:center;"> Type a keyword or use the filters to find products.</p>';
-            searchStats.textContent = '';
-            clearBtn.style.display = 'none';
+            if (searchStats) searchStats.textContent = '';
+            if (clearBtn) clearBtn.style.display = 'none';
             return;
         }
 
         if (query || category !== 'all' || price !== 'all') {
-            clearBtn.style.display = 'inline-block';
+            if (clearBtn) clearBtn.style.display = 'inline-block';
         }
 
         if (matched.length === 0) {
             resultsDiv.innerHTML = '<p class="detail-info-platform" style="text-align:center;"> No products found. Try adjusting your search or filters.</p>';
-            searchStats.textContent = '0 results';
+            if (searchStats) searchStats.textContent = '0 results';
             return;
         }
 
-        searchStats.textContent = matched.length + ' result' + (matched.length !== 1 ? 's' : '');
+        if (searchStats) searchStats.textContent = matched.length + ' result' + (matched.length !== 1 ? 's' : '');
 
         resultsDiv.innerHTML = matched.map(p => {
             const inWish = isInWishlist(p.id);
@@ -179,9 +183,18 @@ document.addEventListener('DOMContentLoaded', function () {
             searchProducts();
         }
     });
-    document.getElementById('categoryFilter').addEventListener('change', debouncedSearch);
-    document.getElementById('priceFilter').addEventListener('change', debouncedSearch);
-    document.getElementById('clearSearchBtn').addEventListener('click', clearSearch);
+    const categoryFilter = document.getElementById('categoryFilter');
+    const priceFilter = document.getElementById('priceFilter');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+    if (categoryFilter)
+        categoryFilter.addEventListener('change', debouncedSearch);
+
+    if (priceFilter)
+        priceFilter.addEventListener('change', debouncedSearch);
+
+    if (clearSearchBtn)
+        clearSearchBtn.addEventListener('click', clearSearch);
 
     document.addEventListener('keydown', function (e) {
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {

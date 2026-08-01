@@ -294,13 +294,37 @@ function renderCartPage() {
 }
 
 function updateCartSummary() {
+  if (window.FurnixCartEngine && window.CartCalculator) {
+    const summary = window.FurnixCartEngine.getSummary();
+    const s = document.getElementById("summarySubtotal");
+    const d = document.getElementById("summaryDiscount");
+    const dRow = document.getElementById("discountRow");
+    const sh = document.getElementById("summaryShipping");
+    const t = document.getElementById("summaryTax");
+    const tot = document.getElementById("summaryTotal");
+
+    if (s) s.innerText = window.CartCalculator.formatCurrency(summary.subtotal);
+    if (dRow) {
+      if (summary.discountAmount > 0) {
+        dRow.style.display = "flex";
+        if (d) d.innerText = "-" + window.CartCalculator.formatCurrency(summary.discountAmount);
+      } else {
+        dRow.style.display = "none";
+      }
+    }
+    if (sh) sh.innerText = summary.isFreeShipping ? "Free" : window.CartCalculator.formatCurrency(summary.shippingFee);
+    if (t) t.innerText = window.CartCalculator.formatCurrency(summary.estimatedTax);
+    if (tot) tot.innerText = window.CartCalculator.formatCurrency(summary.grandTotal);
+    return;
+  }
+
   const cart = getCart();
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * (item.quantity || 1),
     0,
   );
-  const shipping = subtotal >= 150 ? 0 : 15;
-  const tax = subtotal * 0.1;
+  const shipping = subtotal >= 500 ? 0 : 25;
+  const tax = subtotal * 0.08;
   const total = subtotal + shipping + tax;
 
   const s = document.getElementById("summarySubtotal");
@@ -352,14 +376,31 @@ function renderCheckoutSummary() {
   if (tot) tot.innerText = "$" + total.toFixed(2);
 }
 
-const proceedBtn = document.getElementById("proceedToCheckoutBtn");
-if (proceedBtn) {
-  proceedBtn.addEventListener("click", () => {
-    if (getCart().length === 0) {
-      showToast("Your cart is empty!", "warning");
+const applyPromoBtn = document.getElementById("applyPromoBtn");
+if (applyPromoBtn) {
+  applyPromoBtn.addEventListener("click", () => {
+    const input = document.getElementById("promoCodeInput");
+    const feedback = document.getElementById("promoFeedback");
+    if (!input || !window.FurnixCartEngine) return;
+    const code = input.value.trim();
+    if (!code) {
+      if (feedback) {
+        feedback.style.display = "block";
+        feedback.style.color = "#c62828";
+        feedback.textContent = "Please enter a valid code.";
+      }
       return;
     }
-    goToStep(2);
+    const res = window.FurnixCartEngine.applyPromo(code);
+    if (feedback) {
+      feedback.style.display = "block";
+      feedback.style.color = res.success ? "#2e7d32" : "#c62828";
+      feedback.textContent = res.message;
+    }
+    if (res.success) {
+      updateCartSummary();
+      if (typeof showToast === "function") showToast(res.message, "success");
+    }
   });
 }
 
