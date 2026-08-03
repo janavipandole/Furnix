@@ -245,17 +245,17 @@ function renderCartPage() {
   });
 
   listEl.querySelectorAll(".cart-remove-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const removed = getCart().find((i) => String(i.id) === String(btn.dataset.id));
-    let cart = getCart().filter((i) => String(i.id) !== String(btn.dataset.id));
-    saveCart(cart);
-    updateCartBadge(); // ✅ update badge on remove
+    btn.addEventListener("click", () => {
+      const removed = getCart().find((i) => String(i.id) === String(btn.dataset.id));
+      let cart = getCart().filter((i) => String(i.id) !== String(btn.dataset.id));
+      saveCart(cart);
+      updateCartBadge(); // ✅ update badge on remove
 
-    if (removed) showToast(`${removed.name} removed from cart`, "info");
+      if (removed) showToast(`${removed.name} removed from cart`, "info");
 
-    renderCartPage();
+      renderCartPage();
+    });
   });
-});
 
   updateCartSummary();
   updateCartBadge(); // ✅ always sync badge after render
@@ -588,17 +588,17 @@ function renderWishlistPage() {
   });
 
   grid.querySelectorAll(".wishlist-remove-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const removed = getWishlist().find((i) => String(i.id) === String(btn.dataset.id));
-    let wishlist = getWishlist().filter((i) => String(i.id) !== String(btn.dataset.id));
-    saveWishlist(wishlist);
-    updateWishlistBadge(); // ✅ update wishlist badge on remove
+    btn.addEventListener("click", () => {
+      const removed = getWishlist().find((i) => String(i.id) === String(btn.dataset.id));
+      let wishlist = getWishlist().filter((i) => String(i.id) !== String(btn.dataset.id));
+      saveWishlist(wishlist);
+      updateWishlistBadge(); // ✅ update wishlist badge on remove
 
-    if (removed) showToast(`${removed.name} removed from wishlist`, "info");
+      if (removed) showToast(`${removed.name} removed from wishlist`, "info");
 
-    renderWishlistPage();
+      renderWishlistPage();
+    });
   });
-});
 
   updateWishlistBadge(); // ✅ always sync badge after render
 }
@@ -642,6 +642,27 @@ window.addEventListener("load", () => {
   setTimeout(dismissSkeletons, delay);
 });
 
+// RECENTLY VIEWED 
+const RECENT_KEY = "recentProducts";
+
+function saveRecentlyViewed(product) {
+
+  let recent = JSON.parse(localStorage.getItem(RECENT_KEY)) || [];
+
+  // Remove duplicate if already viewed
+  recent = recent.filter(item => item.id !== product.id);
+
+  // Add latest product
+  recent.unshift(product);
+
+  // Keep only last 8 products
+  if (recent.length > 8) {
+    recent = recent.slice(0, 8);
+  }
+
+  localStorage.setItem(RECENT_KEY, JSON.stringify(recent));
+}
+
 function setupProductCards() {
   const productCards = document.querySelectorAll(".product-card");
   productCards.forEach((card) => {
@@ -666,35 +687,37 @@ function setupProductCards() {
     };
 
     if (cartBtn) {
-  cartBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (cartBtn.classList.contains("btn-loading")) return;
-    const origText = cartBtn.innerText;
-    cartBtn.classList.add("btn-loading");
-    cartBtn.innerText = "Adding...";
+      cartBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (cartBtn.classList.contains("btn-loading")) return;
+        const origText = cartBtn.innerText;
+        cartBtn.classList.add("btn-loading");
+        cartBtn.innerText = "Adding...";
 
-    // grab this before addToCart runs, since addToCart mutates the stored cart
-    const alreadyInCart = getCart().some((item) => item.id === product.id);
+        // grab this before addToCart runs, since addToCart mutates the stored cart
+        const alreadyInCart = getCart().some((item) => item.id === product.id);
 
-    setTimeout(() => {
-      addToCart(product);
-      const toastMsg = alreadyInCart
-        ? `Added another ${product.name} (now in cart)`
-        : `${product.name} added to cart`;
-      showToast(toastMsg, "success");
+        setTimeout(() => {
+          addToCart(product);
+          const toastMsg = alreadyInCart
+            ? `Added another ${product.name} (now in cart)`
+            : `${product.name} added to cart`;
+          showToast(toastMsg, "success");
 
-      cartBtn.innerText = "✓ Added!";
-      cartBtn.classList.remove("btn-loading");
-      setTimeout(() => {
-        cartBtn.innerText = origText;
-      }, 1000);
-    }, 600);
-  });
-}
+          cartBtn.innerText = "✓ Added!";
+          cartBtn.classList.remove("btn-loading");
+          setTimeout(() => {
+            cartBtn.innerText = origText;
+          }, 1000);
+        }, 600);
+      });
+    }
 
     if (imgElement) {
       imgElement.style.cursor = "pointer";
       imgElement.addEventListener("click", () => {
+        // Save product as recently viewed
+        saveRecentlyViewed(product);
         if (window.FurnixProductModal) {
           window.FurnixProductModal.open(product);
         }
@@ -702,37 +725,37 @@ function setupProductCards() {
     }
 
     if (favBtn) {
-  favBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (favBtn.classList.contains("fav-loading")) return;
-    favBtn.classList.add("fav-loading");
-    setTimeout(() => {
-      favBtn.classList.remove("fav-loading");
-      toggleWishlist(product);
-      const icon = favBtn.querySelector("i");
-      if (icon) {
-        // icon still shows the pre-toggle state here, so this tells us
-        // which way the wishlist just changed
-        const wasAdded = icon.classList.contains("fa-regular");
+      favBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (favBtn.classList.contains("fav-loading")) return;
+        favBtn.classList.add("fav-loading");
+        setTimeout(() => {
+          favBtn.classList.remove("fav-loading");
+          toggleWishlist(product);
+          const icon = favBtn.querySelector("i");
+          if (icon) {
+            // icon still shows the pre-toggle state here, so this tells us
+            // which way the wishlist just changed
+            const wasAdded = icon.classList.contains("fa-regular");
 
-        if (wasAdded) {
-          icon.classList.remove("fa-regular");
-          icon.classList.add("fa-solid");
-          icon.style.color = "#ff0055";
-        } else {
-          icon.classList.remove("fa-solid");
-          icon.classList.add("fa-regular");
-          icon.style.color = "";
-        }
+            if (wasAdded) {
+              icon.classList.remove("fa-regular");
+              icon.classList.add("fa-solid");
+              icon.style.color = "#ff0055";
+            } else {
+              icon.classList.remove("fa-solid");
+              icon.classList.add("fa-regular");
+              icon.style.color = "";
+            }
 
-        showToast(
-          wasAdded ? `${product.name} added to wishlist` : `${product.name} removed from wishlist`,
-          wasAdded ? "success" : "info"
-        );
-      }
-    }, 500);
-  });
-  
+            showToast(
+              wasAdded ? `${product.name} added to wishlist` : `${product.name} removed from wishlist`,
+              wasAdded ? "success" : "info"
+            );
+          }
+        }, 500);
+      });
+
 
       const isInWishlist = getWishlist().some((item) => item.id === product.id);
       if (isInWishlist) {
@@ -969,47 +992,47 @@ window.addEventListener("storage", (e) => {
    BACK TO TOP BUTTON
   */
 function setupBackToTop() {
-    if (document.querySelector('.back-to-top') || document.getElementById('backToTop')) return;
+  if (document.querySelector('.back-to-top') || document.getElementById('backToTop')) return;
 
-    const backToTopBtn = document.createElement('button');
-    backToTopBtn.id = 'backToTop';
-    backToTopBtn.className = 'back-to-top';
-    backToTopBtn.setAttribute('aria-label', 'Back to top');
-    backToTopBtn.setAttribute('title', 'Scroll to top');
-    backToTopBtn.setAttribute('type', 'button');
-    backToTopBtn.innerHTML = '<i class="fa-solid fa-arrow-up" aria-hidden="true"></i>';
-    document.body.appendChild(backToTopBtn);
+  const backToTopBtn = document.createElement('button');
+  backToTopBtn.id = 'backToTop';
+  backToTopBtn.className = 'back-to-top';
+  backToTopBtn.setAttribute('aria-label', 'Back to top');
+  backToTopBtn.setAttribute('title', 'Scroll to top');
+  backToTopBtn.setAttribute('type', 'button');
+  backToTopBtn.innerHTML = '<i class="fa-solid fa-arrow-up" aria-hidden="true"></i>';
+  document.body.appendChild(backToTopBtn);
 
-    const SCROLL_THRESHOLD = 300;
-    let ticking = false;
+  const SCROLL_THRESHOLD = 300;
+  let ticking = false;
 
-    function toggleVisibility() {
-        if (window.scrollY > SCROLL_THRESHOLD) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
-        }
-        ticking = false;
+  function toggleVisibility() {
+    if (window.scrollY > SCROLL_THRESHOLD) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
     }
+    ticking = false;
+  }
 
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(toggleVisibility);
-            ticking = true;
-        }
-    }, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(toggleVisibility);
+      ticking = true;
+    }
+  }, { passive: true });
 
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
-    toggleVisibility();
+  toggleVisibility();
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupBackToTop);
+  document.addEventListener('DOMContentLoaded', setupBackToTop);
 } else {
-    setupBackToTop();
+  setupBackToTop();
 }
 
 
@@ -1091,90 +1114,99 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Product Quick View Modal (Issue #186)
 document.addEventListener("DOMContentLoaded", () => {
-    const productCards = document.querySelectorAll('.product-image, .new-product-img');
+  const productCards = document.querySelectorAll('.product-image, .new-product-img');
 
-    function trapFocus(element) {
-        const focusable = element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
+  function trapFocus(element) {
+    const focusable = element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
 
-        element.addEventListener('keydown', (e) => {
-            if (e.key !== 'Tab') return;
-            if (e.shiftKey) {
-                if (document.activeElement === first) {
-                    last.focus();
-                    e.preventDefault();
-                }
-            } else {
-                if (document.activeElement === last) {
-                    first.focus();
-                    e.preventDefault();
-                }
-            }
-        });
-    }
+    element.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          last.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === last) {
+          first.focus();
+          e.preventDefault();
+        }
+      }
+    });
+  }
 
-    productCards.forEach(card => {
-        if (card.querySelector('.quick-view-btn')) return;
+  productCards.forEach(card => {
+    if (card.querySelector('.quick-view-btn')) return;
 
-        const qvBtn = document.createElement('button');
-        qvBtn.className = 'quick-view-btn';
-        qvBtn.innerHTML = '<i class="fa-solid fa-eye" aria-hidden="true"></i>';
-        qvBtn.title = "Quick View";
-        qvBtn.setAttribute('aria-label', 'Quick view product details');
-        qvBtn.style.cssText = 'position: absolute; top: 10px; left: 10px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.95); border: none; cursor: pointer; color: #c77b30; font-size: 1.1rem; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.15); opacity: 0; transform: translateY(-10px); transition: all 0.3s ease; z-index: 10;';
+    const qvBtn = document.createElement('button');
+    qvBtn.className = 'quick-view-btn';
+    qvBtn.innerHTML = '<i class="fa-solid fa-eye" aria-hidden="true"></i>';
+    qvBtn.title = "Quick View";
+    qvBtn.setAttribute('aria-label', 'Quick view product details');
+    qvBtn.style.cssText = 'position: absolute; top: 10px; left: 10px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.95); border: none; cursor: pointer; color: #c77b30; font-size: 1.1rem; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.15); opacity: 0; transform: translateY(-10px); transition: all 0.3s ease; z-index: 10;';
 
-        card.style.position = 'relative';
-        card.appendChild(qvBtn);
+    card.style.position = 'relative';
+    card.appendChild(qvBtn);
 
-        card.addEventListener('mouseenter', () => {
-            qvBtn.style.opacity = '1';
-            qvBtn.style.transform = 'translateY(0)';
-        });
-        card.addEventListener('mouseleave', () => {
-            qvBtn.style.opacity = '0';
-            qvBtn.style.transform = 'translateY(-10px)';
-        });
+    card.addEventListener('mouseenter', () => {
+      qvBtn.style.opacity = '1';
+      qvBtn.style.transform = 'translateY(0)';
+    });
+    card.addEventListener('mouseleave', () => {
+      qvBtn.style.opacity = '0';
+      qvBtn.style.transform = 'translateY(-10px)';
+    });
 
-        card.addEventListener('focusin', () => {
-            qvBtn.style.opacity = '1';
-            qvBtn.style.transform = 'translateY(0)';
-        });
-        card.addEventListener('focusout', (e) => {
-            if (!card.contains(e.relatedTarget)) {
-                qvBtn.style.opacity = '0';
-                qvBtn.style.transform = 'translateY(-10px)';
-            }
-        });
+    card.addEventListener('focusin', () => {
+      qvBtn.style.opacity = '1';
+      qvBtn.style.transform = 'translateY(0)';
+    });
+    card.addEventListener('focusout', (e) => {
+      if (!card.contains(e.relatedTarget)) {
+        qvBtn.style.opacity = '0';
+        qvBtn.style.transform = 'translateY(-10px)';
+      }
+    });
 
-        qvBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
+    qvBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-            const parent = card.closest('.product-card, .new-product, .card');
-            const img = card.querySelector('img');
-            const titleEl = parent ? parent.querySelector('h5, .new-product-text h5, h6') : null;
-            const priceEl = parent ? parent.querySelector('.price, .new-product-text strong') : null;
+      const product = {
+        id: title,
+        name: title,
+        price: parseFloat(price.replace(/[^0-9.]/g, "")),
+        image: imgSrc
+      };
 
-            const imgSrc = img ? img.src : '';
-            const title = titleEl ? titleEl.innerText : 'Premium Furniture Piece';
-            const price = priceEl ? priceEl.innerText : '$199.00';
+      saveRecentlyViewed(product);
 
-            const modalOverlay = document.createElement('div');
-            modalOverlay.setAttribute('role', 'dialog');
-            modalOverlay.setAttribute('aria-modal', 'true');
-            modalOverlay.setAttribute('aria-label', 'Product quick view');
-            modalOverlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 999999; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(8px); padding: 20px; box-sizing: border-box;';
+      const parent = card.closest('.product-card, .new-product, .card');
+      const img = card.querySelector('img');
+      const titleEl = parent ? parent.querySelector('h5, .new-product-text h5, h6') : null;
+      const priceEl = parent ? parent.querySelector('.price, .new-product-text strong') : null;
 
-            const modalContent = document.createElement('div');
-            modalContent.style.cssText = 'background: var(--card, #fff); color: var(--text, #111); width: 100%; max-width: 900px; border-radius: 20px; display: flex; flex-direction: row; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.3); transform: scale(0.95) translateY(20px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; flex-wrap: wrap;';
+      const imgSrc = img ? img.src : '';
+      const title = titleEl ? titleEl.innerText : 'Premium Furniture Piece';
+      const price = priceEl ? priceEl.innerText : '$199.00';
 
-            const closeBtn = document.createElement('button');
-            closeBtn.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i>';
-            closeBtn.setAttribute('aria-label', 'Close quick view');
-            closeBtn.style.cssText = 'position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.05); width: 40px; height: 40px; border-radius: 50%; border: none; font-size: 1.3rem; cursor: pointer; color: var(--text, #111); z-index: 10; display: flex; justify-content: center; align-items: center; transition: 0.2s;';
+      const modalOverlay = document.createElement('div');
+      modalOverlay.setAttribute('role', 'dialog');
+      modalOverlay.setAttribute('aria-modal', 'true');
+      modalOverlay.setAttribute('aria-label', 'Product quick view');
+      modalOverlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 999999; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(8px); padding: 20px; box-sizing: border-box;';
 
-            modalContent.innerHTML = `
+      const modalContent = document.createElement('div');
+      modalContent.style.cssText = 'background: var(--card, #fff); color: var(--text, #111); width: 100%; max-width: 900px; border-radius: 20px; display: flex; flex-direction: row; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.3); transform: scale(0.95) translateY(20px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; flex-wrap: wrap;';
+
+      const closeBtn = document.createElement('button');
+      closeBtn.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i>';
+      closeBtn.setAttribute('aria-label', 'Close quick view');
+      closeBtn.style.cssText = 'position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.05); width: 40px; height: 40px; border-radius: 50%; border: none; font-size: 1.3rem; cursor: pointer; color: var(--text, #111); z-index: 10; display: flex; justify-content: center; align-items: center; transition: 0.2s;';
+
+      modalContent.innerHTML = `
                 <div style="flex: 1; min-width: 300px; background: var(--bg, #f9f9f9); display: flex; justify-content: center; align-items: center; padding: 40px;">
                     <img src="${imgSrc}" alt="${title}" style="max-width: 100%; max-height: 450px; object-fit: contain; mix-blend-mode: multiply; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.15));">
                 </div>
@@ -1202,48 +1234,48 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
-            modalContent.prepend(closeBtn);
-            modalOverlay.appendChild(modalContent);
-            document.body.appendChild(modalOverlay);
+      modalContent.prepend(closeBtn);
+      modalOverlay.appendChild(modalContent);
+      document.body.appendChild(modalOverlay);
 
-            requestAnimationFrame(() => {
-                modalOverlay.style.opacity = '1';
-                modalContent.style.transform = 'scale(1) translateY(0)';
-                closeBtn.focus();
-            });
+      requestAnimationFrame(() => {
+        modalOverlay.style.opacity = '1';
+        modalContent.style.transform = 'scale(1) translateY(0)';
+        closeBtn.focus();
+      });
 
-            modalOverlay.setAttribute('aria-labelledby', 'qv-modal-title');
-            trapFocus(modalOverlay);
+      modalOverlay.setAttribute('aria-labelledby', 'qv-modal-title');
+      trapFocus(modalOverlay);
 
-            const close = () => {
-                modalOverlay.style.opacity = '0';
-                modalContent.style.transform = 'scale(0.95) translateY(20px)';
-                setTimeout(() => {
-                    modalOverlay.remove();
-                    qvBtn.focus();
-                }, 300);
-            };
+      const close = () => {
+        modalOverlay.style.opacity = '0';
+        modalContent.style.transform = 'scale(0.95) translateY(20px)';
+        setTimeout(() => {
+          modalOverlay.remove();
+          qvBtn.focus();
+        }, 300);
+      };
 
-            closeBtn.addEventListener('click', close);
-            closeBtn.addEventListener('mouseover', () => { closeBtn.style.background = 'rgba(0,0,0,0.1)'; });
-            closeBtn.addEventListener('mouseout', () => { closeBtn.style.background = 'rgba(0,0,0,0.05)'; });
-            modalOverlay.addEventListener('click', (ev) => { if(ev.target === modalOverlay) close(); });
-            modalOverlay.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') close(); });
-        });
+      closeBtn.addEventListener('click', close);
+      closeBtn.addEventListener('mouseover', () => { closeBtn.style.background = 'rgba(0,0,0,0.1)'; });
+      closeBtn.addEventListener('mouseout', () => { closeBtn.style.background = 'rgba(0,0,0,0.05)'; });
+      modalOverlay.addEventListener('click', (ev) => { if (ev.target === modalOverlay) close(); });
+      modalOverlay.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') close(); });
     });
+  });
 });
 
 // Lazy Loading & Skeleton Observer
 document.addEventListener("DOMContentLoaded", () => {
   const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-  
+
   lazyImages.forEach(img => {
     img.classList.add('lazy-image-fade');
     const parent = img.closest('.product-image');
     if (parent) {
       parent.classList.add('skeleton-loader');
     }
-    
+
     if (img.complete) {
       img.classList.add('loaded');
       if (parent) parent.classList.remove('skeleton-loader');
@@ -1261,7 +1293,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (entry.isIntersecting) {
           const img = entry.target;
           if (img.complete) {
-             img.classList.add('loaded');
+            img.classList.add('loaded');
           }
           observer.unobserve(img);
         }

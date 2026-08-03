@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Browse Furnix's curated design collections featuring modern seating, architectural lighting, solid wood dining tables, and premium home decor.">
+    <meta name="description"
+        content="Browse Furnix's curated design collections featuring modern seating, architectural lighting, solid wood dining tables, and premium home decor.">
     <meta property="og:title" content="Curated Collections - Furnix">
     <meta property="og:description" content="">
     <meta property="og:type" content="website">
@@ -16,41 +17,48 @@
     <!-- CSS LINK -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
     <!-- icons -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 
-<script src="scripts/init-theme.js"></script>
+    <script src="scripts/init-theme.js"></script>
 </head>
 
 <body>
     <!-- HEADER PART -->
-            <header>
+    <header>
         <nav class="navbar flex between wrapper">
             <a href="index.html" class="logo">Furnix.</a>
             <ul class="navList" id="list" aria-hidden="true">
                 <li class="nav-close-item"><button class="nav-close-btn" id="navClose" aria-label="Close menu">
-                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-                </button></li>
+                        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                    </button></li>
                 <li><a href="collections.html" class="link">collections</a></li>
                 <li><a href="furniture.html" class="link">furniture</a></li>
                 <li><a href="designers.html" class="link">designers</a></li>
                 <li><a href="trends.html" class="link">trends</a></li>
                 <li><a href="about.html" class="link">about us</a></li>
                 <li><a href="contact.html" class="link">contact us</a></li>
-                <li class="nav-social-item"><ul class="footer-social-icon flex">
-                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
-                </ul></li>
+                <li class="nav-social-item">
+                    <ul class="footer-social-icon flex">
+                        <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"
+                                    aria-hidden="true"></i></a></li>
+                        <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter"
+                                    aria-hidden="true"></i></a></li>
+                        <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram"
+                                    aria-hidden="true"></i></a></li>
+                        <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"
+                                    aria-hidden="true"></i></a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="nav-icons flex g-one-half">
                 <li>
@@ -58,8 +66,10 @@
                         <i class="fa-solid fa-moon" id="themeIcon" aria-hidden="true"></i>
                     </button>
                 </li>
-                <li><a href="search.html" class="icon" aria-label="Search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></a></li>
-                <li><a href="login.html" class="icon" aria-label="Account"><i class="fa-solid fa-user" aria-hidden="true"></i></a></li>
+                <li><a href="search.html" class="icon" aria-label="Search"><i class="fa-solid fa-magnifying-glass"
+                            aria-hidden="true"></i></a></li>
+                <li><a href="login.html" class="icon" aria-label="Account"><i class="fa-solid fa-user"
+                            aria-hidden="true"></i></a></li>
                 <li>
                     <a href="wishlist.html" class="icon nav-icon-wrapper" aria-label="Wishlist">
                         <i class="fa-solid fa-heart" aria-hidden="true"></i>
@@ -72,10 +82,26 @@
                         <span id="cart-badge" class="nav-badge">0</span>
                     </a>
                 </li>
-                <li><a href="#" class="icon" id="menu" aria-label="Open menu" aria-controls="list" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="icon" id="menu" aria-label="Open menu" aria-controls="list"
+                        aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></a></li>
             </ul>
         </nav>
     </header>
+
+    <!-- Recently Viewed -->
+    <section class="recently-viewed-section">
+        <div class="container">
+
+            <div class="recent-header">
+                <h2>Recently Viewed</h2>
+            </div>
+
+            <div id="recentlyViewedContainer" class="recent-grid">
+
+            </div>
+
+        </div>
+    </section>
 
     <!-- MAIN CONTENT PART -->
     <main>
@@ -83,12 +109,13 @@
             <div style="text-align: center; margin-bottom: 40px;">
                 <h2 class="h2-heading gradient-txt mt-3">Our <span>Curated</span> Collections</h2>
                 <p class="detail-info-platform" style="max-width: 600px; margin: 15px auto 0;">
-                    Explore our meticulously crafted furniture categories designed to elevate your living spaces with uncompromising comfort and timeless modern aesthetics.
+                    Explore our meticulously crafted furniture categories designed to elevate your living spaces with
+                    uncompromising comfort and timeless modern aesthetics.
                 </p>
             </div>
 
-                        <div class="flex g-one-half mt-3 collections-grid">
-                
+            <div class="flex g-one-half mt-3 collections-grid">
+
                 <!-- Category 1 -->
                 <div class="category-card collections-card">
                     <div class="category-card-content">
@@ -132,7 +159,8 @@
                 <div class="category-card collections-card">
                     <div class="category-card-content">
                         <div class="flex between category-card-header">
-                            <h5 style="background-color: rgba(240, 248, 255, 0.052); padding: 5px;">Home Accessories</h5>
+                            <h5 style="background-color: rgba(240, 248, 255, 0.052); padding: 5px;">Home Accessories
+                            </h5>
                             <a href="accessories.html" class="simple-icon" aria-label="Open details">
                                 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
@@ -146,20 +174,28 @@
     </main>
 
     <!-- FOOTER PART (With your fixed background issue!) -->
-            <footer id="contact" class="footer-image">
+    <footer id="contact" class="footer-image">
         <div class="wrapper p-block flex g-one-half">
             <div class="footer-wrapper">
                 <a href="index.html" class="logo">Furnix.</a>
                 <h3>sign up to receive 10% off <br> on your first order</h3>
-                <form class="input-container" onsubmit="event.preventDefault(); showToast('Thanks for subscribing to our newsletter!', 'success');">
-                    <input type="email" name="email" id="footerEmail" placeholder="Enter your email.." autocomplete="off" required>
-                    <button type="submit" class="simple-icon" aria-label="Open details" style="background:none; border:none; cursor:pointer;"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                <form class="input-container"
+                    onsubmit="event.preventDefault(); showToast('Thanks for subscribing to our newsletter!', 'success');">
+                    <input type="email" name="email" id="footerEmail" placeholder="Enter your email.."
+                        autocomplete="off" required>
+                    <button type="submit" class="simple-icon" aria-label="Open details"
+                        style="background:none; border:none; cursor:pointer;"><i class="fa-solid fa-arrow-right"
+                            aria-hidden="true"></i></button>
                 </form>
                 <ul class="footer-social-icon flex">
-                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"
+                                aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="X"><i class="fa-brands fa-x-twitter"
+                                aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Instagram"><i class="fa-brands fa-instagram"
+                                aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"
+                                aria-hidden="true"></i></a></li>
                 </ul>
             </div>
             <div class="footer-wrapper">
@@ -172,7 +208,8 @@
                 </ul>
                 <ul class="footer-contact-details">
                     <li class="contact"><a href="tel:+91123456789" class="footer-link">+91 123 456 789</a></li>
-                    <li class="contact"><a href="mailto:Furnixhome@info.com" class="footer-link">Furnixhome@info.com</a></li>
+                    <li class="contact"><a href="mailto:Furnixhome@info.com" class="footer-link">Furnixhome@info.com</a>
+                    </li>
                 </ul>
             </div>
             <div class="footer-wrapper">
@@ -199,6 +236,8 @@
     </footer>
     <script src="app.js"></script>
     <script src="toast.js"></script>
+    <script src="recently-viewed.js"></script>
     <script type="module" src="auth.js"></script>
 </body>
+
 </html>
