@@ -23,11 +23,37 @@ export async function signUp(name, email, password) {
 
 export async function logIn(email, password) {
   const cred = await signInWithEmailAndPassword(auth, email, password);
+  
+  // --- WISHLIST MERGE INTERVENTION ---
+  try {
+      const token = await cred.user.getIdToken();
+      // Assuming syncWishlistOnLogin is available globally via the script tag we added earlier
+      if (typeof window.syncWishlistOnLogin === 'function') {
+          // Pass a dummy dispatcher if you aren't using React/Redux global state
+          await window.syncWishlistOnLogin(token, window.dispatchWishlist || (() => {}));
+      }
+  } catch (err) {
+      console.error("Silent failure: Could not sync local wishlist on login", err);
+  }
+  // -----------------------------------
+
   return cred.user;
 }
 
 export async function googleSignIn() {
   const cred = await signInWithPopup(auth, googleProvider);
+  
+  // --- WISHLIST MERGE INTERVENTION ---
+  try {
+      const token = await cred.user.getIdToken();
+      if (typeof window.syncWishlistOnLogin === 'function') {
+          await window.syncWishlistOnLogin(token, window.dispatchWishlist || (() => {}));
+      }
+  } catch (err) {
+      console.error("Silent failure: Could not sync local wishlist on Google login", err);
+  }
+  // -----------------------------------
+
   return cred.user;
 }
 
