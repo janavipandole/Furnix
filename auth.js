@@ -35,6 +35,25 @@ export async function logIn(email, password) {
   } catch (err) {
       console.error("Silent failure: Could not sync local wishlist on login", err);
   }
+  export async function signUp(name, email, password) {
+  const cred = await createUserWithEmailAndPassword(auth, email, password);
+  if (name) {
+    await updateProfile(cred.user, { displayName: name });
+  }
+
+  // --- WISHLIST MERGE INTERVENTION ---
+  try {
+      const token = await cred.user.getIdToken();
+      if (typeof window.syncWishlistOnLogin === 'function') {
+          await window.syncWishlistOnLogin(token, window.dispatchWishlist || (() => {}));
+      }
+  } catch (err) {
+      console.error("Silent failure: Could not sync local wishlist on signup", err);
+  }
+  // -----------------------------------
+
+  return cred.user;
+}
   // -----------------------------------
 
   return cred.user;
