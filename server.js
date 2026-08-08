@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
-  res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS'); // Added GET for our new endpoint
   if (req.method === 'OPTIONS') return res.sendStatus(204);
   next();
 });
@@ -73,6 +73,53 @@ app.post('/api/contact', contactLimiter, (req, res) => {
   });
 });
 
+// =================================================================
+// 💥 NEW ENDPOINT: AI Style Match Engine (Issue #450) 💥
+// =================================================================
+app.get('/api/recommendations/style', (req, res) => {
+  const { productId, style } = req.query;
+
+  // TODO: Wire this up to a real Vector DB or AI recommendation engine later.
+  // For now, we return highly curated mock data to power the React component.
+  
+  const mockRecommendations = [
+      {
+          id: 'rec-1',
+          name: 'Geometric Wool Rug',
+          category: 'Decor',
+          price: 120.00,
+          image: 'images/flower-vase.webp' 
+      },
+      {
+          id: 'rec-2',
+          name: 'Aura Pendant Lamp',
+          category: 'Lighting',
+          price: 85.00,
+          image: 'images/hanging lamp.webp'
+      },
+      {
+          id: 'rec-3',
+          name: 'Walnut Side Table',
+          category: 'Tables',
+          price: 150.00,
+          image: 'images/side table.webp'
+      },
+      {
+          id: 'rec-4',
+          name: 'Modern Accent Chair',
+          category: 'Seating',
+          price: 210.00,
+          image: 'images/modern chair.webp'
+      }
+  ];
+
+  // Simulate a slight network delay so the frontend skeleton loaders look natural
+  setTimeout(() => {
+      res.status(200).json({ items: mockRecommendations });
+  }, 1200);
+});
+
+// START THE SERVER
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
