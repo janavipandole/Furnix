@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix Cookie Consent Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cookie-consent.css">
+    <style>
+        body { font-family: 'Jost', sans-serif; transition: background 0.3s, color 0.3s; padding: 50px; }
+        [data-theme="dark"] { background: #121212; color: #fff; }
+        [data-theme="light"] { background: #fff; color: #333; }
+        .demo-container { max-width: 800px; margin: 0 auto; }
+        .btn { padding: 10px 20px; cursor: pointer; border: none; border-radius: 4px; font-weight: 600; }
+        .primary { background: #f1b555; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>GDPR Cookie Consent Demo</h1>
+        <p>A persistent cookie banner should appear if consent is not given.</p>
+        <button class="btn primary" onclick="document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark')">Toggle Theme</button>
+        <button class="btn primary" onclick="localStorage.removeItem('furnix_cookie_consent'); location.reload();">Reset Consent & Reload</button>
+    </div>
+    <script src="cookie-consent.js"></script>
+</body>
+</html>
