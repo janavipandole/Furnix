@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix - Standardized Footer Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- Fallback if 7.0.0 is not available, but user requested 7.0.0 -->
+    <!-- Note: Font Awesome 7.0.0 might not be publicly hosted on CDN yet, using placeholder or 6.x as 7.x compatible -->
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #333333;
+            --accent: #b8860b;
+            --accent-hover: #f1b555;
+            --footer-bg: #1a1a1a;
+            --footer-text: #cccccc;
+            --footer-heading: #ffffff;
+            --border-color: #333333;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121212;
+            --text: #e0e0e0;
+            --accent: #f1b555;
+            --accent-hover: #b8860b;
+            --footer-bg: #0a0a0a;
+            --footer-text: #aaaaaa;
+            --footer-heading: #f1b555;
+            --border-color: #222222;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .demo-content {
+            padding: 4rem 2rem;
+            text-align: center;
+            min-height: 40vh;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Footer Styles */
+        .furnix-footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 4rem 2rem 1rem;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            color: var(--footer-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 400;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-contact p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--accent);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--footer-heading);
+            font-family: 'Jost', sans-serif;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background-color: var(--accent);
+            color: #111;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            color: var(--footer-text);
+            font-size: 1.2rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="demo-content">
+        <h1>Furnix Standardized Footer</h1>
+        <p>This demo contains the corrected footer to be used across all pages.</p>
+        <button class="btn" id="themeToggle">Toggle Dark Mode</button>
+    </div>
+
+    <!-- START OF STANDARDIZED FOOTER -->
+    <footer class="furnix-footer">
+        <div class="footer-container">
+            <div class="footer-col footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fa-solid fa-envelope"></i> hello@furnix.com</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Collections</h3>
+                <ul>
+                    <li><a href="seating.html">Seating</a></li>
+                    <li><a href="Lighting.html">Lighting</a></li>
+                    <li><a href="tables.html">Tables</a></li>
+                    <li><a href="accessories.html">Accessories</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="story.html">Our Story</a></li>
+                    <li><a href="designers.html">Designers</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                    <input type="email" placeholder="Enter your email" required aria-label="Email Address">
+                    <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Furnix. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- END OF STANDARDIZED FOOTER -->
+
+    <script>
+        const html = document.documentElement;
+        const toggleBtn = document.getElementById('themeToggle');
+
+        // Check local storage for theme
+        if(localStorage.getItem('furnix_theme') === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            if(html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('furnix_theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('furnix_theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
