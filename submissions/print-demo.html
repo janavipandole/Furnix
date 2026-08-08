@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print-Friendly Stylesheet Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="print-styles.css">
+    <style>
+        body { font-family: 'Jost', sans-serif; background: #121212; color: #fff; padding: 50px; margin:0;}
+        .container { max-width: 800px; margin: 0 auto; }
+        header, footer { background: #1a1a1a; padding: 20px; text-align: center; margin-bottom: 20px; }
+        .product-card { background: #222; padding: 20px; border-radius: 8px; box-shadow: 0 0 15px rgba(241,181,85,0.2); }
+        .btn { padding: 10px 20px; background: #f1b555; color: #fff; border: none; cursor: pointer; border-radius: 4px; font-weight:bold; margin-bottom:20px; }
+        .gradient-txt { background: linear-gradient(45deg, #f1b555, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Furnix Navigation (Should hide on print)</h1>
+    </header>
+    
+    <div class="container">
+        <button class="btn print-keep" onclick="window.print()">Print this page</button>
+        
+        <h2 class="gradient-txt">Neon Velvet Sofa</h2>
+        <div class="product-card">
+            <img src="https://picsum.photos/seed/sofa/600/300" alt="Sofa" style="width:100%; border-radius:4px;">
+            <p>Experience the ultimate comfort with our glowing neon velvet sofa. Perfect for modern spaces.</p>
+            <p>Read more at <a href="https://example.com/sofa">our website</a>.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Footer Content (Should hide on print)</p>
+        <div class="social-icons">Socials</div>
+    </footer>
+</body>
+</html>

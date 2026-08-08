@@ -1,0 +1,89 @@
+@media print {
+    /* Hide unnecessary elements */
+    header, nav, footer, .cookie-consent-banner, .cookie-pref-modal, 
+    .custom-cursor, #toast-container, .back-to-top, .social-icons, 
+    .theme-toggle, .cart-badge, .wishlist-badge, .recently-viewed-section,
+    button:not(.print-keep), iframe, video {
+        display: none !important;
+    }
+    
+    /* Reset background and text colors */
+    html, body {
+        background: #fff !important;
+        color: #000 !important;
+        font-family: 'Times New Roman', Times, serif !important;
+        font-size: 12pt;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+    }
+    
+    [data-theme="dark"] {
+        background: #fff !important;
+        color: #000 !important;
+    }
+    
+    /* Link styling */
+    a {
+        color: #000 !important;
+        text-decoration: underline;
+    }
+    a[href^="http"]:not(.no-print-url)::after {
+        content: " (" attr(href) ")";
+        font-size: 90%;
+        color: #333;
+    }
+    
+    /* Clear shadows and glows */
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+    
+    /* Typography adjustments */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        color: #000 !important;
+        font-family: Arial, Helvetica, sans-serif !important;
+        background: transparent !important;
+        -webkit-text-fill-color: #000 !important;
+    }
+    
+    p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    
+    /* Layout adjustments */
+    .wrapper, .container, main {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Images */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        filter: grayscale(100%) !important;
+        page-break-inside: avoid;
+    }
+    
+    /* Product Cards */
+    .product-card, .rv-card, .detail-info-platform {
+        page-break-inside: avoid;
+        border: 1px solid #ccc !important;
+        margin-bottom: 20px !important;
+    }
+    
+    /* Force page breaks */
+    .page-break-before {
+        page-break-before: always;
+    }
+    
+    @page {
+        margin: 2cm;
+    }
+}
