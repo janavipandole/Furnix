@@ -1,0 +1,36 @@
+name: 💡 Feature Request
+description: Suggest an idea or enhancement for Furnix.
+title: "[Feature]: "
+labels: ["enhancement", "ELUSOC"]
+body:
+  - type: markdown
+  - type: input
+    id: feature_title
+    attributes:
+      label: Feature Title
+      description: A brief summary of your feature proposal.
+      placeholder: e.g. Add dark mode toggle to navigation bar
+    validations:
+      required: true
+  - type: textarea
+    id: problem_statement
+    attributes:
+      label: Problem it solves
+      description: What problem or limitation does this feature solve?
+      placeholder: Describe the current pain point or friction.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution
+      description: Describe how you envision this feature working.
+      placeholder: Explain your proposed implementation or UI layout.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any alternative solutions or workarounds?
+      placeholder: Describe any other options you evaluated.
