@@ -148,6 +148,7 @@ Furnix-Neon/
 
 ## 📖 Architecture & Developer Documentation
 - See [ARCHITECTURE.md](ARCHITECTURE.md) for system architecture overview.
+- See [ARCHITECTURE_SYSTEM_GUIDE.md](docs/ARCHITECTURE_SYSTEM_GUIDE.md) for modular services, local setup, and testing documentation.
 - See [STOREFRONT_ARCHITECTURE.md](docs/STOREFRONT_ARCHITECTURE.md) for deep storefront subsystem specs & data flows.
 - See [CLIENT_API_REFERENCE.md](docs/CLIENT_API_REFERENCE.md) for JavaScript client modules API reference.
 - See [DEVELOPER_GUIDE.md](docs/DEVELOPER_GUIDE.md) for developer guide and module testing instructions.
