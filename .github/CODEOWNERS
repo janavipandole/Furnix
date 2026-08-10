@@ -1,0 +1,13 @@
+# This file controls who is automatically requested to review a pull request.
+# For more information, see: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default reviewers for all files in the repository
+*       @janavipandole 
+
+# (Optional) Specific directory or file owners can be added below.
+# Example: JavaScript files owned by specific contributors
+# *.js    @janavipandola
+#
+# Example: Styles and Assets
+# /css/   
+# /images/ 

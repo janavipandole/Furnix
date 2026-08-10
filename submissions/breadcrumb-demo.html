@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furnix Breadcrumb Demo</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="breadcrumb.css">
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #333333;
+      --accent: #f1b555;
+      --accent-dark: #b8860b;
+      --card-bg: #f9f9f9;
+      --border: #e0e0e0;
+    }
+    
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #e0e0e0;
+      --card-bg: #1e1e1e;
+      --border: #333333;
+    }
+    
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.3s, color 0.3s;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .btn {
+      background-color: var(--accent);
+      color: #000;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 10px rgba(241, 181, 85, 0.2);
+    }
+    
+    .btn:hover {
+      box-shadow: 0 0 15px rgba(241, 181, 85, 0.6);
+      transform: translateY(-2px);
+    }
+    
+    .h2-heading {
+      margin-top: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    
+    pre {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+    
+    .demo-section {
+      margin-bottom: 3rem;
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <button class="btn" id="themeToggle"><i class="fa-solid fa-moon"></i> Toggle Dark Mode</button>
+    
+    <h1>Breadcrumb Navigation Demo</h1>
+    
+    <div class="demo-section">
+      <h2 class="h2-heading">Example 1: Short Trail</h2>
+      <main id="demo1">
+        <p>This is the content for the seating category.</p>
+      </main>
+      
+      <h3>Generated JSON-LD</h3>
+      <pre id="jsonLdOutput1"></pre>
+    </div>
+    
+    <div class="demo-section">
+      <h2 class="h2-heading">Example 2: Long Trail</h2>
+      <main id="demo2">
+        <p>This is the content for the pendant lamp product page.</p>
+      </main>
+      
+      <h3>Generated JSON-LD</h3>
+      <pre id="jsonLdOutput2"></pre>
+    </div>
+  </div>
+
+  <script src="breadcrumb.js"></script>
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        html.removeAttribute('data-theme');
+        themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i> Toggle Dark Mode';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i> Toggle Light Mode';
+      }
+    });
+
+    // Initialize Breadcrumbs
+    
+    // Demo 1
+    window.FurnixBreadcrumb.init({
+      target: '#demo1',
+      items: [
+        { label: 'Home', url: '/' },
+        { label: 'Collections', url: '/collections' },
+        { label: 'Seating', url: '' }
+      ]
+    });
+    document.getElementById('jsonLdOutput1').textContent = JSON.stringify(window.__furnix_last_breadcrumb_schema, null, 2);
+    
+    // Demo 2
+    window.FurnixBreadcrumb.init({
+      target: '#demo2',
+      items: [
+        { label: 'Home', url: '/' },
+        { label: 'Collections', url: '/collections' },
+        { label: 'Lighting', url: '/collections/lighting' },
+        { label: 'Pendant Lamp', url: '' }
+      ]
+    });
+    document.getElementById('jsonLdOutput2').textContent = JSON.stringify(window.__furnix_last_breadcrumb_schema, null, 2);
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Rating Component Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="star-rating.css">
+    <style>
+        body { font-family: 'Jost', sans-serif; transition: background 0.3s, color 0.3s; padding: 50px; margin:0;}
+        [data-theme="dark"] { background: #121212; color: #fff; }
+        [data-theme="light"] { background: #fff; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .product { padding: 20px; border: 1px solid #333; border-radius: 8px; }
+        [data-theme="light"] .product { border-color: #eee; }
+        .btn { padding: 10px 20px; background: #f1b555; color: #fff; border: none; cursor: pointer; border-radius: 4px; font-weight:bold; align-self: flex-start; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Furnix Star Rating Component</h1>
+        <button class="btn" onclick="document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark')">Toggle Theme</button>
+        
+        <div class="product">
+            <h2>Perfect Product</h2>
+            <div data-rating="5.0" class="rating-lg"></div>
+        </div>
+        
+        <div class="product">
+            <h2>Great Product (Medium Size)</h2>
+            <div data-rating="4.5" class="rating-md"></div>
+        </div>
+        
+        <div class="product">
+            <h2>Average Product (Small Size)</h2>
+            <div data-rating="3.7" class="rating-sm"></div>
+        </div>
+        
+        <div class="product">
+            <h2>Poor Product</h2>
+            <div data-rating="2.0"></div>
+        </div>
+
+        <div class="product">
+            <h2>No Rating</h2>
+            <div data-rating="0"></div>
+        </div>
+    </div>
+    
+    <script src="star-rating.js"></script>
+</body>
+</html>

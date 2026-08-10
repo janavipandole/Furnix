@@ -1,0 +1,114 @@
+.recently-viewed-section {
+    padding: 40px 0;
+    width: 100%;
+}
+
+.recently-viewed-header {
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.recently-viewed-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 20px 30px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Custom Scrollbar */
+.recently-viewed-scroll-container::-webkit-scrollbar {
+    height: 6px;
+}
+.recently-viewed-scroll-container::-webkit-scrollbar-track {
+    background: rgba(128, 128, 128, 0.2);
+    border-radius: 4px;
+}
+.recently-viewed-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--cc-accent, #f1b555);
+    border-radius: 4px;
+}
+
+.rv-card {
+    flex: 0 0 240px;
+    scroll-snap-align: start;
+    background: var(--cc-bg, #fff);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--cc-border, #eee);
+}
+
+[data-theme="dark"] .rv-card {
+    background: #1a1a1a;
+    border-color: #333;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.rv-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(241, 181, 85, 0.2);
+}
+
+.rv-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.rv-img-container {
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+    background: #f5f5f5;
+}
+
+[data-theme="dark"] .rv-img-container {
+    background: #2a2a2a;
+}
+
+.rv-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.rv-card:hover .rv-image {
+    transform: scale(1.05);
+}
+
+.rv-info {
+    padding: 15px;
+}
+
+.rv-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.rv-name {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+    color: var(--cc-text, #333);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+[data-theme="dark"] .rv-name {
+    color: #eee;
+}
+
+.rv-price {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--cc-accent, #f1b555);
+}

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix PR #2 Demo: Accessibility Fix</title>
+    
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* Furnix Neon Project Colors & Theme variables */
+        :root {
+            --bg: #121212;
+            --text: #ffffff;
+            --accent: #f1b555; /* Golden/amber accent */
+            --secondary: #1a1a1a;
+            --border: #333333;
+            --neon-glow: rgba(241, 181, 85, 0.4);
+            --success: #4CAF50;
+            --danger: #F44336;
+        }
+
+        html[data-theme="light"] {
+            --bg: #ffffff;
+            --text: #121212;
+            --secondary: #f5f5f5;
+            --border: #e0e0e0;
+            --neon-glow: rgba(241, 181, 85, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Jost', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .between {
+            justify-content: space-between;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--secondary);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-inner {
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px var(--neon-glow);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .navList {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            transition: 0.3s ease;
+        }
+
+        .navList a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .navList a:hover {
+            color: var(--accent);
+            text-shadow: 0 0 8px var(--neon-glow);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-left: 30px;
+        }
+
+        .nav-actions button {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        .nav-actions button:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        #navClose {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        #menu {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+
+        /* Mobile Nav Configuration */
+        @media (max-width: 991px) {
+            #menu {
+                display: block;
+            }
+            .navList {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 320px;
+                height: 100vh;
+                background-color: var(--secondary);
+                flex-direction: column;
+                padding: 80px 30px;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+                z-index: 1000;
+            }
+            .navList.active {
+                right: 0;
+            }
+            #navClose {
+                display: block;
+            }
+        }
+
+        /* Content Area */
+        .content {
+            padding: 60px 0;
+            min-height: 100vh;
+        }
+
+        .h2-heading {
+            font-size: 38px;
+            margin-bottom: 25px;
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--neon-glow);
+        }
+
+        /* Custom Status Panel */
+        .status-panel {
+            background-color: var(--secondary);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 90px;
+            z-index: 90;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .status-panel h3 {
+            margin-bottom: 20px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .status-item {
+            background-color: rgba(255,255,255,0.03);
+            padding: 15px 20px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border);
+        }
+
+        .status-label {
+            font-weight: 500;
+            font-size: 15px;
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        .status-value {
+            font-family: monospace;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .value-true { background-color: rgba(244, 67, 54, 0.15); color: #ff5252; border: 1px solid rgba(244, 67, 54, 0.3); }
+        .value-false { background-color: rgba(76, 175, 80, 0.15); color: #69f0ae; border: 1px solid rgba(76, 175, 80, 0.3); }
+        
+        /* Information Cards */
+        .description-card {
+            background-color: var(--secondary);
+            padding: 35px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+        }
+        
+        .description-card h4 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .description-card p {
+            margin-bottom: 15px;
+            color: var(--text);
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        
+        .description-card ul {
+            margin-left: 25px;
+            margin-bottom: 25px;
+            color: var(--text);
+            opacity: 0.9;
+            font-size: 16px;
+        }
+
+        .description-card li {
+            margin-bottom: 8px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: #121212;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 10px rgba(241, 181, 85, 0.2);
+        }
+        
+        .btn:hover {
+            box-shadow: 0 0 15px rgba(241, 181, 85, 0.5);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="wrapper header-inner flex between">
+            <a href="#" class="logo">Furnix</a>
+            
+            <nav id="mainNav">
+                <!-- Original bug: aria-hidden="true" was hardcoded here in PR -->
+                <ul class="navList" id="list" aria-hidden="true">
+                    <button id="navClose" aria-label="Close navigation"><i class="fas fa-times"></i></button>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-sun"></i></button>
+                    <button aria-label="Cart"><i class="fas fa-shopping-cart"></i></button>
+                    <button id="menu" aria-label="Menu"><i class="fas fa-bars"></i></button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="wrapper content">
+        <h2 class="h2-heading">Accessibility Fix Demo</h2>
+        
+        <div class="status-panel">
+            <h3><i class="fas fa-shield-alt" style="color: var(--accent);"></i> Real-time ARIA Monitor</h3>
+            <div class="status-grid">
+                <div class="status-item">
+                    <span class="status-label">Viewport Width:</span>
+                    <span id="display-viewport" class="status-value" style="color: #64b5f6; background-color: rgba(100, 181, 246, 0.15); border: 1px solid rgba(100, 181, 246, 0.3);"></span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">#list aria-hidden:</span>
+                    <span id="display-aria-hidden" class="status-value"></span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">#menu aria-expanded:</span>
+                    <span id="display-aria-expanded" class="status-value"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="description-card">
+            <h4><i class="fas fa-bug"></i> The Problem</h4>
+            <p>The main navigation <code>&lt;ul class="navList" id="list"&gt;</code> originally contained a hardcoded <code>aria-hidden="true"</code> attribute. This permanently blocked screen readers from accessing the navigation links across all screen sizes, causing a major WCAG 2.1 compliance violation.</p>
+            
+            <h4 style="margin-top: 25px;"><i class="fas fa-wrench"></i> The Fix</h4>
+            <ul>
+                <li>Removed the hardcoded <code>aria-hidden="true"</code> from the navigation DOM.</li>
+                <li>Added dynamic state management based on viewport size.</li>
+                <li><strong>Desktop (>= 992px):</strong> Navigation is always exposed (<code>aria-hidden="false"</code>).</li>
+                <li><strong>Mobile (< 992px):</strong> Navigation state dynamically mirrors the visual menu open/closed state.</li>
+                <li>Hamburger button correctly toggles <code>aria-expanded</code>.</li>
+                <li>Added semantic <code>role="navigation"</code> to parent <code>&lt;nav&gt;</code> element.</li>
+            </ul>
+            
+            <div style="margin-top: 30px;">
+                <p><em>To test, resize your browser window below 992px to simulate mobile view and toggle the menu.</em></p>
+            </div>
+        </div>
+        
+        <!-- Dummy content to allow scrolling -->
+        <div style="height: 100vh; padding: 20px; background-color: var(--secondary); border-radius: 8px; border: 1px dashed var(--border); display: flex; align-items: center; justify-content: center;">
+            <p style="color: var(--text); opacity: 0.5; font-size: 18px;"><i class="fas fa-arrow-down"></i> Scrollable Page Content</p>
+        </div>
+    </div>
+
+    <!-- Include the accessibility fix script -->
+    <script src="fix-nav-aria-hidden.js"></script>
+
+    <!-- Demo UI interactivity scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const list = document.getElementById('list');
+            const menuBtn = document.getElementById('menu');
+            const closeBtn = document.getElementById('navClose');
+            const themeToggle = document.getElementById('themeToggle');
+            
+            // UI Logic for Mobile Menu
+            menuBtn.addEventListener('click', () => {
+                if(window.innerWidth < 992) {
+                    list.classList.add('active');
+                }
+            });
+            
+            closeBtn.addEventListener('click', () => {
+                list.classList.remove('active');
+            });
+            
+            // Theme toggle functionality (matching Furnix specs)
+            themeToggle.addEventListener('click', () => {
+                const html = document.documentElement;
+                const isDark = html.getAttribute('data-theme') === 'dark';
+                html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+                themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+                
+                // Simulate localStorage behavior
+                localStorage.setItem('furnix_theme', isDark ? 'light' : 'dark');
+            });
+            
+            // Load saved theme if exists
+            const savedTheme = localStorage.getItem('furnix_theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            }
+            
+            // Real-time Status Monitor Logic
+            const updateMonitor = () => {
+                // Viewport
+                document.getElementById('display-viewport').textContent = `${window.innerWidth}px`;
+                
+                // ARIA hidden on #list
+                const ariaHidden = list.getAttribute('aria-hidden');
+                const ariaHiddenEl = document.getElementById('display-aria-hidden');
+                ariaHiddenEl.textContent = ariaHidden || 'null';
+                if (ariaHidden === 'true') {
+                    ariaHiddenEl.className = 'status-value value-true';
+                } else if (ariaHidden === 'false') {
+                    ariaHiddenEl.className = 'status-value value-false';
+                } else {
+                    ariaHiddenEl.className = 'status-value';
+                    ariaHiddenEl.style.backgroundColor = 'transparent';
+                    ariaHiddenEl.style.border = '1px dashed var(--border)';
+                }
+                
+                // ARIA expanded on #menu
+                const ariaExpanded = menuBtn.getAttribute('aria-expanded');
+                const ariaExpandedEl = document.getElementById('display-aria-expanded');
+                ariaExpandedEl.textContent = ariaExpanded || 'null';
+                
+                if (window.innerWidth >= 992) {
+                    // On desktop, the menu isn't visible, so expanded doesn't strictly matter for visual status
+                    ariaExpandedEl.className = 'status-value';
+                    ariaExpandedEl.style.backgroundColor = 'rgba(255,255,255,0.05)';
+                    ariaExpandedEl.style.color = '#888';
+                    ariaExpandedEl.style.border = '1px solid var(--border)';
+                } else {
+                    if (ariaExpanded === 'true') {
+                        ariaExpandedEl.className = 'status-value value-false'; // True means open (good when clicked)
+                        ariaExpandedEl.style = '';
+                    } else if (ariaExpanded === 'false') {
+                        ariaExpandedEl.className = 'status-value value-true'; // False means closed
+                        ariaExpandedEl.style = '';
+                    }
+                }
+            };
+            
+            // Fast loop to keep the monitor up-to-date instantly
+            setInterval(updateMonitor, 50);
+        });
+    </script>
+</body>
+</html>

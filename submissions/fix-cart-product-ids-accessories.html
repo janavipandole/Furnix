@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix - Fix Cart Product IDs (Accessories)</title>
+    <!-- Jost Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #111;
+            --text: #fff;
+            --accent: #f1b555;
+            --card-bg: #222;
+            --neon-glow: 0 0 10px rgba(241, 181, 85, 0.5), 0 0 20px rgba(241, 181, 85, 0.3);
+        }
+        
+        [data-theme="light"] {
+            --bg: #f9f9f9;
+            --text: #333;
+            --accent: #b8860b;
+            --card-bg: #fff;
+            --neon-glow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 20px;
+        }
+
+        .h2-heading {
+            color: var(--accent);
+            text-shadow: 0 0 5px var(--accent);
+            margin: 0;
+        }
+
+        .gradient-txt {
+            background: linear-gradient(45deg, #f1b555, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--neon-glow);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+
+        [data-theme="light"] .product-image {
+            background-color: #eee;
+        }
+
+        .detail-info-platform {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .detail-info-platform h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .price {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            color: var(--bg);
+            box-shadow: var(--neon-glow);
+        }
+
+        .brown-bg {
+            background-color: var(--accent);
+            color: var(--bg);
+        }
+
+        .test-section {
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px dashed var(--accent);
+            border-radius: 10px;
+        }
+        
+        #test-results {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+
+        .explanation {
+            background: rgba(241, 181, 85, 0.1);
+            padding: 15px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <h2 class="h2-heading">Furnix <span class="gradient-txt">Accessories</span></h2>
+            <button class="btn" id="theme-toggle"><i class="fas fa-moon"></i> Toggle Theme</button>
+        </div>
+
+        <div class="explanation">
+            <strong>Bug Fix PR #1:</strong> On the Accessories category page, all 'Add to cart' buttons were missing the <code>data-product-id</code> attribute. Without it, the cart JavaScript could not identify which product to add. 
+            <br>
+            <strong>Fix:</strong> Added <code>data-product-id="[id]"</code> to all buttons with <code>data-cart-btn</code>.
+        </div>
+
+        <div class="grid" id="product-container">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image"><i class="fas fa-gem fa-3x"></i></div>
+                <div class="detail-info-platform">
+                    <h3>Flower Vase Decor</h3>
+                    <div class="price">$20</div>
+                    <button class="btn brown-bg" data-cart-btn data-product-id="flower-vase-decor">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image"><i class="fas fa-gem fa-3x"></i></div>
+                <div class="detail-info-platform">
+                    <h3>Wooden Candle Holder</h3>
+                    <div class="price">$60</div>
+                    <button class="btn brown-bg" data-cart-btn data-product-id="wooden-candle-holder">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image"><i class="fas fa-gem fa-3x"></i></div>
+                <div class="detail-info-platform">
+                    <h3>Aura Cube Table Lamp</h3>
+                    <div class="price">$95</div>
+                    <button class="btn brown-bg" data-cart-btn data-product-id="aura-cube-table-lamp">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image"><i class="fas fa-gem fa-3x"></i></div>
+                <div class="detail-info-platform">
+                    <h3>Marble Candles</h3>
+                    <div class="price">$80</div>
+                    <button class="btn brown-bg" data-cart-btn data-product-id="marble-candles">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image"><i class="fas fa-gem fa-3x"></i></div>
+                <div class="detail-info-platform">
+                    <h3>The Van Gogh Clock</h3>
+                    <div class="price">$150</div>
+                    <button class="btn brown-bg" data-cart-btn data-product-id="van-gogh-clock">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image"><i class="fas fa-gem fa-3x"></i></div>
+                <div class="detail-info-platform">
+                    <h3>Avangard Fruit Basket</h3>
+                    <div class="price">$100</div>
+                    <button class="btn brown-bg" data-cart-btn data-product-id="avangard-fruit-basket">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3 class="h2-heading">Test Verification</h3>
+            <p>Click "Run Test" to verify all Add to Cart buttons have a valid data-product-id attribute.</p>
+            <button class="btn" id="run-test-btn">Run Test</button>
+            <div id="test-results">Waiting to run tests...</div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlEl = document.documentElement;
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('furnix_theme') || 'dark';
+        htmlEl.setAttribute('data-theme', savedTheme);
+        
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlEl.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlEl.setAttribute('data-theme', newTheme);
+            localStorage.setItem('furnix_theme', newTheme);
+        });
+
+        // Cart button click dummy simulation
+        document.querySelectorAll('[data-cart-btn]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const productId = e.currentTarget.getAttribute('data-product-id');
+                if (productId) {
+                    alert(`Successfully identified product: ${productId}`);
+                } else {
+                    alert('ERROR: No data-product-id found on this button!');
+                }
+            });
+        });
+
+        // Automated Test Logic
+        document.getElementById('run-test-btn').addEventListener('click', () => {
+            const buttons = document.querySelectorAll('[data-cart-btn]');
+            const resultsEl = document.getElementById('test-results');
+            let passed = true;
+            let output = '<ul>';
+
+            buttons.forEach((btn, index) => {
+                const productId = btn.getAttribute('data-product-id');
+                const productName = btn.closest('.detail-info-platform').querySelector('h3').textContent;
+                
+                if (productId && productId.trim() !== '') {
+                    output += `<li style="color: #4caf50;">✅ ${productName}: <code>${productId}</code></li>`;
+                } else {
+                    passed = false;
+                    output += `<li style="color: #f44336;">❌ ${productName}: MISSING data-product-id</li>`;
+                }
+            });
+            
+            output += '</ul>';
+            
+            if (passed) {
+                output = `<div style="color: #4caf50; font-weight: bold; margin-bottom: 10px;">✅ SUCCESS: All ${buttons.length} buttons have a valid data-product-id.</div>` + output;
+            } else {
+                output = `<div style="color: #f44336; font-weight: bold; margin-bottom: 10px;">❌ FAILED: Some buttons are missing data-product-id.</div>` + output;
+            }
+            
+            resultsEl.innerHTML = output;
+        });
+    </script>
+</body>
+</html>

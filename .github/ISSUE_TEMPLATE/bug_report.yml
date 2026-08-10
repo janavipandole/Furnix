@@ -1,0 +1,48 @@
+name: 🐛 Bug Report
+description: Create a report to help us fix issues and improve Furnix.
+title: "[Bug]: "
+labels: ["bug", "ELUSOC"]
+body:
+  - type: markdown
+  - type: input
+    id: bug_title
+    attributes:
+      label: Bug Title
+      description: A brief, clear summary of what the bug is.
+      placeholder: e.g. Cart total calculation incorrect on mobile viewports
+    validations:
+      required: true
+  - type: textarea
+    id: symptoms
+    attributes:
+      label: Current Behavior
+      description: Describe what is happening currently.
+      placeholder: Explain what you see happening.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Provide step-by-step instructions on how to reproduce the issue.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: Describe what you expected to happen instead.
+      placeholder: Explain what you thought should happen.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, operating system, and device details.
+      placeholder: e.g. Chrome 124, macOS Sonoma, iPhone 15

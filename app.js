@@ -182,6 +182,28 @@ function goToStep(step) {
   }
 }
 
+// --- LTL FREIGHT SHIPPING CALCULATOR (Issue #451 Fix) ---
+function calculateShippingCost(cartItems, subtotal, freeThreshold, defaultRate) {
+  const BASE_FREIGHT_RATE = 150.00;
+
+  // 1. STRICT ALGORITHMIC GUARD CLAUSE: Detect oversized items
+  const requiresFreight = cartItems.some(item => 
+      item.is_freight === true || 
+      item.freight_class === 'LTL' ||
+      (item.dim_weight && item.dim_weight > 150)
+  );
+
+  if (requiresFreight) {
+      return BASE_FREIGHT_RATE; // Protect margins on heavy items
+  }
+
+  // 2. STANDARD PARCEL LOGIC
+  if (subtotal >= freeThreshold) {
+      return 0; // Free shipping applies
+  }
+  return defaultRate;
+}
+
 function renderCartPage() {
   const listEl = document.getElementById("cartItemsList");
   if (!listEl) return;
@@ -293,7 +315,10 @@ function updateCartSummary() {
     (sum, item) => sum + item.price * (item.quantity || 1),
     0,
   );
-  const shipping = subtotal >= 500 ? 0 : 25;
+  
+  // ✅ FIXED: Freight calculator protects margins in Cart Summary
+  const shipping = calculateShippingCost(cart, subtotal, 500, 25);
+  
   const tax = subtotal * 0.08;
   const total = subtotal + shipping + tax;
 
@@ -331,7 +356,10 @@ function renderCheckoutSummary() {
     (sum, item) => sum + item.price * (item.quantity || 1),
     0,
   );
-  const shipping = subtotal >= 150 ? 0 : 15;
+  
+  // ✅ FIXED: Freight calculator protects margins in Checkout Summary
+  const shipping = calculateShippingCost(cart, subtotal, 150, 15);
+  
   const tax = subtotal * 0.1;
   const total = subtotal + shipping + tax;
 
