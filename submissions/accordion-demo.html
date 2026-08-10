@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix - Accordion Module Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="accordion.css">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #333333;
+            --text-muted: #666666;
+            --accent: #b8860b;
+            --border-color: #eaeaea;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121212;
+            --text: #e0e0e0;
+            --text-muted: #aaaaaa;
+            --accent: #f1b555;
+            --border-color: #333333;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            font-weight: 600;
+        }
+
+        .h2-heading {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+        }
+
+        [data-theme="dark"] .btn {
+            color: #111;
+        }
+
+        .instructions {
+            background-color: rgba(184, 134, 11, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        kbd {
+            background: rgba(0,0,0,0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        [data-theme="dark"] kbd {
+            background: rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Furnix Accordion Demo</h1>
+        <button class="btn" id="themeToggle">Toggle Dark Mode</button>
+
+        <div class="instructions">
+            <strong>Keyboard Navigation:</strong>
+            <ul style="margin: 0.5rem 0 0; padding-left: 1.5rem;">
+                <li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> to focus headers</li>
+                <li><kbd>Enter</kbd> or <kbd>Space</kbd> to toggle content</li>
+                <li><kbd>Arrow Up</kbd> / <kbd>Arrow Down</kbd> to navigate headers</li>
+                <li><kbd>Home</kbd> / <kbd>End</kbd> to jump to first/last header</li>
+            </ul>
+        </div>
+
+        <h2 class="h2-heading">FAQ Section (Single-Open Mode)</h2>
+        <!-- By default, it operates in single-open mode (auto-closes others) -->
+        <div class="accordion" id="faq-accordion">
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    What is your return policy?
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        We accept returns within 30 days of delivery. Items must be in their original condition and packaging. Custom-made furniture is non-refundable unless damaged upon arrival.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    Do you offer assembly services?
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        Yes, white-glove delivery and assembly services are available in select metro areas for an additional fee at checkout.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    How long does shipping take?
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        In-stock items typically ship within 3-5 business days. Made-to-order and custom pieces require 6-8 weeks for production and delivery.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="h2-heading">Product Details (Multi-Open Mode)</h2>
+        <!-- Adding data-allow-multiple="true" allows multiple panels to be open simultaneously -->
+        <div class="accordion" id="product-accordion" data-allow-multiple="true">
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    Dimensions & Weight
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <ul>
+                            <li>Overall: 84"W x 36"D x 34"H</li>
+                            <li>Seat Height: 18"</li>
+                            <li>Arm Height: 24"</li>
+                            <li>Weight: 145 lbs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    Materials & Care
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        Crafted with a kiln-dried hardwood frame and high-resiliency foam cushions. Upholstered in performance velvet. Vacuum regularly and spot clean with a damp cloth.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    Warranty Info
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        Includes a 5-year limited warranty on the frame and suspension, and a 1-year warranty on cushions and fabric against manufacturing defects.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="accordion.js"></script>
+    <script>
+        // Theme toggle logic
+        const html = document.documentElement;
+        const toggleBtn = document.getElementById('themeToggle');
+
+        if(localStorage.getItem('furnix_theme') === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('furnix_theme', newTheme);
+        });
+    </script>
+</body>
+</html>
