@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furnix Back to Top Demo</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="back-to-top.css">
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #333333;
+      --accent: #f1b555;
+      --card-bg: #f9f9f9;
+      --border: #e0e0e0;
+    }
+    
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #e0e0e0;
+      --card-bg: #1e1e1e;
+      --border: #333333;
+    }
+    
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.3s, color 0.3s;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    header {
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .btn {
+      background-color: var(--accent);
+      color: #000;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      box-shadow: 0 0 15px rgba(241, 181, 85, 0.6);
+      transform: translateY(-2px);
+    }
+    
+    .placeholder-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .h2-heading {
+      margin: 4rem 0 2rem;
+      font-size: 2rem;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1>Furnix Back to Top Demo</h1>
+      <button class="btn" id="themeToggle"><i class="fa-solid fa-moon"></i> Dark Mode</button>
+    </header>
+    
+    <p>Scroll down to see the back-to-top button appear in the bottom right corner.</p>
+    
+    <h2 class="h2-heading">Seating</h2>
+    <div class="placeholder-content">
+      <div class="product-card"><h3>Sofa</h3></div>
+      <div class="product-card"><h3>Armchair</h3></div>
+      <div class="product-card"><h3>Lounge Chair</h3></div>
+      <div class="product-card"><h3>Stool</h3></div>
+      <div class="product-card"><h3>Bench</h3></div>
+      <div class="product-card"><h3>Ottoman</h3></div>
+    </div>
+    
+    <h2 class="h2-heading">Tables</h2>
+    <div class="placeholder-content">
+      <div class="product-card"><h3>Dining Table</h3></div>
+      <div class="product-card"><h3>Coffee Table</h3></div>
+      <div class="product-card"><h3>Side Table</h3></div>
+      <div class="product-card"><h3>Console</h3></div>
+    </div>
+    
+    <h2 class="h2-heading">Lighting</h2>
+    <div class="placeholder-content">
+      <div class="product-card"><h3>Pendant Lamp</h3></div>
+      <div class="product-card"><h3>Floor Lamp</h3></div>
+      <div class="product-card"><h3>Table Lamp</h3></div>
+      <div class="product-card"><h3>Wall Sconce</h3></div>
+      <div class="product-card"><h3>Chandelier</h3></div>
+      <div class="product-card"><h3>Desk Lamp</h3></div>
+    </div>
+    
+    <div style="height: 50vh; display: flex; align-items: center; justify-content: center;">
+      <p>End of page content. You've scrolled far enough!</p>
+    </div>
+  </div>
+
+  <script src="back-to-top.js"></script>
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        html.removeAttribute('data-theme');
+        themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
+      }
+    });
+  </script>
+</body>
+</html>
