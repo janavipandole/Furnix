@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recently Viewed Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="recently-viewed.css">
+    <style>
+        body { font-family: 'Jost', sans-serif; transition: background 0.3s, color 0.3s; padding: 50px; margin:0;}
+        [data-theme="dark"] { background: #121212; color: #fff; }
+        [data-theme="light"] { background: #fff; color: #333; }
+        .demo-container { max-width: 1000px; margin: 0 auto; }
+        .product-grid { display: flex; gap: 20px; margin-bottom: 50px; flex-wrap: wrap; }
+        .prod-btn { padding: 10px; cursor: pointer; background: #f1b555; border: none; border-radius: 4px; color: #fff; font-weight: bold;}
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>Recently Viewed Products Demo</h1>
+        <button class="prod-btn" style="margin-bottom:20px" onclick="document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark')">Toggle Theme</button>
+        <button class="prod-btn" style="margin-bottom:20px" onclick="window.FurnixRecentlyViewed.clear()">Clear History</button>
+        
+        <h2>Simulate Product View</h2>
+        <div class="product-grid">
+            <button class="prod-btn" onclick="track(1, 'Neon Sofa', 599.99, 'https://picsum.photos/seed/sofa/300/200')">View Neon Sofa</button>
+            <button class="prod-btn" onclick="track(2, 'Amber Chair', 199.99, 'https://picsum.photos/seed/chair/300/200')">View Amber Chair</button>
+            <button class="prod-btn" onclick="track(3, 'Glass Table', 349.99, 'https://picsum.photos/seed/table/300/200')">View Glass Table</button>
+        </div>
+        
+        <!-- Component Target -->
+        <div id="recently-viewed-container"></div>
+    </div>
+
+    <script src="recently-viewed.js"></script>
+    <script>
+        function track(id, name, price, image) {
+            window.FurnixRecentlyViewed.trackView({ id, name, price, image, category: 'Furniture', url: '#' });
+        }
+    </script>
+</body>
+</html>
