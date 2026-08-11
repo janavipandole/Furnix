@@ -1,0 +1,1 @@
+# Enhancement: Optimize "Hero Image" Loading (Preload)\n\nThis is a placeholder for the implementation of Enhancement: Optimize "Hero Image" Loading (Preload).
