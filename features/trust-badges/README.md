@@ -1,0 +1,1 @@
+# UI/UX: Design "Trust Badges" for Checkout and Product Pages\n\nThis is a placeholder for the implementation of UI/UX: Design "Trust Badges" for Checkout and Product Pages.
