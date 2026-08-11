@@ -1,0 +1,1 @@
+# Enhancement: Implement "Sticky Add-to-Cart" on Mobile\n\nThis is a placeholder for the implementation of Enhancement: Implement "Sticky Add-to-Cart" on Mobile.
