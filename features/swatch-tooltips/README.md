@@ -1,0 +1,1 @@
+# UI/UX: Design "Color Swatch Tooltips" on Hover\n\nThis is a placeholder for the implementation of UI/UX: Design "Color Swatch Tooltips" on Hover.
