@@ -1,0 +1,130 @@
+/* Submissions Inventory Stock Status Demonstration Styles */
+.stock-demo-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1a1a1a;
+}
+
+.stock-demo-header {
+    border-bottom: 2px solid #f1f3f5;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.stock-demo-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #2b2b2b;
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.stock-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 18px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stock-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+.stock-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.badge-in-stock {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.badge-low-stock {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.badge-critical-stock {
+    background: #ffedd5;
+    color: #9a3412;
+    animation: pulseGlow 1.5s infinite;
+}
+
+.badge-backorder {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.badge-out-of-stock {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.stock-controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.stock-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.stock-btn-buy {
+    background: #111827;
+    color: #ffffff;
+}
+
+.stock-btn-buy:hover:not(:disabled) {
+    background: #374151;
+}
+
+.stock-btn-buy:disabled {
+    background: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.stock-btn-restock {
+    background: #f3f4f6;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.stock-btn-restock:hover {
+    background: #e5e7eb;
+}

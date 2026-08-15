@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix - Real-time Inventory Stock Status Demo</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="inventory-stock-status.css">
+</head>
+<body style="background: #f8fafc; padding: 20px;">
+    <div class="stock-demo-container">
+        <div class="stock-demo-header">
+            <h2>Storefront Real-time Stock Status & Backorder Management Demo</h2>
+            <p style="color: #6b7280; font-size: 14px; margin: 0;">Interactive test sandbox simulating live stock deductions, critical low-stock alerts, and restocking cycles.</p>
+        </div>
+
+        <div class="inventory-grid" id="inventory-grid">
+            <!-- Dynamically populated stock cards -->
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <button type="button" onclick="resetDemoStock()" style="padding: 10px 20px; background: #e5e7eb; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">
+                Reset Demo Inventory
+            </button>
+        </div>
+    </div>
+
+    <script src="../scripts/inventory-stock-status-engine.js"></script>
+    <script>
+        const PRODUCTS = [
+            { id: 'prod-chair-01', name: 'Ergonomic Oak Desk Chair', price: '$240.00' },
+            { id: 'prod-table-02', name: 'Extendable Walnut Dining Table', price: '$680.00' },
+            { id: 'prod-lamp-03', name: 'Brass Arc Floor Lamp', price: '$135.00' },
+            { id: 'prod-sofa-04', name: 'Nordic Velvet 3-Seater Sofa', price: '$950.00' },
+            { id: 'prod-shelf-05', name: 'Modular Floating Bookshelf', price: '$190.00' },
+            { id: 'prod-rug-06', name: 'Handwoven Wool Area Rug', price: '$310.00' }
+        ];
+
+        function renderGrid() {
+            const container = document.getElementById('inventory-grid');
+            container.innerHTML = '';
+
+            PRODUCTS.forEach(p => {
+                const status = InventoryStockStatusEngine.getStockStatus(p.id);
+                const card = document.createElement('div');
+                card.className = 'stock-card';
+                card.innerHTML = `
+                    <div>
+                        <span class="stock-badge ${status.badgeClass}">${status.label}</span>
+                        <h4 style="margin: 0 0 6px 0; font-size: 16px;">${p.name}</h4>
+                        <p style="color: #6b7280; margin: 0; font-size: 14px;">${p.price}</p>
+                        <p style="font-size: 12px; color: #9ca3af; margin-top: 8px;">Units in Warehouse: <strong>${status.stock}</strong></p>
+                    </div>
+                    <div class="stock-controls">
+                        <button type="button" class="stock-btn stock-btn-buy" ${!status.isPurchasable ? 'disabled' : ''} onclick="buyItem('${p.id}')">
+                            ${status.status === 'BACKORDER' ? 'Backorder' : 'Add to Cart'}
+                        </button>
+                        <button type="button" class="stock-btn stock-btn-restock" onclick="restockItem('${p.id}')">
+                            +5 Restock
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function buyItem(id) {
+            const success = InventoryStockStatusEngine.reserveStock(id, 1);
+            if (success) {
+                renderGrid();
+            } else {
+                alert('Item is currently out of stock.');
+            }
+        }
+
+        function restockItem(id) {
+            InventoryStockStatusEngine.restockProduct(id, 5);
+            renderGrid();
+        }
+
+        function resetDemoStock() {
+            InventoryStockStatusEngine.resetToDefaults();
+            renderGrid();
+        }
+
+        renderGrid();
+    </script>
+</body>
+</html>

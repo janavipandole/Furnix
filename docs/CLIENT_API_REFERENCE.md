@@ -131,3 +131,21 @@ Verifies voucher code eligibility against minimum order spend requirements.
 
 #### `calculateDiscount(code: string, subtotal: number): number`
 Calculates exact dollar discount savings for active coupon.
+
+---
+
+## 📦 9. InventoryStockStatusEngine (`scripts/inventory-stock-status-engine.js`)
+
+Manages real-time catalog stock states, critical low-stock alert thresholds, backorder availability, and inventory reservations.
+
+### Methods
+
+#### `getStockStatus(productId: string): Object`
+Evaluates stock availability level (`IN_STOCK`, `LOW_STOCK`, `CRITICAL_STOCK`, `BACKORDER`, `OUT_OF_STOCK`), badge styling, and purchasable flag.
+
+#### `reserveStock(productId: string, quantity?: number): boolean`
+Safely deducts available inventory units upon checkout or cart reservation.
+
+#### `restockProduct(productId: string, quantity?: number): number`
+Replenishes product warehouse inventory count.
+
