@@ -131,3 +131,24 @@ Verifies voucher code eligibility against minimum order spend requirements.
 
 #### `calculateDiscount(code: string, subtotal: number): number`
 Calculates exact dollar discount savings for active coupon.
+
+---
+
+## 🕒 9. RecentlyViewedPersistenceEngine (`scripts/recently-viewed-persistence-engine.js`)
+
+Manages client-side browsing history with duplicate prevention, FIFO sorting, capacity capping, and storage syncing.
+
+### Methods
+
+#### `getHistory(): Array<Object>`
+Returns list of recently viewed product objects sorted in descending chronological order.
+
+#### `recordProductView(product: Object, maxCapacity?: number): Array<Object>`
+Registers new product interaction, deduplicates previous occurrences, and caps total history size.
+
+#### `removeFromHistory(productId: string|number): Array<Object>`
+Deletes specific item entry from browsing history.
+
+#### `clearHistory(): Array`
+Clears entire customer product browsing history.
+

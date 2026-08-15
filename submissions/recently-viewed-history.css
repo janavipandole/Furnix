@@ -1,0 +1,84 @@
+/* Submissions Recently Viewed History Engine Styles */
+.history-demo-container {
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1a1a1a;
+}
+
+.history-demo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f1f3f5;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.catalog-sim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.catalog-sim-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.catalog-sim-card:hover {
+    border-color: #3b82f6;
+    background: #eff6ff;
+    transform: translateY(-2px);
+}
+
+.recent-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.recent-strip-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.recent-strip-card .remove-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: #fee2e2;
+    color: #991b1b;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.history-empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #9ca3af;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px dashed #d1d5db;
+}

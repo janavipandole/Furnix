@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix - Recently Viewed Products Persistence Engine Demo</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="recently-viewed-history.css">
+</head>
+<body style="background: #f8fafc; padding: 20px;">
+    <div class="history-demo-container">
+        <div class="history-demo-header">
+            <div>
+                <h2 style="margin: 0 0 6px 0; font-size: 24px;">Recently Viewed Products Engine Sandbox</h2>
+                <p style="margin: 0; color: #6b7280; font-size: 14px;">Click products below to simulate customer browsing and test history persistence & FIFO ordering.</p>
+            </div>
+            <button type="button" onclick="clearAllHistory()" style="padding: 8px 16px; background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; border-radius: 6px; font-weight: 600; cursor: pointer;">
+                Clear History
+            </button>
+        </div>
+
+        <h3 style="font-size: 16px; margin-bottom: 12px;">Browse Catalog Items (Click to View)</h3>
+        <div class="catalog-sim-grid">
+            <div class="catalog-sim-card" onclick="viewProduct(101, 'Aura Velvet Armchair', 299, 'Living Room')">
+                <strong>Aura Velvet Armchair</strong>
+                <p style="color: #6b7280; margin: 4px 0 0 0; font-size: 13px;">$299.00</p>
+            </div>
+            <div class="catalog-sim-card" onclick="viewProduct(102, 'Solstice Oak Dining Table', 749, 'Dining Room')">
+                <strong>Solstice Oak Table</strong>
+                <p style="color: #6b7280; margin: 4px 0 0 0; font-size: 13px;">$749.00</p>
+            </div>
+            <div class="catalog-sim-card" onclick="viewProduct(103, 'Lumen Brass Table Lamp', 89, 'Lighting')">
+                <strong>Lumen Brass Lamp</strong>
+                <p style="color: #6b7280; margin: 4px 0 0 0; font-size: 13px;">$89.00</p>
+            </div>
+            <div class="catalog-sim-card" onclick="viewProduct(104, 'Zenith Ceramic Coffee Table', 420, 'Living Room')">
+                <strong>Zenith Coffee Table</strong>
+                <p style="color: #6b7280; margin: 4px 0 0 0; font-size: 13px;">$420.00</p>
+            </div>
+            <div class="catalog-sim-card" onclick="viewProduct(105, 'Kanso Minimalist Wardrobe', 1150, 'Bedroom')">
+                <strong>Kanso Wardrobe</strong>
+                <p style="color: #6b7280; margin: 4px 0 0 0; font-size: 13px;">$1,150.00</p>
+            </div>
+        </div>
+
+        <h3 style="font-size: 16px; margin-bottom: 12px;">Recently Viewed Strip (<span id="history-count">0</span> items)</h3>
+        <div id="history-grid" class="recent-strip-grid">
+            <!-- Dynamically populated -->
+        </div>
+    </div>
+
+    <script src="../scripts/recently-viewed-persistence-engine.js"></script>
+    <script>
+        function renderHistory() {
+            const history = RecentlyViewedPersistenceEngine.getHistory();
+            const container = document.getElementById('history-grid');
+            document.getElementById('history-count').textContent = history.length;
+
+            if (history.length === 0) {
+                container.innerHTML = '<div class="history-empty-state" style="grid-column: 1 / -1;">No recently viewed items recorded yet. Click on any catalog product above!</div>';
+                return;
+            }
+
+            container.innerHTML = '';
+            history.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'recent-strip-card';
+                card.innerHTML = `
+                    <button type="button" class="remove-btn" title="Remove" onclick="removeItem('${item.id}')">✕</button>
+                    <span style="font-size: 11px; text-transform: uppercase; color: #6b7280; font-weight: 600;">${item.category}</span>
+                    <h4 style="margin: 4px 0 6px 0; font-size: 14px;">${item.title}</h4>
+                    <p style="margin: 0; font-weight: 700; color: #111827; font-size: 14px;">$${item.price.toFixed(2)}</p>
+                    <p style="margin: 6px 0 0 0; font-size: 11px; color: #9ca3af;">Viewed just now</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function viewProduct(id, title, price, category) {
+            RecentlyViewedPersistenceEngine.recordProductView({
+                id: id,
+                title: title,
+                price: price,
+                category: category
+            }, 6);
+            renderHistory();
+        }
+
+        function removeItem(id) {
+            RecentlyViewedPersistenceEngine.removeFromHistory(id);
+            renderHistory();
+        }
+
+        function clearAllHistory() {
+            RecentlyViewedPersistenceEngine.clearHistory();
+            renderHistory();
+        }
+
+        renderHistory();
+    </script>
+</body>
+</html>
