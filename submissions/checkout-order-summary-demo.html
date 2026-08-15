@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix - Checkout Order Summary Engine Demo</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="checkout-order-summary.css">
+</head>
+<body style="background: #f8fafc; padding: 20px;">
+    <div class="summary-demo-container">
+        <div class="summary-demo-header">
+            <h2>Checkout Order Breakdown & Calculation Demo</h2>
+            <p style="color: #6b7280; font-size: 14px; margin: 0;">Isolated interactive sandbox testing for dynamic taxes, shipping tiers, add-ons, and promo discounts.</p>
+        </div>
+
+        <div class="summary-layout">
+            <div class="control-panel">
+                <h3 style="font-size: 16px; margin-top: 0;">Order Configuration</h3>
+                
+                <div class="control-group">
+                    <label for="cart-preset">Sample Cart Items</label>
+                    <select id="cart-preset">
+                        <option value="small">1x Accent Chair ($180.00)</option>
+                        <option value="medium" selected>2x Oak Chairs ($300.00) + Vase ($45.00)</option>
+                        <option value="large">1x Velvet Sectional Sofa ($850.00)</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="shipping-select">Shipping Speed</label>
+                    <select id="shipping-select">
+                        <option value="standard">Standard Ground ($35.00 or Free over $500)</option>
+                        <option value="express">Express Priority ($75.00)</option>
+                        <option value="white-glove">White Glove Room Delivery ($150.00)</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="promo-input">Promo Code</label>
+                    <input type="text" id="promo-input" placeholder="e.g. FURNIX10, FURNIX20, SAVE50">
+                    <div id="promo-status"></div>
+                </div>
+
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="gift-wrap"> Premium Gift Wrapping (+$12.50)
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="eco-pack"> Eco-friendly Protective Packaging (+$5.00)
+                    </label>
+                </div>
+            </div>
+
+            <div class="breakdown-card">
+                <div>
+                    <h3 style="font-size: 16px; margin-top: 0; border-bottom: 1px solid #e9ecef; padding-bottom: 10px;">Order Summary</h3>
+                    
+                    <div class="breakdown-row">
+                        <span>Items Subtotal (<span id="summary-count">3</span> items)</span>
+                        <span id="summary-subtotal">$345.00</span>
+                    </div>
+
+                    <div class="breakdown-row" id="discount-row" style="display: none;">
+                        <span>Discount Applied</span>
+                        <span id="summary-discount" class="discount-row">-$0.00</span>
+                    </div>
+
+                    <div class="breakdown-row">
+                        <span>Estimated Shipping</span>
+                        <span id="summary-shipping">$35.00</span>
+                    </div>
+
+                    <div class="breakdown-row" id="packaging-row" style="display: none;">
+                        <span>Packaging & Add-ons</span>
+                        <span id="summary-packaging">$0.00</span>
+                    </div>
+
+                    <div class="breakdown-row">
+                        <span>Estimated Sales Tax (8%)</span>
+                        <span id="summary-tax">$27.60</span>
+                    </div>
+
+                    <div class="breakdown-row total-row">
+                        <span>Estimated Total</span>
+                        <span id="summary-total">$407.60</span>
+                    </div>
+                </div>
+
+                <button type="button" class="checkout-action-btn" onclick="alert('Order calculated successfully!')">
+                    Proceed to Payment
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/checkout-order-summary-calculator.js"></script>
+    <script>
+        const PRESETS = {
+            small: [{ id: 1, title: 'Accent Chair', price: 180.00, quantity: 1 }],
+            medium: [
+                { id: 2, title: 'Oak Dining Chair', price: 150.00, quantity: 2 },
+                { id: 3, title: 'Ceramic Vase', price: 45.00, quantity: 1 }
+            ],
+            large: [{ id: 4, title: 'Velvet Sectional Sofa', price: 850.00, quantity: 1 }]
+        };
+
+        function recalculate() {
+            const presetKey = document.getElementById('cart-preset').value;
+            const shipping = document.getElementById('shipping-select').value;
+            const promo = document.getElementById('promo-input').value;
+            const giftWrap = document.getElementById('gift-wrap').checked;
+            const ecoPack = document.getElementById('eco-pack').checked;
+
+            const items = PRESETS[presetKey] || [];
+            const result = CheckoutOrderSummaryEngine.calculateOrderSummary(items, {
+                shippingMethod: shipping,
+                promoCode: promo,
+                giftWrap: giftWrap,
+                ecoPackaging: ecoPack
+            });
+
+            document.getElementById('summary-count').textContent = result.itemCount;
+            document.getElementById('summary-subtotal').textContent = CheckoutOrderSummaryEngine.formatCurrency(result.subtotal);
+            document.getElementById('summary-shipping').textContent = result.shippingFee === 0 ? 'FREE' : CheckoutOrderSummaryEngine.formatCurrency(result.shippingFee);
+            document.getElementById('summary-tax').textContent = CheckoutOrderSummaryEngine.formatCurrency(result.estimatedTax);
+            document.getElementById('summary-total').textContent = CheckoutOrderSummaryEngine.formatCurrency(result.grandTotal);
+
+            const discountRow = document.getElementById('discount-row');
+            if (result.discount > 0) {
+                discountRow.style.display = 'flex';
+                document.getElementById('summary-discount').textContent = '-' + CheckoutOrderSummaryEngine.formatCurrency(result.discount);
+            } else {
+                discountRow.style.display = 'none';
+            }
+
+            const packagingRow = document.getElementById('packaging-row');
+            if (result.packagingFee > 0) {
+                packagingRow.style.display = 'flex';
+                document.getElementById('summary-packaging').textContent = CheckoutOrderSummaryEngine.formatCurrency(result.packagingFee);
+            } else {
+                packagingRow.style.display = 'none';
+            }
+
+            const statusEl = document.getElementById('promo-status');
+            if (result.promoApplied) {
+                statusEl.innerHTML = `<span class="promo-badge">✔ ${result.promoApplied.code} applied</span>`;
+            } else if (result.promoError) {
+                statusEl.innerHTML = `<span class="promo-error-msg">✖ ${result.promoError}</span>`;
+            } else {
+                statusEl.innerHTML = '';
+            }
+        }
+
+        document.getElementById('cart-preset').addEventListener('change', recalculate);
+        document.getElementById('shipping-select').addEventListener('change', recalculate);
+        document.getElementById('promo-input').addEventListener('input', recalculate);
+        document.getElementById('gift-wrap').addEventListener('change', recalculate);
+        document.getElementById('eco-pack').addEventListener('change', recalculate);
+
+        recalculate();
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+/* Submissions Checkout Order Summary Demonstration Styles */
+.summary-demo-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1a1a1a;
+}
+
+.summary-demo-header {
+    border-bottom: 2px solid #f1f3f5;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.summary-demo-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #2b2b2b;
+}
+
+.summary-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}
+
+@media (max-width: 768px) {
+    .summary-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.control-panel {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.control-group {
+    margin-bottom: 16px;
+}
+
+.control-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #495057;
+}
+
+.control-group select,
+.control-group input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.control-group select:focus,
+.control-group input[type="text"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.breakdown-card {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #495057;
+}
+
+.breakdown-row.discount-row {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.breakdown-row.total-row {
+    border-top: 2px solid #e9ecef;
+    padding-top: 14px;
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.promo-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 12px;
+    background: #dcfce7;
+    color: #15803d;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.promo-error-msg {
+    color: #dc2626;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.checkout-action-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    background: #111827;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.checkout-action-btn:hover {
+    background: #374151;
+}

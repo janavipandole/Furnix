@@ -131,3 +131,18 @@ Verifies voucher code eligibility against minimum order spend requirements.
 
 #### `calculateDiscount(code: string, subtotal: number): number`
 Calculates exact dollar discount savings for active coupon.
+
+---
+
+## 🧾 9. CheckoutOrderSummaryEngine (`scripts/checkout-order-summary-calculator.js`)
+
+Pure calculation module for checkout subtotals, tax rates, tiered shipping methods, promo codes, and packaging add-ons.
+
+### Methods
+
+#### `calculateOrderSummary(items: Array, options?: Object): Object`
+Computes complete checkout breakdown including subtotal, tiered shipping fees, packaging add-ons, promo discounts, tax estimation, and final grand total.
+
+#### `formatCurrency(amount: number, currency?: string): string`
+Formats numeric amounts into standard locale currency representations ($345.00).
+
