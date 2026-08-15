@@ -131,3 +131,18 @@ Verifies voucher code eligibility against minimum order spend requirements.
 
 #### `calculateDiscount(code: string, subtotal: number): number`
 Calculates exact dollar discount savings for active coupon.
+
+---
+
+## 🚚 9. ShippingTaxEstimatorEngine (`scripts/shipping-tax-estimator-engine.js`)
+
+Calculates state-level sales tax, delivery transit estimates, heavy freight surcharges, and zip code verification.
+
+### Methods
+
+#### `isValidZip(zipCode: string): boolean`
+Validates US 5-digit postal code formats.
+
+#### `estimateRates(stateCode?: string, zipCode?: string, orderAmount?: number, totalWeightLbs?: number): Object`
+Computes state sales tax, free ground shipping thresholds, oversized heavy freight surcharges, and transit delivery windows.
+

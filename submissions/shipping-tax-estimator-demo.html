@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix - Shipping Zone & Regional Tax Estimator Demo</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="shipping-tax-estimator.css">
+</head>
+<body style="background: #f8fafc; padding: 20px;">
+    <div class="estimator-demo-container">
+        <div class="estimator-demo-header">
+            <h2 style="margin: 0 0 6px 0; font-size: 24px;">Regional Freight & Sales Tax Estimator Sandbox</h2>
+            <p style="margin: 0; color: #6b7280; font-size: 14px;">Instant postal zip delivery estimation, heavy freight surcharge rules, and state tax calculations.</p>
+        </div>
+
+        <div class="estimator-grid">
+            <div class="estimator-form">
+                <h3 style="font-size: 16px; margin-top: 0;">Destination & Cart Details</h3>
+
+                <div class="form-field">
+                    <label for="state-select">Destination State</label>
+                    <select id="state-select">
+                        <option value="CA">California (CA) - 9.25%</option>
+                        <option value="NY">New York (NY) - 8.875%</option>
+                        <option value="TX">Texas (TX) - 8.25%</option>
+                        <option value="FL">Florida (FL) - 7.00%</option>
+                        <option value="WA">Washington (WA) - 6.50%</option>
+                        <option value="IL">Illinois (IL) - 8.75%</option>
+                        <option value="DEFAULT">Other States - 6.00%</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label for="zip-input">Postal Zip Code</label>
+                    <input type="text" id="zip-input" value="90210" placeholder="e.g. 90210">
+                </div>
+
+                <div class="form-field">
+                    <label for="amount-input">Order Cart Subtotal ($)</label>
+                    <input type="number" id="amount-input" value="380" step="10">
+                </div>
+
+                <div class="form-field">
+                    <label for="weight-input">Total Shipment Weight (lbs)</label>
+                    <input type="number" id="weight-input" value="35" step="5">
+                    <small style="color: #64748b; font-size: 12px;">Heavy freight fee (+$45) applies above 50 lbs.</small>
+                </div>
+            </div>
+
+            <div class="estimator-results">
+                <div>
+                    <h3 style="font-size: 16px; margin-top: 0; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">Calculated Estimate</h3>
+
+                    <div class="metric-row">
+                        <span>Destination:</span>
+                        <strong id="res-state">California</strong>
+                    </div>
+                    <div class="metric-row">
+                        <span>Ground Shipping:</span>
+                        <span id="res-shipping">$35.00</span>
+                    </div>
+                    <div class="metric-row" id="freight-row" style="display: none;">
+                        <span>Heavy Freight Surcharge:</span>
+                        <span id="res-freight" style="color: #ea580c; font-weight: 600;">+$45.00</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>State Tax (<span id="res-tax-rate">9.25%</span>):</span>
+                        <span id="res-tax">$35.15</span>
+                    </div>
+                    <div class="metric-row" style="font-size: 18px; font-weight: 700; color: #0f172a; margin-top: 8px;">
+                        <span>Total Estimate:</span>
+                        <span id="res-total">$450.15</span>
+                    </div>
+
+                    <div class="transit-badge" id="res-transit">
+                        🚚 Estimated Delivery: 2-4 Business Days
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px; font-size: 12px; color: #94a3b8; text-align: center;">
+                    Calculations computed in real-time via ShippingTaxEstimatorEngine.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/shipping-tax-estimator-engine.js"></script>
+    <script>
+        function recalculate() {
+            const state = document.getElementById('state-select').value;
+            const zip = document.getElementById('zip-input').value;
+            const amount = parseFloat(document.getElementById('amount-input').value) || 0;
+            const weight = parseFloat(document.getElementById('weight-input').value) || 0;
+
+            const res = ShippingTaxEstimatorEngine.estimateRates(state, zip, amount, weight);
+
+            document.getElementById('res-state').textContent = res.state;
+            document.getElementById('res-shipping').textContent = res.baseShipping === 0 ? 'FREE' : `$${res.baseShipping.toFixed(2)}`;
+            document.getElementById('res-tax-rate').textContent = res.taxPercentage;
+            document.getElementById('res-tax').textContent = `$${res.estimatedTax.toFixed(2)}`;
+            document.getElementById('res-total').textContent = `$${res.grandTotal.toFixed(2)}`;
+            document.getElementById('res-transit').textContent = `🚚 Estimated Delivery: ${res.deliveryWindow}`;
+
+            const freightRow = document.getElementById('freight-row');
+            if (res.heavyFreightFee > 0) {
+                freightRow.style.display = 'flex';
+                document.getElementById('res-freight').textContent = `+$${res.heavyFreightFee.toFixed(2)}`;
+            } else {
+                freightRow.style.display = 'none';
+            }
+        }
+
+        document.getElementById('state-select').addEventListener('change', recalculate);
+        document.getElementById('zip-input').addEventListener('input', recalculate);
+        document.getElementById('amount-input').addEventListener('input', recalculate);
+        document.getElementById('weight-input').addEventListener('input', recalculate);
+
+        recalculate();
+    </script>
+</body>
+</html>
