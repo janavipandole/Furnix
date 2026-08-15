@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnix - Extended Warranty & Care Protection Plan Demo</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="warranty-protection-plan.css">
+</head>
+<body style="background: #f8fafc; padding: 20px;">
+    <div class="warranty-demo-container">
+        <div class="warranty-demo-header">
+            <h2 style="margin: 0 0 6px 0; font-size: 24px;">Furnix Care Protection Plan Calculator Sandbox</h2>
+            <p style="margin: 0; color: #6b7280; font-size: 14px;">Select product categories and pricing to compute tier protection plans and accidental damage coverage.</p>
+        </div>
+
+        <div class="product-config-strip">
+            <div class="config-item">
+                <label for="prod-category">Product Category</label>
+                <select id="prod-category">
+                    <option value="Seating">Seating (Sofas / Chairs) - Higher Wear</option>
+                    <option value="Tables" selected>Tables & Desks</option>
+                    <option value="Lighting">Lighting & Fixtures</option>
+                    <option value="Storage">Storage & Shelving</option>
+                    <option value="Accessories">Home Accessories</option>
+                </select>
+            </div>
+            <div class="config-item">
+                <label for="prod-price">Product Price ($)</label>
+                <input type="number" id="prod-price" value="550" step="50">
+            </div>
+        </div>
+
+        <h3 style="font-size: 16px; margin-bottom: 14px;">Choose a Care Protection Plan:</h3>
+        <div class="plans-grid" id="plans-container">
+            <!-- Dynamically populated plan cards -->
+        </div>
+
+        <div class="total-summary-card">
+            <div>
+                <span style="font-size: 13px; color: #94a3b8; text-transform: uppercase;">Selected Plan</span>
+                <h4 id="selected-plan-name" style="margin: 4px 0 0 0; font-size: 16px;">3-Year Premium Complete Protection</h4>
+            </div>
+            <div style="text-align: right;">
+                <span style="font-size: 13px; color: #94a3b8; text-transform: uppercase;">Total with Protection</span>
+                <div id="selected-total-price" style="font-size: 24px; font-weight: 800; color: #38bdf8;">$638.00</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/warranty-protection-plan-engine.js"></script>
+    <script>
+        let currentSelectedPlan = 'care-3yr';
+
+        function renderPlans() {
+            const category = document.getElementById('prod-category').value;
+            const price = parseFloat(document.getElementById('prod-price').value) || 0;
+            const plans = WarrantyProtectionPlanEngine.getAvailablePlans(price, category);
+            const container = document.getElementById('plans-container');
+            container.innerHTML = '';
+
+            plans.forEach(plan => {
+                const isSelected = plan.planId === currentSelectedPlan;
+                const card = document.createElement('div');
+                card.className = `plan-card ${isSelected ? 'selected' : ''}`;
+                if (plan.planId === 'care-3yr') {
+                    card.innerHTML += '<div class="plan-badge">Most Popular</div>';
+                }
+                card.innerHTML += `
+                    <div class="plan-title">${plan.planName}</div>
+                    <div class="plan-price">${plan.planCost === 0 ? 'FREE' : '+$' + plan.planCost.toFixed(2)}</div>
+                    <ul class="plan-features-list">
+                        ${plan.features.map(f => `<li>✔ ${f}</li>`).join('')}
+                    </ul>
+                `;
+                card.onclick = () => {
+                    currentSelectedPlan = plan.planId;
+                    renderPlans();
+                };
+                container.appendChild(card);
+
+                if (isSelected) {
+                    document.getElementById('selected-plan-name').textContent = plan.planName;
+                    document.getElementById('selected-total-price').textContent = `$${plan.totalWithWarranty.toFixed(2)}`;
+                }
+            });
+        }
+
+        document.getElementById('prod-category').addEventListener('change', renderPlans);
+        document.getElementById('prod-price').addEventListener('input', renderPlans);
+
+        renderPlans();
+    </script>
+</body>
+</html>
