@@ -2525,6 +2525,26 @@ input:focus {
   border-radius: 1.5rem;
 }
 
+/* Newsletter Feedback Styles */
+.newsletter-feedback {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.newsletter-feedback.success {
+  color: #10b981;
+}
+
+.newsletter-feedback.error {
+  color: #ef4444;
+}
+
+.newsletter-feedback.info {
+  color: #3b82f6;
+}
+
 /* Skeleton text lines */
 .skeleton-text-sm {
   height: 0.65rem;

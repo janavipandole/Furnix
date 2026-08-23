@@ -73,53 +73,23 @@ app.post('/api/contact', contactLimiter, (req, res) => {
   });
 });
 
-// =================================================================
-// 💥 NEW ENDPOINT: AI Style Match Engine (Issue #450) 💥
-// =================================================================
-app.get('/api/recommendations/style', (req, res) => {
-  const { productId, style } = req.query;
+// POST /api/subscribe endpoint for newsletter subscriptions
+app.post('/api/subscribe', contactLimiter, (req, res) => {
+  const { email } = req.body;
 
-  // TODO: Wire this up to a real Vector DB or AI recommendation engine later.
-  // For now, we return highly curated mock data to power the React component.
-  
-  const mockRecommendations = [
-      {
-          id: 'rec-1',
-          name: 'Geometric Wool Rug',
-          category: 'Decor',
-          price: 120.00,
-          image: 'images/flower-vase.webp' 
-      },
-      {
-          id: 'rec-2',
-          name: 'Aura Pendant Lamp',
-          category: 'Lighting',
-          price: 85.00,
-          image: 'images/hanging lamp.webp'
-      },
-      {
-          id: 'rec-3',
-          name: 'Walnut Side Table',
-          category: 'Tables',
-          price: 150.00,
-          image: 'images/side table.webp'
-      },
-      {
-          id: 'rec-4',
-          name: 'Modern Accent Chair',
-          category: 'Seating',
-          price: 210.00,
-          image: 'images/modern chair.webp'
-      }
-  ];
+  if (!isValidEmail(email)) {
+    return res.status(400).json({
+      success: false,
+      message: "Please provide a valid email address."
+    });
+  }
 
-  // Simulate a slight network delay so the frontend skeleton loaders look natural
-  setTimeout(() => {
-      res.status(200).json({ items: mockRecommendations });
-  }, 1200);
+  return res.status(200).json({
+    success: true,
+    message: "Thank you for subscribing to Furnix updates!"
+  });
 });
 
-// START THE SERVER
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
