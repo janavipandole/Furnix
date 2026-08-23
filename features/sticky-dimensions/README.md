@@ -1,0 +1,1 @@
+# Enhancement: Add "Sticky Dimensions" on Scroll\n\nThis is a placeholder for the implementation of Enhancement: Add "Sticky Dimensions" on Scroll.
