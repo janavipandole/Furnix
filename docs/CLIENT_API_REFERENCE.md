@@ -131,3 +131,18 @@ Verifies voucher code eligibility against minimum order spend requirements.
 
 #### `calculateDiscount(code: string, subtotal: number): number`
 Calculates exact dollar discount savings for active coupon.
+
+---
+
+## 🛡️ 9. WarrantyProtectionPlanEngine (`scripts/warranty-protection-plan-engine.js`)
+
+Calculates tiered extended warranties and care protection plans with accidental damage coverage and category risk multipliers.
+
+### Methods
+
+#### `calculatePlanCost(itemPrice?: number, category?: string, planId?: string): Object`
+Calculates specific warranty plan cost, accidental damage terms, and aggregate product total.
+
+#### `getAvailablePlans(itemPrice?: number, category?: string): Array<Object>`
+Returns all supported plan options (1-Year, 2-Year, 3-Year, 5-Year) for a given catalog item.
+
