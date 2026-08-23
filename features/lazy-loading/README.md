@@ -1,0 +1,1 @@
+# Enhancement: Add "Lazy Loading" to Furniture Grids\n\nThis is a placeholder for the implementation of Enhancement: Add "Lazy Loading" to Furniture Grids.
