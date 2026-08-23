@@ -1,0 +1,1 @@
+# Enhancement: Implement "Sticky Filter Sidebar" on Catalog\n\nThis is a placeholder for the implementation of Enhancement: Implement "Sticky Filter Sidebar" on Catalog.
