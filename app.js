@@ -1206,7 +1206,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             modalContent.innerHTML = `
                 <div style="flex: 1; min-width: 300px; background: var(--bg, #f9f9f9); display: flex; justify-content: center; align-items: center; padding: 40px;">
-                    <img src="${imgSrc}" alt="${title}" style="max-width: 100%; max-height: 450px; object-fit: contain; mix-blend-mode: multiply; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.15));">
+                    <img src="${imgSrc}" alt="${title}" style="max-width: 100%; max-height: 450px; object-fit: contain; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.15));">
                 </div>
                 <div style="flex: 1.2; min-width: 300px; padding: 50px 40px; display: flex; flex-direction: column; justify-content: center; font-family: 'Jost', sans-serif;">
                     <span style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; color: #c77b30; font-weight: 600; margin-bottom: 12px; display: inline-block;">Quick Look</span>
