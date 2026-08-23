@@ -1,0 +1,1 @@
+# Feature: Create a "Swatch Selector" for Upholstery\n\nThis is a placeholder for the implementation of Feature: Create a "Swatch Selector" for Upholstery.
