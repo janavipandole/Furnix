@@ -90,6 +90,48 @@ app.post('/api/subscribe', contactLimiter, (req, res) => {
   });
 });
 
+// POST /api/swatches/customize endpoint
+app.post('/api/swatches/customize', (req, res) => {
+  const { basePrice, materialId, baseSku } = req.body;
+  const numBase = Number(basePrice);
+
+  if (isNaN(numBase) || numBase < 0) {
+    return res.status(400).json({
+      success: false,
+      message: "Please provide a valid numeric base price."
+    });
+  }
+
+  const surchargeMap = {
+    'mat-velvet-navy': 0,
+    'mat-velvet-emerald': 25.00,
+    'mat-boucle-cream': 45.00,
+    'mat-linen-oatmeal': 15.00,
+    'mat-leather-cognac': 180.00,
+    'mat-leather-charcoal': 160.00,
+    'mat-wood-walnut': 0,
+    'mat-wood-oak': 20.00,
+    'mat-wood-ebony': 35.00
+  };
+
+  const id = materialId || 'mat-velvet-navy';
+  const surcharge = surchargeMap[id] !== undefined ? surchargeMap[id] : 0;
+  const finalPrice = numBase + surcharge;
+  const suffix = id.replace('mat-', '').toUpperCase();
+  const sku = `${baseSku || 'FNX-PROD'}-${suffix}`;
+
+  return res.status(200).json({
+    success: true,
+    data: {
+      basePrice: Number(numBase.toFixed(2)),
+      materialId: id,
+      surcharge: Number(surcharge.toFixed(2)),
+      finalPrice: Number(finalPrice.toFixed(2)),
+      customSku: sku
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

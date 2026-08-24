@@ -3124,3 +3124,46 @@ body.has-custom-cursor .btn {
     font-size: 0.82rem;
     font-weight: 600;
 }
+
+/* Material & Finish Swatch Customizer Selector Styling */
+.swatch-selector-group {
+    margin: 16px 0;
+}
+
+.swatch-pills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.swatch-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 20px;
+    background: #ffffff;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: #334155;
+    transition: all 0.2s ease;
+}
+
+.swatch-pill-btn:hover {
+    border-color: #94a3b8;
+}
+
+.swatch-pill-btn.active {
+    border-color: #d98b36;
+    background: #fffbeb;
+    font-weight: 600;
+}
+
+.swatch-color-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}

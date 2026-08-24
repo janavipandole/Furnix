@@ -146,3 +146,20 @@ Calculates specific warranty plan cost, accidental damage terms, and aggregate p
 #### `getAvailablePlans(itemPrice?: number, category?: string): Array<Object>`
 Returns all supported plan options (1-Year, 2-Year, 3-Year, 5-Year) for a given catalog item.
 
+---
+
+## 🎨 10. MaterialSwatchCustomizerEngine (`scripts/material-swatch-customizer-engine.js`)
+
+Manages luxury upholstery fabric and hardwood finishes (Italian Leather, Plush Velvet, Bouclé, Solid Walnut, White Oak), finish price surcharges, durability metrics, and bespoke SKU variant generation.
+
+### Methods
+
+#### `customizeProductVariant(basePrice: number, materialId: string, baseSku?: string): Object`
+Calculates final product price with finish surcharges, generates custom SKU string, and returns texture/rub-count durability specifications.
+
+#### `getMaterialById(materialId: string): Object|null`
+Resolves complete material finish details by ID.
+
+#### `getAvailableSwatches(category?: string): Array<Object>`
+Returns available material swatches filtered by category (`fabrics`, `leathers`, `woods`, or `all`).
+
