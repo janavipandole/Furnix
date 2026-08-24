@@ -146,3 +146,20 @@ Calculates specific warranty plan cost, accidental damage terms, and aggregate p
 #### `getAvailablePlans(itemPrice?: number, category?: string): Array<Object>`
 Returns all supported plan options (1-Year, 2-Year, 3-Year, 5-Year) for a given catalog item.
 
+---
+
+## 🚚 10. WhiteGloveDeliveryScheduler (`scripts/white-glove-delivery-scheduler.js`)
+
+Manages freight delivery service levels, in-room placement, furniture assembly, packaging debris removal, and custom appointment delivery time slots.
+
+### Methods
+
+#### `calculateDeliveryQuote(orderSubtotal: number, tierId?: string, slotId?: string): Object`
+Calculates delivery fees, priority appointment surcharges, free delivery thresholds, and projected delivery date strings.
+
+#### `getAvailableTiers(orderSubtotal: number): Array<Object>`
+Returns list of service tiers (Standard Curbside, Inside Room-of-Choice, White-Glove Full Assembly) with personalized pricing.
+
+#### `calculateDeliveryDate(leadDays: number, baseDate?: Date): Date`
+Computes estimated delivery date accounting for transit lead times and blackout dates.
+

@@ -90,6 +90,61 @@ app.post('/api/subscribe', contactLimiter, (req, res) => {
   });
 });
 
+// POST /api/delivery-quote endpoint
+app.post('/api/delivery-quote', (req, res) => {
+  const { orderSubtotal, tierId, slotId } = req.body;
+  const numSubtotal = Number(orderSubtotal);
+
+  if (isNaN(numSubtotal) || numSubtotal < 0) {
+    return res.status(400).json({
+      success: false,
+      message: "Please provide a valid numeric order subtotal."
+    });
+  }
+
+  let baseFee = 0;
+  let tierName = 'Standard Curbside Drop-off';
+
+  if (tierId === 'white-glove-full') {
+    baseFee = 119.00;
+    tierName = 'White-Glove Assembly & Packaging Removal';
+  } else if (tierId === 'room-of-choice') {
+    baseFee = 49.00;
+    tierName = 'Inside Room-of-Choice Delivery';
+  } else {
+    // standard curbside
+    baseFee = numSubtotal >= 150 ? 0 : 25.00;
+  }
+
+  let slotSurcharge = 0;
+  let slotLabel = 'Standard Morning Slot';
+
+  if (slotId === 'evening-priority') {
+    slotSurcharge = 25.00;
+    slotLabel = 'Evening Priority Slot';
+  } else if (slotId === 'weekend-guaranteed') {
+    slotSurcharge = 35.00;
+    slotLabel = 'Weekend Guaranteed Slot';
+  }
+
+  const totalDeliveryCost = baseFee + slotSurcharge;
+
+  return res.status(200).json({
+    success: true,
+    data: {
+      orderSubtotal: Number(numSubtotal.toFixed(2)),
+      tierId: tierId || 'standard-curbside',
+      tierName,
+      baseFee,
+      slotId: slotId || 'morning',
+      slotLabel,
+      slotSurcharge,
+      totalDeliveryCost: Number(totalDeliveryCost.toFixed(2)),
+      grandTotal: Number((numSubtotal + totalDeliveryCost).toFixed(2))
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

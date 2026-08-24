@@ -3124,3 +3124,57 @@ body.has-custom-cursor .btn {
     font-size: 0.82rem;
     font-weight: 600;
 }
+
+/* White-Glove Delivery & Assembly Scheduler Option Cards */
+.delivery-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 18px 0;
+}
+
+.delivery-tier-card {
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delivery-tier-card:hover {
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+.delivery-tier-card.selected {
+    border-color: #0284c7;
+    background: #f0f9ff;
+}
+
+.delivery-tier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.delivery-tier-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.delivery-tier-price {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #0369a1;
+}
+
+.delivery-features-list {
+    margin: 10px 0 0 0;
+    padding-left: 18px;
+    font-size: 0.82rem;
+    color: #64748b;
+    line-height: 1.5;
+}
