@@ -90,6 +90,63 @@ app.post('/api/subscribe', contactLimiter, (req, res) => {
   });
 });
 
+// POST /api/bulk-quote endpoint
+app.post('/api/bulk-quote', (req, res) => {
+  const { unitPrice, quantity, accountType } = req.body;
+  const numPrice = Number(unitPrice);
+  const numQty = Number(quantity);
+
+  if (isNaN(numPrice) || numPrice < 0 || isNaN(numQty) || numQty < 1) {
+    return res.status(400).json({
+      success: false,
+      message: "Please provide valid unitPrice (>= 0) and quantity (>= 1)."
+    });
+  }
+
+  let discountPercent = 0;
+  let tierName = 'Standard Retail';
+
+  if (numQty >= 25) {
+    discountPercent = 22;
+    tierName = 'Enterprise Wholesale';
+  } else if (numQty >= 12) {
+    discountPercent = 15;
+    tierName = 'Commercial Project';
+  } else if (numQty >= 6) {
+    discountPercent = 10;
+    tierName = 'Designer Suite';
+  } else if (numQty >= 3) {
+    discountPercent = 5;
+    tierName = 'Studio Pack';
+  }
+
+  if (accountType === 'trade_pro') {
+    discountPercent = Math.min(30, discountPercent + 3);
+  } else if (accountType === 'wholesale') {
+    discountPercent = Math.min(35, Math.max(discountPercent, 20));
+  }
+
+  const retailSubtotal = numPrice * numQty;
+  const totalSavings = retailSubtotal * (discountPercent / 100);
+  const discountedSubtotal = retailSubtotal - totalSavings;
+  const effectiveUnitPrice = discountedSubtotal / numQty;
+
+  return res.status(200).json({
+    success: true,
+    data: {
+      unitPrice: Number(numPrice.toFixed(2)),
+      quantity: Math.floor(numQty),
+      accountType: accountType || 'standard',
+      tierName,
+      discountPercent,
+      effectiveUnitPrice: Number(effectiveUnitPrice.toFixed(2)),
+      retailSubtotal: Number(retailSubtotal.toFixed(2)),
+      totalSavings: Number(totalSavings.toFixed(2)),
+      discountedSubtotal: Number(discountedSubtotal.toFixed(2))
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

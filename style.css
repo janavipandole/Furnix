@@ -3124,3 +3124,40 @@ body.has-custom-cursor .btn {
     font-size: 0.82rem;
     font-weight: 600;
 }
+
+/* Bulk Volume Pricing & B2B Tier Table Styles */
+.bulk-pricing-table-container {
+    margin: 15px 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.bulk-pricing-tier-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.85rem;
+}
+
+.bulk-pricing-tier-row:last-child {
+    border-bottom: none;
+}
+
+.bulk-pricing-tier-row.active {
+    background-color: #f0fdf4;
+    font-weight: 600;
+}
+
+.bulk-tier-badge {
+    background: #15803d;
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}

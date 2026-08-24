@@ -146,3 +146,20 @@ Calculates specific warranty plan cost, accidental damage terms, and aggregate p
 #### `getAvailablePlans(itemPrice?: number, category?: string): Array<Object>`
 Returns all supported plan options (1-Year, 2-Year, 3-Year, 5-Year) for a given catalog item.
 
+---
+
+## 📦 10. BulkTierDiscountEngine (`scripts/bulk-tier-discount-engine.js`)
+
+Dynamically computes quantity tier volume discounts, wholesale savings, and trade partner bonuses for interior designers, architects, and corporate bulk buyers.
+
+### Methods
+
+#### `calculateBulkPricing(unitPrice: number, quantity: number, accountType?: string): Object`
+Calculates volume tiered discount percentage, discounted unit price, total savings, and upsell metrics for the next volume tier.
+
+#### `getTierForQuantity(quantity: number): Object`
+Returns active quantity bracket tier configuration (Studio Pack, Designer Suite, Commercial Project, Enterprise Wholesale).
+
+#### `getTierTable(unitPrice: number): Array<Object>`
+Generates structured pricing tier table for catalog product pages with per-unit savings.
+
