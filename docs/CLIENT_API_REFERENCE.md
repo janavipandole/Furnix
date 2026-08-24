@@ -146,3 +146,20 @@ Calculates specific warranty plan cost, accidental damage terms, and aggregate p
 #### `getAvailablePlans(itemPrice?: number, category?: string): Array<Object>`
 Returns all supported plan options (1-Year, 2-Year, 3-Year, 5-Year) for a given catalog item.
 
+---
+
+## 💳 10. FinancingCalculatorEngine (`scripts/financing-calculator-engine.js`)
+
+Computes flexible installment monthly EMI, APR interest rates, down payments, and term plans (3, 6, 12, 24, 36 months) for luxury furniture purchases.
+
+### Methods
+
+#### `calculateInstallment(purchasePrice: number, downPayment?: number, termMonths?: number, customApr?: number): Object`
+Calculates accurate monthly EMI, principal financed, interest breakdown, and grand payable total using amortization formulas.
+
+#### `getAvailablePlans(purchasePrice: number, downPayment?: number): Array<Object>`
+Returns all available financing term tiers with monthly installments and promotional zero-interest tags.
+
+#### `getZeroInterestThreshold(): number`
+Returns minimum purchase order amount ($150.00) required to unlock 0% APR promotional financing.
+

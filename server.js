@@ -90,6 +90,49 @@ app.post('/api/subscribe', contactLimiter, (req, res) => {
   });
 });
 
+// POST /api/financing/calculate endpoint
+app.post('/api/financing/calculate', (req, res) => {
+  const { price, downPayment, termMonths } = req.body;
+  const numPrice = Number(price);
+  const numDown = Number(downPayment) || 0;
+  const numTerm = Number(termMonths) || 12;
+
+  if (isNaN(numPrice) || numPrice < 0) {
+    return res.status(400).json({
+      success: false,
+      message: "Please provide a valid numeric product or order price."
+    });
+  }
+
+  const principal = Math.max(0, numPrice - numDown);
+  const apr = numTerm <= 6 ? 0 : 4.99;
+  let monthlyPayment = 0;
+  let totalInterest = 0;
+
+  if (apr === 0) {
+    monthlyPayment = numTerm > 0 ? principal / numTerm : 0;
+  } else {
+    const monthlyRate = (apr / 100) / 12;
+    const compoundFactor = Math.pow(1 + monthlyRate, numTerm);
+    monthlyPayment = (principal * monthlyRate * compoundFactor) / (compoundFactor - 1);
+    totalInterest = (monthlyPayment * numTerm) - principal;
+  }
+
+  return res.status(200).json({
+    success: true,
+    data: {
+      price: Number(numPrice.toFixed(2)),
+      downPayment: Number(numDown.toFixed(2)),
+      principalFinanced: Number(principal.toFixed(2)),
+      termMonths: numTerm,
+      apr,
+      monthlyPayment: Number(monthlyPayment.toFixed(2)),
+      totalInterest: Number(Math.max(0, totalInterest).toFixed(2)),
+      totalPayable: Number((principal + totalInterest + numDown).toFixed(2))
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

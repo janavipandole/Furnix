@@ -1657,6 +1657,28 @@ input:focus {
   display: block;
 }
 
+.cart-financing-teaser {
+  margin-top: 1.2rem;
+  padding: 0.9rem;
+  background: #f8fafc;
+  border-radius: 0.6rem;
+  border: 1px dashed #cbd5e1;
+  font-size: 0.85rem;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cart-financing-teaser i {
+  color: #2563eb;
+  font-size: 1.1rem;
+}
+
+.cart-financing-teaser strong {
+  color: #1e293b;
+}
+
 .cart-empty-state {
   text-align: center;
   padding: 5rem 2rem;
