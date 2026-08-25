@@ -90,41 +90,45 @@ app.post('/api/subscribe', contactLimiter, (req, res) => {
   });
 });
 
-// POST /api/eco/impact endpoint
-app.post('/api/eco/impact', (req, res) => {
-  const { amount, category } = req.body;
-  const numAmount = Number(amount);
+// POST /api/financing/calculate endpoint
+app.post('/api/financing/calculate', (req, res) => {
+  const { price, downPayment, termMonths } = req.body;
+  const numPrice = Number(price);
+  const numDown = Number(downPayment) || 0;
+  const numTerm = Number(termMonths) || 12;
 
-  if (isNaN(numAmount) || numAmount < 0) {
+  if (isNaN(numPrice) || numPrice < 0) {
     return res.status(400).json({
       success: false,
-      message: "Please provide a valid numeric order or item amount."
+      message: "Please provide a valid numeric product or order price."
     });
   }
 
-  const catFactors = {
-    seating: 14.5,
-    tables: 18.2,
-    lighting: 8.0,
-    storage: 16.0,
-    accessories: 4.5
-  };
+  const principal = Math.max(0, numPrice - numDown);
+  const apr = numTerm <= 6 ? 0 : 4.99;
+  let monthlyPayment = 0;
+  let totalInterest = 0;
 
-  const catKey = (category || 'seating').toLowerCase();
-  const factor = catFactors[catKey] || 12.0;
-  const co2Kg = (numAmount / 100) * factor;
-  const trees = Math.max(1, Math.ceil(co2Kg / 22.0));
-  const offsetFee = Math.max(0.99, co2Kg * 0.05);
+  if (apr === 0) {
+    monthlyPayment = numTerm > 0 ? principal / numTerm : 0;
+  } else {
+    const monthlyRate = (apr / 100) / 12;
+    const compoundFactor = Math.pow(1 + monthlyRate, numTerm);
+    monthlyPayment = (principal * monthlyRate * compoundFactor) / (compoundFactor - 1);
+    totalInterest = (monthlyPayment * numTerm) - principal;
+  }
 
   return res.status(200).json({
     success: true,
     data: {
-      amount: Number(numAmount.toFixed(2)),
-      category: catKey,
-      estimatedCo2Kg: Number(co2Kg.toFixed(1)),
-      treesPlanted: trees,
-      offsetFee: Number(offsetFee.toFixed(2)),
-      badge: "100% FSC-Certified Sustainable Sourcing"
+      price: Number(numPrice.toFixed(2)),
+      downPayment: Number(numDown.toFixed(2)),
+      principalFinanced: Number(principal.toFixed(2)),
+      termMonths: numTerm,
+      apr,
+      monthlyPayment: Number(monthlyPayment.toFixed(2)),
+      totalInterest: Number(Math.max(0, totalInterest).toFixed(2)),
+      totalPayable: Number((principal + totalInterest + numDown).toFixed(2))
     }
   });
 });

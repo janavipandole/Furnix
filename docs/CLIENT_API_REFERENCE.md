@@ -148,15 +148,18 @@ Returns all supported plan options (1-Year, 2-Year, 3-Year, 5-Year) for a given 
 
 ---
 
-## 🌿 10. CarbonOffsetEcoEngine (`scripts/carbon-offset-eco-engine.js`)
+## 💳 10. FinancingCalculatorEngine (`scripts/financing-calculator-engine.js`)
 
-Computes product lifecycle carbon emissions (kg CO2e), tree planting donation matches, certified sustainable timber verifications (FSC certified), and carbon-neutral checkout pledges.
+Computes flexible installment monthly EMI, APR interest rates, down payments, and term plans (3, 6, 12, 24, 36 months) for luxury furniture purchases.
 
 ### Methods
 
-#### `calculateEcoImpact(orderAmount: number, category?: string, includeReforestationMatch?: boolean): Object`
-Calculates estimated carbon footprint intensity, micro-contribution offset cost, and equivalent native trees planted.
+#### `calculateInstallment(purchasePrice: number, downPayment?: number, termMonths?: number, customApr?: number): Object`
+Calculates accurate monthly EMI, principal financed, interest breakdown, and grand payable total using amortization formulas.
 
-#### `evaluateCartEcoSummary(cartItems?: Array<Object>): Object`
-Aggregates full cart basket sustainability footprint and returns certified carbon-neutral badges.
+#### `getAvailablePlans(purchasePrice: number, downPayment?: number): Array<Object>`
+Returns all available financing term tiers with monthly installments and promotional zero-interest tags.
+
+#### `getZeroInterestThreshold(): number`
+Returns minimum purchase order amount ($150.00) required to unlock 0% APR promotional financing.
 
