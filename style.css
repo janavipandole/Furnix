@@ -3146,3 +3146,42 @@ body.has-custom-cursor .btn {
     font-size: 0.82rem;
     font-weight: 600;
 }
+
+/* Eco-Impact & Carbon-Neutral Delivery Pledge Styling */
+.eco-impact-pledge-card {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 16px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.eco-impact-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #16a34a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.eco-impact-content h5 {
+    margin: 0 0 4px 0;
+    font-size: 0.92rem;
+    color: #15803d;
+    font-weight: 700;
+}
+
+.eco-impact-content p {
+    margin: 0;
+    font-size: 0.82rem;
+    color: #166534;
+    line-height: 1.4;
+}
