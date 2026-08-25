@@ -3125,41 +3125,56 @@ body.has-custom-cursor .btn {
     font-weight: 600;
 }
 
-/* Eco-Impact & Carbon-Neutral Delivery Pledge Styling */
-.eco-impact-pledge-card {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
+/* White-Glove Delivery & Assembly Scheduler Option Cards */
+.delivery-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 18px 0;
+}
+
+.delivery-tier-card {
+    border: 2px solid #e2e8f0;
     border-radius: 10px;
-    padding: 14px;
-    margin: 16px 0;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+    padding: 16px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.eco-impact-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #dcfce7;
-    color: #16a34a;
+.delivery-tier-card:hover {
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+.delivery-tier-card.selected {
+    border-color: #0284c7;
+    background: #f0f9ff;
+}
+
+.delivery-tier-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
+    margin-bottom: 8px;
 }
 
-.eco-impact-content h5 {
-    margin: 0 0 4px 0;
-    font-size: 0.92rem;
-    color: #15803d;
+.delivery-tier-title {
+    font-size: 0.95rem;
     font-weight: 700;
+    color: #0f172a;
 }
 
-.eco-impact-content p {
-    margin: 0;
+.delivery-tier-price {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #0369a1;
+}
+
+.delivery-features-list {
+    margin: 10px 0 0 0;
+    padding-left: 18px;
     font-size: 0.82rem;
-    color: #166534;
-    line-height: 1.4;
+    color: #64748b;
+    line-height: 1.5;
 }

@@ -148,15 +148,18 @@ Returns all supported plan options (1-Year, 2-Year, 3-Year, 5-Year) for a given 
 
 ---
 
-## 🌿 10. CarbonOffsetEcoEngine (`scripts/carbon-offset-eco-engine.js`)
+## 🚚 10. WhiteGloveDeliveryScheduler (`scripts/white-glove-delivery-scheduler.js`)
 
-Computes product lifecycle carbon emissions (kg CO2e), tree planting donation matches, certified sustainable timber verifications (FSC certified), and carbon-neutral checkout pledges.
+Manages freight delivery service levels, in-room placement, furniture assembly, packaging debris removal, and custom appointment delivery time slots.
 
 ### Methods
 
-#### `calculateEcoImpact(orderAmount: number, category?: string, includeReforestationMatch?: boolean): Object`
-Calculates estimated carbon footprint intensity, micro-contribution offset cost, and equivalent native trees planted.
+#### `calculateDeliveryQuote(orderSubtotal: number, tierId?: string, slotId?: string): Object`
+Calculates delivery fees, priority appointment surcharges, free delivery thresholds, and projected delivery date strings.
 
-#### `evaluateCartEcoSummary(cartItems?: Array<Object>): Object`
-Aggregates full cart basket sustainability footprint and returns certified carbon-neutral badges.
+#### `getAvailableTiers(orderSubtotal: number): Array<Object>`
+Returns list of service tiers (Standard Curbside, Inside Room-of-Choice, White-Glove Full Assembly) with personalized pricing.
+
+#### `calculateDeliveryDate(leadDays: number, baseDate?: Date): Date`
+Computes estimated delivery date accounting for transit lead times and blackout dates.
 
