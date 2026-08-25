@@ -90,41 +90,59 @@ app.post('/api/subscribe', contactLimiter, (req, res) => {
   });
 });
 
-// POST /api/eco/impact endpoint
-app.post('/api/eco/impact', (req, res) => {
-  const { amount, category } = req.body;
-  const numAmount = Number(amount);
+// POST /api/bulk-quote endpoint
+app.post('/api/bulk-quote', (req, res) => {
+  const { unitPrice, quantity, accountType } = req.body;
+  const numPrice = Number(unitPrice);
+  const numQty = Number(quantity);
 
-  if (isNaN(numAmount) || numAmount < 0) {
+  if (isNaN(numPrice) || numPrice < 0 || isNaN(numQty) || numQty < 1) {
     return res.status(400).json({
       success: false,
-      message: "Please provide a valid numeric order or item amount."
+      message: "Please provide valid unitPrice (>= 0) and quantity (>= 1)."
     });
   }
 
-  const catFactors = {
-    seating: 14.5,
-    tables: 18.2,
-    lighting: 8.0,
-    storage: 16.0,
-    accessories: 4.5
-  };
+  let discountPercent = 0;
+  let tierName = 'Standard Retail';
 
-  const catKey = (category || 'seating').toLowerCase();
-  const factor = catFactors[catKey] || 12.0;
-  const co2Kg = (numAmount / 100) * factor;
-  const trees = Math.max(1, Math.ceil(co2Kg / 22.0));
-  const offsetFee = Math.max(0.99, co2Kg * 0.05);
+  if (numQty >= 25) {
+    discountPercent = 22;
+    tierName = 'Enterprise Wholesale';
+  } else if (numQty >= 12) {
+    discountPercent = 15;
+    tierName = 'Commercial Project';
+  } else if (numQty >= 6) {
+    discountPercent = 10;
+    tierName = 'Designer Suite';
+  } else if (numQty >= 3) {
+    discountPercent = 5;
+    tierName = 'Studio Pack';
+  }
+
+  if (accountType === 'trade_pro') {
+    discountPercent = Math.min(30, discountPercent + 3);
+  } else if (accountType === 'wholesale') {
+    discountPercent = Math.min(35, Math.max(discountPercent, 20));
+  }
+
+  const retailSubtotal = numPrice * numQty;
+  const totalSavings = retailSubtotal * (discountPercent / 100);
+  const discountedSubtotal = retailSubtotal - totalSavings;
+  const effectiveUnitPrice = discountedSubtotal / numQty;
 
   return res.status(200).json({
     success: true,
     data: {
-      amount: Number(numAmount.toFixed(2)),
-      category: catKey,
-      estimatedCo2Kg: Number(co2Kg.toFixed(1)),
-      treesPlanted: trees,
-      offsetFee: Number(offsetFee.toFixed(2)),
-      badge: "100% FSC-Certified Sustainable Sourcing"
+      unitPrice: Number(numPrice.toFixed(2)),
+      quantity: Math.floor(numQty),
+      accountType: accountType || 'standard',
+      tierName,
+      discountPercent,
+      effectiveUnitPrice: Number(effectiveUnitPrice.toFixed(2)),
+      retailSubtotal: Number(retailSubtotal.toFixed(2)),
+      totalSavings: Number(totalSavings.toFixed(2)),
+      discountedSubtotal: Number(discountedSubtotal.toFixed(2))
     }
   });
 });

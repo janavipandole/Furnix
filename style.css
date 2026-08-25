@@ -3125,41 +3125,39 @@ body.has-custom-cursor .btn {
     font-weight: 600;
 }
 
-/* Eco-Impact & Carbon-Neutral Delivery Pledge Styling */
-.eco-impact-pledge-card {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    border-radius: 10px;
-    padding: 14px;
-    margin: 16px 0;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+/* Bulk Volume Pricing & B2B Tier Table Styles */
+.bulk-pricing-table-container {
+    margin: 15px 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #ffffff;
 }
 
-.eco-impact-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #dcfce7;
-    color: #16a34a;
+.bulk-pricing-tier-row {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
+    padding: 8px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.85rem;
 }
 
-.eco-impact-content h5 {
-    margin: 0 0 4px 0;
-    font-size: 0.92rem;
-    color: #15803d;
+.bulk-pricing-tier-row:last-child {
+    border-bottom: none;
+}
+
+.bulk-pricing-tier-row.active {
+    background-color: #f0fdf4;
+    font-weight: 600;
+}
+
+.bulk-tier-badge {
+    background: #15803d;
+    color: #ffffff;
+    font-size: 0.72rem;
     font-weight: 700;
-}
-
-.eco-impact-content p {
-    margin: 0;
-    font-size: 0.82rem;
-    color: #166534;
-    line-height: 1.4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
 }

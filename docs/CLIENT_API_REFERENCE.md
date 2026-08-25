@@ -148,15 +148,18 @@ Returns all supported plan options (1-Year, 2-Year, 3-Year, 5-Year) for a given 
 
 ---
 
-## 🌿 10. CarbonOffsetEcoEngine (`scripts/carbon-offset-eco-engine.js`)
+## 📦 10. BulkTierDiscountEngine (`scripts/bulk-tier-discount-engine.js`)
 
-Computes product lifecycle carbon emissions (kg CO2e), tree planting donation matches, certified sustainable timber verifications (FSC certified), and carbon-neutral checkout pledges.
+Dynamically computes quantity tier volume discounts, wholesale savings, and trade partner bonuses for interior designers, architects, and corporate bulk buyers.
 
 ### Methods
 
-#### `calculateEcoImpact(orderAmount: number, category?: string, includeReforestationMatch?: boolean): Object`
-Calculates estimated carbon footprint intensity, micro-contribution offset cost, and equivalent native trees planted.
+#### `calculateBulkPricing(unitPrice: number, quantity: number, accountType?: string): Object`
+Calculates volume tiered discount percentage, discounted unit price, total savings, and upsell metrics for the next volume tier.
 
-#### `evaluateCartEcoSummary(cartItems?: Array<Object>): Object`
-Aggregates full cart basket sustainability footprint and returns certified carbon-neutral badges.
+#### `getTierForQuantity(quantity: number): Object`
+Returns active quantity bracket tier configuration (Studio Pack, Designer Suite, Commercial Project, Enterprise Wholesale).
+
+#### `getTierTable(unitPrice: number): Array<Object>`
+Generates structured pricing tier table for catalog product pages with per-unit savings.
 
