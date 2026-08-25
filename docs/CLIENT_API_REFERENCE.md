@@ -146,3 +146,17 @@ Calculates specific warranty plan cost, accidental damage terms, and aggregate p
 #### `getAvailablePlans(itemPrice?: number, category?: string): Array<Object>`
 Returns all supported plan options (1-Year, 2-Year, 3-Year, 5-Year) for a given catalog item.
 
+---
+
+## 🌿 10. CarbonOffsetEcoEngine (`scripts/carbon-offset-eco-engine.js`)
+
+Computes product lifecycle carbon emissions (kg CO2e), tree planting donation matches, certified sustainable timber verifications (FSC certified), and carbon-neutral checkout pledges.
+
+### Methods
+
+#### `calculateEcoImpact(orderAmount: number, category?: string, includeReforestationMatch?: boolean): Object`
+Calculates estimated carbon footprint intensity, micro-contribution offset cost, and equivalent native trees planted.
+
+#### `evaluateCartEcoSummary(cartItems?: Array<Object>): Object`
+Aggregates full cart basket sustainability footprint and returns certified carbon-neutral badges.
+
