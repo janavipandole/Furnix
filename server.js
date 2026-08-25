@@ -90,41 +90,44 @@ app.post('/api/subscribe', contactLimiter, (req, res) => {
   });
 });
 
-// POST /api/eco/impact endpoint
-app.post('/api/eco/impact', (req, res) => {
-  const { amount, category } = req.body;
-  const numAmount = Number(amount);
+// POST /api/swatches/customize endpoint
+app.post('/api/swatches/customize', (req, res) => {
+  const { basePrice, materialId, baseSku } = req.body;
+  const numBase = Number(basePrice);
 
-  if (isNaN(numAmount) || numAmount < 0) {
+  if (isNaN(numBase) || numBase < 0) {
     return res.status(400).json({
       success: false,
-      message: "Please provide a valid numeric order or item amount."
+      message: "Please provide a valid numeric base price."
     });
   }
 
-  const catFactors = {
-    seating: 14.5,
-    tables: 18.2,
-    lighting: 8.0,
-    storage: 16.0,
-    accessories: 4.5
+  const surchargeMap = {
+    'mat-velvet-navy': 0,
+    'mat-velvet-emerald': 25.00,
+    'mat-boucle-cream': 45.00,
+    'mat-linen-oatmeal': 15.00,
+    'mat-leather-cognac': 180.00,
+    'mat-leather-charcoal': 160.00,
+    'mat-wood-walnut': 0,
+    'mat-wood-oak': 20.00,
+    'mat-wood-ebony': 35.00
   };
 
-  const catKey = (category || 'seating').toLowerCase();
-  const factor = catFactors[catKey] || 12.0;
-  const co2Kg = (numAmount / 100) * factor;
-  const trees = Math.max(1, Math.ceil(co2Kg / 22.0));
-  const offsetFee = Math.max(0.99, co2Kg * 0.05);
+  const id = materialId || 'mat-velvet-navy';
+  const surcharge = surchargeMap[id] !== undefined ? surchargeMap[id] : 0;
+  const finalPrice = numBase + surcharge;
+  const suffix = id.replace('mat-', '').toUpperCase();
+  const sku = `${baseSku || 'FNX-PROD'}-${suffix}`;
 
   return res.status(200).json({
     success: true,
     data: {
-      amount: Number(numAmount.toFixed(2)),
-      category: catKey,
-      estimatedCo2Kg: Number(co2Kg.toFixed(1)),
-      treesPlanted: trees,
-      offsetFee: Number(offsetFee.toFixed(2)),
-      badge: "100% FSC-Certified Sustainable Sourcing"
+      basePrice: Number(numBase.toFixed(2)),
+      materialId: id,
+      surcharge: Number(surcharge.toFixed(2)),
+      finalPrice: Number(finalPrice.toFixed(2)),
+      customSku: sku
     }
   });
 });

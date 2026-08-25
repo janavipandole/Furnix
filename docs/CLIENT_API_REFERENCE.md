@@ -148,15 +148,18 @@ Returns all supported plan options (1-Year, 2-Year, 3-Year, 5-Year) for a given 
 
 ---
 
-## 🌿 10. CarbonOffsetEcoEngine (`scripts/carbon-offset-eco-engine.js`)
+## 🎨 10. MaterialSwatchCustomizerEngine (`scripts/material-swatch-customizer-engine.js`)
 
-Computes product lifecycle carbon emissions (kg CO2e), tree planting donation matches, certified sustainable timber verifications (FSC certified), and carbon-neutral checkout pledges.
+Manages luxury upholstery fabric and hardwood finishes (Italian Leather, Plush Velvet, Bouclé, Solid Walnut, White Oak), finish price surcharges, durability metrics, and bespoke SKU variant generation.
 
 ### Methods
 
-#### `calculateEcoImpact(orderAmount: number, category?: string, includeReforestationMatch?: boolean): Object`
-Calculates estimated carbon footprint intensity, micro-contribution offset cost, and equivalent native trees planted.
+#### `customizeProductVariant(basePrice: number, materialId: string, baseSku?: string): Object`
+Calculates final product price with finish surcharges, generates custom SKU string, and returns texture/rub-count durability specifications.
 
-#### `evaluateCartEcoSummary(cartItems?: Array<Object>): Object`
-Aggregates full cart basket sustainability footprint and returns certified carbon-neutral badges.
+#### `getMaterialById(materialId: string): Object|null`
+Resolves complete material finish details by ID.
+
+#### `getAvailableSwatches(category?: string): Array<Object>`
+Returns available material swatches filtered by category (`fabrics`, `leathers`, `woods`, or `all`).
 
